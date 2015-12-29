@@ -28,23 +28,30 @@ public class MyHelloThriftServer {
 	public static void main(String[] args) {
 		Hello.Processor<Hello.Iface> myProcessor = new Hello.Processor<Hello.Iface>(new HelloHandler());
 		TServer tServer = null;
+		String str = "";
 		try {
 			System.out.println(args[0]);
 			if (args[0].equals(SIMPLE_SERVER_PORT + "")) {
 				tServer = simpleServer(myProcessor);
+				str = "SIMPLE_SERVER_PORT";
 			}else if (args[0].equals(TNONBLOCKING_SERVER_PORT + "")) {
 				tServer = tNonblockingServer(myProcessor);
+				str = "TNONBLOCKING_SERVER_PORT";
 			}else if (args[0].equals(THSHA_SERVER_PORT + "")) {
 				tServer = tHsHaServer(myProcessor);
+				str = "THSHA_SERVER_PORT";
 			}else if (args[0].equals(TTHREADED_SELECTOR_SERVER_PORT + "")) {
 				tServer = tThreadedSelectorServer(myProcessor);
+				str = "TTHREADED_SELECTOR_SERVER_PORT";
 			}else if (args[0].equals(MULTI_THREAD_SERVER_PORT + "")) {
 				tServer = tThreadPoolServer(myProcessor);
+				str = "MULTI_THREAD_SERVER_PORT";
 			}
 		} catch (TTransportException e) {
 			e.printStackTrace();
 		}
 		
+		System.out.println(str + " start!");
 		tServer.serve();
 	}
 

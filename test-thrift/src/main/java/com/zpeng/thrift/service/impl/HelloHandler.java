@@ -10,6 +10,7 @@ public class HelloHandler implements Hello.Iface{
 
 	@Override
 	public String helloString(String str) throws TException {
+		System.out.println("invoke helloString:" + str);
 		return str;
 	}
 
