@@ -25,11 +25,12 @@ public class HelloHandler implements Hello.Iface{
 
 	@Override
 	public void helloVoid() throws TException {
-		System.out.println("helloVoid");
+		System.out.println("helloVoid()");
 	}
 
 	@Override
 	public String helloNull() throws TException {
+		System.out.println("helloNull()");
 		return null;
 	}
 

@@ -29,6 +29,7 @@ public class MyHelloThriftServer {
 		Hello.Processor<Hello.Iface> myProcessor = new Hello.Processor<Hello.Iface>(new HelloHandler());
 		TServer tServer = null;
 		try {
+			System.out.println(args[0]);
 			if (args[0].equals(SIMPLE_SERVER_PORT + "")) {
 				tServer = simpleServer(myProcessor);
 			}else if (args[0].equals(TNONBLOCKING_SERVER_PORT + "")) {
