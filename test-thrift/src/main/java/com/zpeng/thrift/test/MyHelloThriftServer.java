@@ -84,6 +84,8 @@ public class MyHelloThriftServer {
 		 THsHaServer.Args args = new THsHaServer.Args(trans)
 				 .transportFactory(new TFramedTransport.Factory())
 				 .inputProtocolFactory(new TBinaryProtocol.Factory())
+				 .minWorkerThreads(20)
+				 .maxWorkerThreads(20)
 				 .processor(processor);
 		 return new THsHaServer(args);
 	}
@@ -100,8 +102,8 @@ public class MyHelloThriftServer {
 				 .transportFactory(new TFramedTransport.Factory())
 				 .inputProtocolFactory(new TBinaryProtocol.Factory())
 				 .processor(processor)
-				 .selectorThreads(4)//用来处理网络I/O
-				 .workerThreads(32);//用来进行请求的处理
+				 .selectorThreads(10)//用来处理网络I/O
+				 .workerThreads(10);//用来进行请求的处理
 		 return new TThreadedSelectorServer(args);
 	}
 	

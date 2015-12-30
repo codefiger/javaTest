@@ -1,6 +1,10 @@
 package com.zpeng.thrift.test;
 
 import java.io.IOException;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import org.apache.thrift.TApplicationException;
 import org.apache.thrift.TException;
@@ -17,22 +21,40 @@ import org.apache.thrift.transport.TTransport;
 
 import com.zpeng.gen.thrift.service.Hello;
 import com.zpeng.gen.thrift.service.Hello.AsyncClient.helloString_call;
-import com.zpeng.thrift.service.impl.HelloMethodCallback;
 
 public class MyHelloThriftClient {
-	public static void main(String[] args) {
-		asynClient();
+	public static void main(String[] args) throws InterruptedException, ExecutionException {
+		int taskSize = 200;
+
+		long starttime = System.currentTimeMillis();
+		//启动多个client
+		ExecutorService pool = Executors.newFixedThreadPool(taskSize);
+		for (int i = 0; i < taskSize; i++) {
+			System.out.println(i);
+			Callable helloStrClient = new HelloStrCallable("hello" + i); // 执行任务
+																			// Future
+			pool.submit(helloStrClient);
+		}
+		pool.shutdown();
+		System.out.println( "time:" + (System.currentTimeMillis() - starttime));
+
+		/*for (int i = 0; i < taskSize; i++) {
+			long starttime = System.currentTimeMillis();
+			System.out.println("starttime:" + starttime);
+			nonblockingClient("hello " + i);
+			System.out.println("time:" + (System.currentTimeMillis() - starttime));
+		}*/
 	}
 
-	private static void simpleClient() {
+	public static String simpleClient(String str) {
 		TTransport transport = new TSocket("localhost", MyHelloThriftServer.PORT);
 		try {
 			transport.open();
 			TProtocol protocol = new TBinaryProtocol(transport);
 			Hello.Client client = new Hello.Client(protocol);
-			client.helloVoid();
-			System.out.println(client.helloInt(11));
-			client.helloNull();
+			String callBackstr = client.helloString(str);
+			transport.close();
+			return callBackstr;
 		} catch (TException e) {
 			// 处理服务返回值为 null
 			if (e instanceof TApplicationException
@@ -42,24 +64,31 @@ public class MyHelloThriftClient {
 				e.printStackTrace();
 			}
 		}
+		return "error";
 	}
 
-	private static void nonblockingClient() {
+	/**
+	 *  using TFramedTransport on the client
+	 * @param str
+	 * @return
+	 */
+	public static String nonblockingClient(String str) {
 		TTransport transport = new TSocket("localhost", MyHelloThriftServer.PORT);
 		transport = new TFramedTransport(transport);
 		try {
 			transport.open();
 			TProtocol protocol = new TBinaryProtocol(transport);
 			Hello.Client client = new Hello.Client(protocol);
-			client.helloVoid();
-			client.helloNull();
-			System.out.println(client.helloInt(11));
+			String backStr = client.helloString(str);
+			transport.close();
+			return backStr;
 		} catch (TException e) {
 			e.printStackTrace();
 		}
+		return "error";
 	}
 
-	private static void asynClient() {
+	public static void asynClient() {
 		try {
 			TAsyncClientManager clientManager = new TAsyncClientManager();
 			TNonblockingTransport transport = new TNonblockingSocket("localhost", MyHelloThriftServer.PORT);
@@ -85,13 +114,30 @@ public class MyHelloThriftClient {
 					}
 				}
 			});
-			
+
 			Thread.sleep(1000);
-		
 
 		} catch (IOException | TException | InterruptedException e) {
 			e.printStackTrace();
-		} 
+		}
+	}
+}
+
+class HelloStrCallable implements Callable<String> {
+	private String helloStr;
+
+	public HelloStrCallable() {
+
+	}
+
+	public HelloStrCallable(String helloStr) {
+		this.helloStr = helloStr;
+	}
+
+	@Override
+	public String call() throws Exception {
+		MyHelloThriftClient.nonblockingClient(helloStr);
+		return null;
 	}
 
 }

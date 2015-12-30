@@ -10,8 +10,17 @@ public class HelloHandler implements Hello.Iface{
 
 	@Override
 	public String helloString(String str) throws TException {
-		System.out.println("invoke helloString:" + str);
-		return str;
+		
+		long starttime = System.currentTimeMillis();
+		
+		System.out.println("invoke helloString:" + str + ",starttime:" + starttime);
+		try {
+			Thread.sleep(200);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		System.out.println("invoke helloString:" + str + ",end time:" + System.currentTimeMillis());
+		return str + starttime;
 	}
 
 	@Override
