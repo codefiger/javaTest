@@ -11,6 +11,7 @@ import org.apache.thrift.TException;
 import org.apache.thrift.async.AsyncMethodCallback;
 import org.apache.thrift.async.TAsyncClientManager;
 import org.apache.thrift.protocol.TBinaryProtocol;
+import org.apache.thrift.protocol.TCompactProtocol;
 import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.protocol.TProtocolFactory;
 import org.apache.thrift.transport.TFramedTransport;
@@ -51,6 +52,7 @@ public class MyHelloThriftClient {
 		try {
 			transport.open();
 			TProtocol protocol = new TBinaryProtocol(transport);
+			//protocol = new TCompactProtocol(transport);
 			Hello.Client client = new Hello.Client(protocol);
 			String callBackstr = client.helloString(str);
 			transport.close();

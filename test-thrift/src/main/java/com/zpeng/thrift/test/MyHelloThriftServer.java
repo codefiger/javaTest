@@ -98,9 +98,10 @@ public class MyHelloThriftServer {
 	 */
 	private static TServer tThreadedSelectorServer(Hello.Processor<Hello.Iface> processor) throws TTransportException{
 		 TNonblockingServerTransport trans = new TNonblockingServerSocket(PORT);
+		 
 		 TThreadedSelectorServer.Args args = new TThreadedSelectorServer.Args(trans)
-				 .transportFactory(new TFramedTransport.Factory())
-				 .inputProtocolFactory(new TBinaryProtocol.Factory())
+				 .transportFactory(new TFramedTransport.Factory())//input output 默认 TTransportFactory（）
+				 .protocolFactory(new TBinaryProtocol.Factory())//input output 默认 TBinaryProtocol.Factory()
 				 .processor(processor)
 				 .selectorThreads(10)//用来处理网络I/O
 				 .workerThreads(10);//用来进行请求的处理
