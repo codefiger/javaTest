@@ -1,3 +1,15 @@
+repositories{
+	//maven central repository
+	mavenCentral()
+	
+	//remote maven repostitory
+	maven{url "http://maven.oschina.net/content/groups/public/"}
+	maven{url "../local-rep"}	
+
+	//Ivy directory
+	ivy {url "http://repo.mycompany.com/repo"}
+}
+
 defaultTasks 'hello','world'
 
 
