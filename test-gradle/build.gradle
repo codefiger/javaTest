@@ -64,3 +64,11 @@ shortCutHello << {
 shortCutHello << {
 	println "Greeting from the $shortCutHello.name task."
 }
+
+task myTask{
+	ext.myName = 'figer'
+}
+
+shortCutHello <<{
+	println "myname:" + myTask.myName
+}
