@@ -3,3 +3,7 @@ task hello{
 		println 'Hello World!';
 	}
 }
+
+task shortCutHello <<{
+	println'Hello world!';
+}
