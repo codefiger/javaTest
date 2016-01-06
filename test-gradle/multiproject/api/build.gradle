@@ -1,3 +1,5 @@
+description = 'api description'
+
 buildscript {
     repositories {
         mavenCentral()
