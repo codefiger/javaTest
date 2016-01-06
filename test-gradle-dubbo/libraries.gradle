@@ -1,0 +1,12 @@
+ext {
+   	versions = [
+		slf4j:                  '1.7.7',
+		spring:                 '3.2.9.RELEASE'
+	]
+
+	libraries = [
+		// logging
+		slf4j_api:              "org.slf4j:slf4j-api:${versions.slf4j}",
+   	 	logback:                'ch.qos.logback:logback-classic:1.1.2'
+	]
+}
