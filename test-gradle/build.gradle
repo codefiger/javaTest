@@ -7,3 +7,13 @@ task hello{
 task shortCutHello <<{
 	println'Hello world!';
 }
+
+task upper <<{
+	String str = 'mY_nAme'
+	println 'Original:' + str
+	println 'Upper case:' + str.toUpperCase()
+}
+
+task count <<{
+	5.times{print "$it"}
+}
