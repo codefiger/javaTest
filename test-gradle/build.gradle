@@ -29,3 +29,10 @@ task taskDepend(dependsOn : 'definedLater') <<{
 task definedLater <<{
 	println 'definedLater'
 }
+
+4.times{ counter->
+	task "task$counter" <<{
+		println "I'm number $counter."
+	}
+
+}
