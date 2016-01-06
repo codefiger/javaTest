@@ -61,4 +61,6 @@ shortCutHello << {
         println 'add something after.'
 }
 
-
+shortCutHello << {
+	println "Greeting from the $shortCutHello.name task."
+}
