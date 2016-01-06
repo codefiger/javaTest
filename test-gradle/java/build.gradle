@@ -1,0 +1,28 @@
+apply plugin : 'java'
+
+repositories{
+	mavenCentral()
+}
+
+dependencies{
+	compile(	
+		'commons-collections:commons-collections:3.2'
+	)
+	testCompile(
+		'junit:junit:4.+'
+	)
+}
+
+sourceCompatibility = 1.7
+version = 1.0
+author = 'figer'
+zpeng = 'wtf'
+jar{
+	manifest{
+		attributes(
+			"Implementation-Titile" : "Gradle Quickstart",
+			"Build-JDK" : System.getProperty('java.version'),		
+			"author" : author
+		)
+	}
+}
