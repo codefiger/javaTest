@@ -10,6 +10,17 @@ repositories{
 	ivy {url "http://repo.mycompany.com/repo"}
 }
 
+uploadArchives {
+        repositories {
+            mavenDeployer {
+                repository(url: 'http://****/nexus/content/repositories/releases') {
+                    authentication(userName: mavenUser, password: mavenPassword)
+                }
+            }
+        }
+}
+
+
 defaultTasks 'hello','world'
 
 
