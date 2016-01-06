@@ -1,3 +1,10 @@
+defaultTasks 'hello','world'
+
+
+task world <<{
+	println "world hello!"
+}
+
 task hello{
 	doLast{	
 		println 'Hello World!';
@@ -85,3 +92,21 @@ File[] fileList(String dir){
 	file(dir).listFiles({file->file.isFile()} as FileFilter).sort()
 }
 
+
+
+task distribution <<{
+	println "We build the zip with version $version"
+}
+
+task release(dependsOn: 'distribution') <<{
+	println "We release now!"
+}
+
+gradle.taskGraph.whenReady {taskGraph ->
+	if(taskGraph.hasTask(release)){
+		version = '1.0'
+	}else{
+		version = '1.0-SNAPSHOT'
+	}
+	
+}
