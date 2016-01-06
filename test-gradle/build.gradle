@@ -72,3 +72,16 @@ task myTask{
 shortCutHello <<{
 	println "myname:" + myTask.myName
 }
+
+
+
+task loadFile <<{
+	fileList("resources").each{File file ->
+		println "load file: $file.name"
+	}
+}
+
+File[] fileList(String dir){
+	file(dir).listFiles({file->file.isFile()} as FileFilter).sort()
+}
+
