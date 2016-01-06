@@ -36,3 +36,29 @@ task definedLater <<{
 	}
 
 }
+
+task0.dependsOn task2, task3
+
+shortCutHello << {
+        println 'add something before.'
+}
+
+
+shortCutHello.doFirst{
+	println 'task behaviour,do first'
+}
+
+shortCutHello << {
+        println 'add something middle.'
+}
+
+
+shortCutHello.doLast{
+	println 'task behaviour,do last'
+}
+
+shortCutHello << {
+        println 'add something after.'
+}
+
+
