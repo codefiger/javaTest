@@ -21,3 +21,11 @@ task count <<{
 task intro(dependsOn: hello) <<{
 	println "I'm figer!"
 }
+
+task taskDepend(dependsOn : 'definedLater') <<{
+	println 'taskDepend'
+}
+
+task definedLater <<{
+	println 'definedLater'
+}
