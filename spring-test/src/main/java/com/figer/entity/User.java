@@ -25,10 +25,10 @@ public class User {
 		this.name = name;
 	}
 	
-	public int getId() {
+	public  int getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void  setId(int id) {
 		this.id = id;
 	}
 	public String getName() {
