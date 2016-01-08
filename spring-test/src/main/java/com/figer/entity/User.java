@@ -36,6 +36,9 @@ public class User {
 		this.name = name;
 	}
 	
+	public void hello(){
+		LOGGER.info("My name is {}." , name);
+	}
 	
 	@Override
 	public String toString() {

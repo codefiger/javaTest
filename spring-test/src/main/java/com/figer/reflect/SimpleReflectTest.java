@@ -1,5 +1,7 @@
 package com.figer.reflect;
 
+import java.lang.reflect.Method;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,5 +24,19 @@ public class SimpleReflectTest {
 		ClassLoader currentClassLoader = Thread.currentThread().getContextClassLoader();
 		Class<?> loaderClass = currentClassLoader.loadClass("com.figer.entity.User");
 		LOGGER.info(loaderClass.getName());
+		
+		//如下方法，如果一些逻辑反复出现，可用反射处理
+		doThreeTimes("hello", new User(1, "Tom"), null, null);
+	}
+	
+	private static Object doThreeTimes(String methodName, Object target, Object[] args, Class<?>... classParams) throws Exception{
+		Method method = target.getClass().getDeclaredMethod(methodName, classParams);
+		Object result = null;
+		if (null != method) {
+			for(int i = 0; i < 3; i++){
+				result = method.invoke(target, args);
+			}
+		}
+		return result;
 	}
 }
