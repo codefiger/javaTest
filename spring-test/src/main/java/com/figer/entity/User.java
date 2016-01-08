@@ -3,6 +3,8 @@ package com.figer.entity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.figer.annotation.Description;
+
 public class User {
 	private static final Logger LOGGER = LoggerFactory.getLogger(User.class);
 	
@@ -41,6 +43,7 @@ public class User {
 	}
 	
 	@Override
+	@Description("my name is toString()....")
 	public String toString() {
 		return "id:" + id + ",name:" + name;
 	}
