@@ -2,6 +2,9 @@ dependencies{
 	compile(
 		libraries.spring_core,
 		libraries.spring_context,
-		libraries.spring_beans
+		libraries.spring_beans,
+		
+		libraries.slf4j_api,
+		libraries.logback
 	)
 }
