@@ -1,0 +1,38 @@
+apply from: 'libraries.gradle'
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'eclipse-wtp'
+    apply plugin: 'idea'
+    apply plugin: 'maven'
+
+    sourceCompatibility = '1.7'
+    targetCompatibility = '1.7'
+	
+
+    repositories {
+        maven { url 'http://192.168.160.187:8081/nexus/content/groups/public' }
+        maven { url 'https://maven.alfresco.com/nexus/content/groups/public' }
+        mavenCentral()
+        mavenLocal()
+
+    }
+
+   eclipse {
+        classpath {
+            downloadSources=true
+        }
+    }
+
+
+    dependencies {
+        testCompile libraries.junit
+    }
+
+    version = '1.0'
+
+    jar {
+        manifest.attributes provider: 'gradle'
+    }
+}
+

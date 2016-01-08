@@ -1,0 +1,7 @@
+dependencies{
+	compile(
+		libraries.spring_core,
+		libraries.spring_context,
+		libraries.spring_beans
+	)
+}
