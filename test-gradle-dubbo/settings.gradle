@@ -1,1 +1,3 @@
-include 'api','provider','consumer'
+apply from: 'provider.settings.gradle'
+apply from: 'consumer.settings.gradle'
+apply from: 'api.settings.gradle'
