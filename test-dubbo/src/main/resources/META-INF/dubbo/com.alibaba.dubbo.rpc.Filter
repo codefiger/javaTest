@@ -1,0 +1,2 @@
+consumerTraceId=com.figer.framework.dubbo.filter.ConsumerTraceIdFilter
+providerTraceId=com.figer.framework.dubbo.filter.ProviderTraceIdFilter
