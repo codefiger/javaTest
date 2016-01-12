@@ -23,7 +23,7 @@ public class ThreadSafeTest {
 	}
 	
 	static class Account{
-		//使用共享标志，声明成volatile，保证并发环境的执行有序性 
+		//使用共享标志，声明成volatile，也保证并发环境的执行有序性 
 		private int balance;
 		
 		public Account(int balance) {
