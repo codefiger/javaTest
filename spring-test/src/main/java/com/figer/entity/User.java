@@ -14,7 +14,7 @@ public class User {
 	public User(){}
 	
 	public User(int id, String name) {
-		LOGGER.info("id init by int");
+		//LOGGER.info("id init by int");
 		this.id = id;
 		this.name = name;
 	}

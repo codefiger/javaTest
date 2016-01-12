@@ -15,13 +15,15 @@ public class MyThread implements Runnable {
 
 	@Override
 	public void run() {
-		while(true){
+		int i = 0;
+		while(i++ <= 10){
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
 				LOGGER.error("", e);
 			}
 			LOGGER.info("user.id:{}", user.getId());
+			//System.out.println("user.id:" + user.getId());
 		}
 	}
 
