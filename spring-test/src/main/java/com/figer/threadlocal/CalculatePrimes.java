@@ -6,10 +6,14 @@ package com.figer.threadlocal;
 
 public class CalculatePrimes extends Thread {
 
-    public static final int MAX_PRIMES = 1000;
+    public static final int MAX_PRIMES = 100000;
     public static final int TEN_SECONDS = 2000;
 
-    public  boolean finished = false;
+    private volatile boolean finished = false;//共享变量
+    
+    public void setFinished(boolean finished) {
+		this.finished = finished;
+	}
 
     public void run() {
         int[] primes = new int[MAX_PRIMES];
@@ -37,16 +41,25 @@ public class CalculatePrimes extends Thread {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         CalculatePrimes calculator = new CalculatePrimes();
         calculator.start();
-        try {
-            Thread.sleep(TEN_SECONDS);
-        }
-        catch (InterruptedException e) {
-            // fall through
-        }
-
-        calculator.finished = true;
+        
+        new Thread(new SetThread(calculator)).start();
+        
+    }
+    
+    static class SetThread implements Runnable{
+    	private CalculatePrimes calculator;
+    	
+    	public SetThread(CalculatePrimes calculator) {
+			this.calculator = calculator;
+		}
+    	
+		@Override
+		public void run() {
+			calculator.setFinished(true);
+		}
+    	
     }
 }
