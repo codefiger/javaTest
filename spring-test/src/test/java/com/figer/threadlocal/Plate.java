@@ -9,8 +9,8 @@ import org.slf4j.LoggerFactory;
  * 生产者/消费者模式
  * @author peng.zhang
  * 0  什么是锁对象？ synchronized(锁){临界区代码}   
- * 		或 public synchronized Object getEgg(){..}这个方法就是锁对象
- * 		或 public static synchronized void staticMethod(){} 整个类就是锁对象
+ * 		或 public synchronized Object getEgg(){..}这个方法所在对象就是锁
+ * 		或 public static synchronized void staticMethod(){} 这个方法所在class就是锁
  * 1  每个锁对象都有两个队列，一个是就绪队列，一个是阻塞队列，就绪队列存储了将要获得锁的线程，阻塞队列存储了被阻塞的线程
  * 2  当一个被线程被唤醒 (notify)后，才会进入到就绪队列，等待cpu的调度
  * 
@@ -27,10 +27,10 @@ public class Plate {
 	private static final Logger LOGGER = LoggerFactory.getLogger(Plate.class);
 	private List<Object> eggs = new ArrayList<>();
 	
-	public synchronized Object getEgg(){
+	public synchronized Object getEgg(String name){
 		while(eggs.isEmpty()){
 			try {
-				LOGGER.info("get egg.Plate is empty,waiting....");
+				//LOGGER.info("{} get egg.Plate is empty,waiting....", name);
 				wait();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
@@ -38,7 +38,7 @@ public class Plate {
 		}
 		
 		Object egg = eggs.get(0);
-		LOGGER.info("get a egg:{}", egg);
+		LOGGER.info("{} get a egg:{}", name, egg);
 		eggs.clear();
 		notify();
 		return egg;
@@ -60,14 +60,16 @@ public class Plate {
 	
 	static class GetEggThread implements Runnable{
 		private Plate plate;
+		private String name;
 		
-		public GetEggThread(Plate plate){
+		public GetEggThread(String name, Plate plate){
+			this.name = name;
 			this.plate = plate;
 		}
 		
 		public void run(){
 			for (int i = 0; i < 6; i++) {
-				plate.getEgg();
+				plate.getEgg(name);
 			}
 		}
 	}
@@ -91,9 +93,11 @@ public class Plate {
 	public static void main(String[] args) {
 		Plate plate = new Plate();
 		Thread putEggThread = new Thread(new PutEggThread(plate));
-		Thread getEggThread = new Thread(new GetEggThread(plate));
+		Thread getEggThread1 = new Thread(new GetEggThread("figer" ,plate));
+		Thread getEggThread2 = new Thread(new GetEggThread("peng" ,plate));
 		
-		getEggThread.start();
+		getEggThread1.start();
+		getEggThread2.start();
 		putEggThread.start();
 	}
 	
