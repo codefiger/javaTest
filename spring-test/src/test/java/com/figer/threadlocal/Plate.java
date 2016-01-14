@@ -96,6 +96,13 @@ public class Plate {
 		Thread getEggThread1 = new Thread(new GetEggThread("figer" ,plate));
 		Thread getEggThread2 = new Thread(new GetEggThread("peng" ,plate));
 		
+		try {
+			Thread.sleep(100);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		getEggThread1.start();
 		getEggThread2.start();
 		putEggThread.start();

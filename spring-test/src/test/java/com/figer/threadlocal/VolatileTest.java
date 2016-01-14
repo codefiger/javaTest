@@ -1,4 +1,7 @@
 package com.figer.threadlocal;
+
+import java.util.Random;
+
 /**
  * 可见性：一个线程修改共享变量保证所有线程能看到这个修改（个人理解就是及时将共享值修改从工作内存同步到主内存）
  * 
@@ -67,6 +70,11 @@ public class VolatileTest {
 		public void run(){
 			for(int i=modifyNum;i<modifyNum+10;i++){
 				volatileTest.setB(i);
+				try {
+					Thread.sleep(new Random().nextInt(1000));//验证volatile修饰的变量不会拷贝到工作内存，每次直接操作主内存中的值
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 				System.out.println(Thread.currentThread() + " modify b: " + volatileTest.getB());
 			}
 		}
@@ -78,10 +86,10 @@ public class VolatileTest {
 		Thread threadA2 = new Thread(new ModifyA(volatileTest, 1000), "A2");
 		threadA1.start();
 		threadA2.start();
-		threadA1.join();
+		threadA1.join();//Waits for this thread to die.即等待A1运行完主线程才继续运行
 		threadA2.join();
 		
-		System.out.println("----");
+		System.out.println("----------------------------------");
 		Thread threadB1 = new Thread(new ModifyB(volatileTest, 10), "B1");
 		Thread threadB2 = new Thread(new ModifyB(volatileTest, 1000), "B2");
 		threadB1.start();
