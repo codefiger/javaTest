@@ -5,7 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 模拟JDK所提供的ThreadLocal类在实现思路上是非常相近的
+ * 模拟JDK所提供的ThreadLocal类在实现思路上是非常相近的(思路其实不一样)
+ * ThreadLocal中每个线程都弱引用一个ThreadLocalMap，然后threadLocalmap的key是这个线程本身。
  * @author peng.zhang
  *
  */
