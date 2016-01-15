@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans		http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/context				http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/aop    				http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+		http://www.springframework.org/schema/mvc					http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx.xsd">
+	<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">  
+        <property name="customEditors">  
+            <map>  
+                   <!--②-1属性编辑器对应的属性类型-->  
+                   <entry key="java.util.Date">   
+  
+                       <!--②-2对应的属性编辑器Bean -->  
+	                   <bean class="com.figer.editor.DatePropertyEditor" >
+	                   		 <property name="format" value="yyyy-MM-dd"/>  
+	                   </bean>
+	               </entry>  
+            </map>  
+        </property>  
+    </bean>  
+    
+    <bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">  
+        <property name="customEditors">  
+            <map>  
+                   <!--②-1属性编辑器对应的属性类型-->  
+                   <entry key="com.figer.entity.Company">   
+  
+                       <!--②-2对应的属性编辑器Bean -->  
+	                   <bean class="com.figer.editor.CompanyPropertyEditor" />  
+	               </entry>  
+            </map>  
+        </property>  
+    </bean>  
+    
+ 	<bean id="figer" class="com.figer.entity.User"> 
+ 		<property name="id" value="1001"/> 
+        <property name="name" value="figer"/>   
+        <!--③该属性将使用②处的属性编辑器完成属性填充操作-->  
+    	<property name="company" value="54321,travelzen"/>   
+    	<property name="createDate" value=""/>
+	</bean> 
+</beans>

@@ -1,5 +1,7 @@
 package com.figer.entity;
 
+import java.util.Date;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,6 +12,8 @@ public class User {
 	
 	private int id;
 	private String name;
+	private Company company;
+	private Date creteDate;
 	
 	public User(){}
 	
@@ -25,6 +29,14 @@ public class User {
 		this.name = name;
 	}
 	
+	public Company getCompany() {
+		return company;
+	}
+
+	public void setCompany(Company company) {
+		this.company = company;
+	}
+
 	public  int getId() {
 		return id;
 	}
@@ -47,4 +59,14 @@ public class User {
 	public String toString() {
 		return "id:" + id + ",name:" + name;
 	}
+
+	public Date getCreteDate() {
+		return creteDate;
+	}
+
+	public void setCreteDate(Date creteDate) {
+		this.creteDate = creteDate;
+	}
+	
+	
 }

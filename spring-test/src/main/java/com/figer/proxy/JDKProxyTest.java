@@ -1,7 +1,6 @@
 package com.figer.proxy;
 
 import java.lang.reflect.Proxy;
-
 import com.figer.services.Movable;
 import com.figer.services.impl.Car;
 
