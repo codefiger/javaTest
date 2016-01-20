@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans		http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/context				http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/aop    				http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+		http://www.springframework.org/schema/mvc					http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
+
+  <!--  scan beans  -->
+  <context:annotation-config />
+  <context:component-scan base-package="com.figer.*" />
+
+  <!-- jdbc.propertis Directory -->
+  <context:property-placeholder location="classpath:jdbc.properties" />
+
+  <bean id="MyDataSource" destroy-method="close" class="org.apache.commons.dbcp.BasicDataSource">
+    <property name="driverClassName" value="org.postgresql.Driver" />
+    <property name="url" value="jdbc:postgresql://127.0.0.1:5432/postgres" />
+    <property name="username" value="postgres" />
+    <property name="password" value="123456" />
+  </bean>
+
+  <!-- SqlSessionFactory -->
+  <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+    <property name="dataSource" ref="MyDataSource" />
+    <property name="mapperLocations" value="classpath:mapper/*Mapper.xml" />
+  </bean>
+  
+  <!-- ScanMapperFiles -->
+  <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+    <property name="basePackage" value="com.figer.mapper" />
+    <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+  </bean>
+
+  <!-- ================================事务相关控制=================================================    -->
+  <bean name="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">    
+    <property name="dataSource" ref="MyDataSource"></property>
+  </bean>    
+  
+  
+ <!--  <tx:advice id="workerDtoTxAdvice" transaction-manager="transactionManager">
+    <tx:attributes>
+      <tx:method name="delete*" propagation="REQUIRED" read-only="false"
+                            rollback-for="java.lang.Exception" no-rollback-for="java.lang.RuntimeException"/>
+      <tx:method name="required*" propagation="REQUIRED" read-only="false" />
+      <tx:method name="requiresNew*" propagation="NEVER" read-only="false" />
+      <tx:method name="test*" propagation="REQUIRED" read-only="false" />
+      <tx:method name="find*" propagation="SUPPORTS"/>
+      <tx:method name="get*" propagation="SUPPORTS"/>
+      <tx:method name="select*" propagation="SUPPORTS"/>
+    </tx:attributes>
+  </tx:advice>
+  <aop:config>    
+    <aop:pointcut id="transactionPointcut" expression="execution(* com.travelzen.service.*.*(..))" /> 把事务控制在Service层
+    <aop:advisor pointcut-ref="transactionPointcut" advice-ref="workerDtoTxAdvice" />
+  </aop:config> -->
+  
+  
+  <!-- 以下为自定义Bean-->
+<!--   <bean id="workerDao" class="com.travelzen.dao.impl.WorkerDaoImpl" autowire="byName" />  
+  <bean id="workerService" class="com.travelzen.service.impl.WorkerServiceImpl" autowire="byName"/> -->
+</beans>

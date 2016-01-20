@@ -1,0 +1,23 @@
+dependencies{
+        compile(
+                libraries.spring_core,
+                libraries.spring_context,
+                libraries.spring_beans,
+		libraries.spring_orm,
+		libraries.spring_jdbc,
+
+                libraries.slf4j_api,
+                libraries.logback,
+
+    libraries.mybatis,
+    libraries.mybatis_spring,
+    libraries.mybatis_generator,
+		libraries.postgresql,
+		libraries.commons_dbcp,
+		libraries.commons_pool,
+		libraries.spring_tx,
+		libraries.pinyin4j
+
+        )
+}
+
