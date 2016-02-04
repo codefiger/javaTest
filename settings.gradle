@@ -1,1 +1,2 @@
 apply from: 'spring.settings.gradle'
+apply from: 'mybatis.settings.gradle'
