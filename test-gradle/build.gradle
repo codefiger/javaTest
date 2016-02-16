@@ -1,3 +1,5 @@
+apply plugin: 'maven'
+
 repositories{
 	//maven central repository
 	mavenCentral()
@@ -11,7 +13,6 @@ repositories{
 }
 
 defaultTasks 'hello','world'
-
 
 task world <<{
 	println "world hello!"
@@ -121,4 +122,14 @@ gradle.taskGraph.whenReady {taskGraph ->
 		version = '1.0-SNAPSHOT'
 	}
 	
+}
+
+uploadArchives {
+        repositories {
+            mavenDeployer {
+                repository(url: 'http://****/nexus/content/repositories/releases') {
+                    authentication(userName: mavenUser, password: mavenPassword)
+                }
+            }
+        }
 }
