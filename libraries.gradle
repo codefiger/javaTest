@@ -15,6 +15,9 @@ ext {
 		
 		//dubbo
 		dubbo:			'com.alibaba:dubbo:2.4.9',
+
+		//aspectj
+		aspectj:		'org.aspectj:aspectjweaver:1.7.2',
 		
 		//spring
 		spring_core:		"org.springframework:spring-core:${versions.spring}",
@@ -23,7 +26,7 @@ ext {
 		spring_tx:              "org.springframework:spring-tx:${versions.spring}",
 		spring_jdbc:            "org.springframework:spring-jdbc:${versions.spring}",
 		spring_orm:             "org.springframework:spring-orm:${versions.spring}",
-
+		spring_test:		"org.springframework:spring-test:${versions.spring}",
 
 		//commons
 		commons_beanutils:      'commons-beanutils:commons-beanutils:1.8.3',

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import com.figer.domain.LoginLog;
 
 @Repository
-public class LoginDao {
+public class LoginLogDao {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	

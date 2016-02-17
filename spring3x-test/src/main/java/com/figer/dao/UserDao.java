@@ -24,7 +24,7 @@ public class UserDao {
 	}
 
 	public User findUserByUserName(final String userName) {
-		String sqlStr = " SELECT user_id,user_name,credits "
+		String sqlStr = " SELECT user_id,user_name,credits,password "
 				+ " FROM t_user WHERE user_name =? ";
 		final User user = new User();
 		jdbcTemplate.query(sqlStr, new Object[] { userName },
@@ -33,6 +33,7 @@ public class UserDao {
 						user.setUserId(rs.getInt("user_id"));
 						user.setUserName(userName);
 						user.setCredits(rs.getInt("credits"));
+						user.setPassword(rs.getString("password"));
 					}
 				});
 		return user;
