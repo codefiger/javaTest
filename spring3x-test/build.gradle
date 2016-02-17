@@ -1,0 +1,17 @@
+dependencies{
+        compile(
+                libraries.spring_core,
+                libraries.spring_context,
+                libraries.spring_beans,
+				libraries.spring_orm,
+				libraries.spring_jdbc,
+
+                libraries.slf4j_api,
+                libraries.logback,
+				libraries.mysql_connector,
+				libraries.commons_dbcp,
+                libraries.commons_pool
+
+        )
+}
+

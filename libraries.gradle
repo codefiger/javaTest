@@ -59,7 +59,8 @@ ext {
 		commons_dbcp:           'commons-dbcp:commons-dbcp:1.4',
 		commons_pool:           'commons-pool:commons-pool:1.6',
 		// pinyin4j
-    		pinyin4j:               'com.belerweb:pinyin4j:2.5.0'
-
+    		pinyin4j:               'com.belerweb:pinyin4j:2.5.0',
+		// mysql connector
+    		mysql_connector:        'mysql:mysql-connector-java:5.1.24'
 	]
 }
