@@ -27,7 +27,16 @@ ext {
 		spring_jdbc:            "org.springframework:spring-jdbc:${versions.spring}",
 		spring_orm:             "org.springframework:spring-orm:${versions.spring}",
 		spring_test:		"org.springframework:spring-test:${versions.spring}",
+		spring_web:             "org.springframework:spring-web:${versions.spring}",
+    		spring_webmvc:          "org.springframework:spring-webmvc:${versions.spring}",
 
+		// servlet api
+    		servlet_api:            'javax.servlet:javax.servlet-api:3.1.0',
+		
+		//jstl
+		jstl:			'jstl:jstl:1.2',
+		jsp_api:		'javax.servlet:jsp-api:2.0',
+		
 		//commons
 		commons_beanutils:      'commons-beanutils:commons-beanutils:1.8.3',
    		commons_cli:            'commons-cli:commons-cli:1.2',
