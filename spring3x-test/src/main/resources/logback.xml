@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration>
+<configuration scan="true" scanPeriod="60000" debug="true">
+ 	<!-- 设置变量 -->
+	<property name="LOG_DIR" value="/opt/logs/test-gradle-logback"/>
+	<property name="APP_NAME" value="spring3x-test" />   
+	
+	<!-- 设置上下文名称 -->
+	<contextName>${APP_NAME}</contextName>
+	
+	<!-- 获取时间戳字符串 -->
+	<timestamp key="timeFormat" datePattern="yyyy-MM-dd HH:mm:ss"/> 
+	
+	<!-- xEx :stack track information followed by the "implementation-version" ,if the version is uncertain ,will be preceded by "~"-->
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">   
+   		<!-- encoder 默认配置为PatternLayoutEncoder -->   
+	    <encoder>   
+	      <pattern>[${timeFormat}] [%class:%line] - [%-4level] %X{rpid} [%logger{50}] -> %m %n %xEx</pattern>   
+	    </encoder>   
+ 	</appender> 
+ 	
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${LOG_DIR}/test-gradle-logback.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<fileNamePattern>${LOG_DIR}/test-gradle-logback-%i.log</fileNamePattern>
+			<minIndex>1</minIndex>
+			<maxIndex>30</maxIndex>
+		</rollingPolicy>
+		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<maxFileSize>100MB</maxFileSize>
+		</triggeringPolicy>
+		<encoder charset="UTF-8">
+			<Pattern>[%d{yyyy-MM-dd HH:mm:ss}] [%4level] %X{rpid} [%logger{50}]  -> %m%n %xEx</Pattern>
+		</encoder>
+	</appender>
+	
+ 	<root level="debug">             
+	    <appender-ref ref="STDOUT" />   
+	</root>  
+</configuration>

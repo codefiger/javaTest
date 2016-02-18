@@ -18,7 +18,10 @@ dependencies{
 
 		libraries.servlet_api,
 		libraries.jstl,
-		libraries.jsp_api
+		libraries.jsp_api,
+	
+		libraries.logback,
+		libraries.logback_ext
         )
 }
 

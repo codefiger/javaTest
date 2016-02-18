@@ -8,6 +8,7 @@ ext {
 		// logging
 		slf4j_api:              "org.slf4j:slf4j-api:${versions.slf4j}",
    	 	logback:                'ch.qos.logback:logback-classic:1.1.2',
+		logback_ext:            'org.logback-extensions:logback-ext-spring:0.1.2',
 
 		//zookeeper
 		zookeeper:		'org.apache.zookeeper:zookeeper:3.4.6',
