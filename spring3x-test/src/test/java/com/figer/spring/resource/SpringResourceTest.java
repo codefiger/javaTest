@@ -11,6 +11,9 @@ public class SpringResourceTest {
 	public static void main(String[] args) throws IOException {
 		String filePath = "/Users/figer/Pictures/luffy.jpeg";
 		Resource fileResource = new FileSystemResource(filePath);
+		Resource relativeResource = fileResource.createRelative("springResourceRelativeTest");
+		relativeResource.getFile().createNewFile();
+		
 		InputStream luffyStream = fileResource.getInputStream();
 		System.out.println(fileResource.getFilename());
 		System.out.println(fileResource.getDescription());
