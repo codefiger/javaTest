@@ -21,8 +21,12 @@
 		init-method="init"
 		destroy-method="destroy"
 		p:maxSpeed="200"
-		scope="singleton" 
+		scope="prototype" 
 		/>
+		
+	<bean id="magicBoss" class="com.figer.injectfun.MagicBoss" >
+		<lookup-method name="getCar" bean="car"/>
+	</bean>	
 		
 	<bean id="myBeanPostProcessor" class="com.figer.beanfactory.MyBeanPostProcessor"/>	
 	

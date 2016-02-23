@@ -7,6 +7,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.figer.domain.Car;
+import com.figer.injectfun.MagicBoss;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={
@@ -18,9 +19,18 @@ public class BeanFactoryTest {
 	
 	@Autowired
 	private Car car2;
+	
+	@Autowired
+	private MagicBoss magicBoss;
 	@Test
 	public void testCarFactory(){
 		System.out.println(carByFactory);
 		System.out.println(car2);
+	}
+	
+	@Test
+	public void testLookupFunctionInject(){
+		//每次拿到的car都不一样
+		System.out.println(magicBoss.getCar() == magicBoss.getCar());
 	}
 }
