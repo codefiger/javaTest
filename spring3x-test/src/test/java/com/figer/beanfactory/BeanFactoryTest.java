@@ -22,6 +22,12 @@ public class BeanFactoryTest {
 	
 	@Autowired
 	private MagicBoss magicBoss;
+	
+	@Autowired
+	private Car car3;
+	
+	@Autowired
+	private Car car4;
 	@Test
 	public void testCarFactory(){
 		System.out.println(carByFactory);
@@ -32,5 +38,12 @@ public class BeanFactoryTest {
 	public void testLookupFunctionInject(){
 		//每次拿到的car都不一样
 		System.out.println(magicBoss.getCar() == magicBoss.getCar());
+	}
+	
+	@Test
+	public void testBeanOOP(){
+		//每次拿到的car都不一样
+		System.out.println(car3);
+		System.out.println(car4);
 	}
 }

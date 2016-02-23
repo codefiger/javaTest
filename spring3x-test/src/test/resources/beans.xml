@@ -35,4 +35,10 @@
 	<bean id="carFactory" class="com.figer.beanfactory.CarFactory"/>
 	
 	<bean id="car2" factory-bean="carFactory" factory-method="createCar"/>
+	
+	<bean id="parentCar" class="com.figer.domain.Car" p:name="car" p:maxSpeed="100" abstract="true"/>
+	
+	<bean id="car3" p:name="car3"  parent="parentCar"/>
+	
+	<bean id="car4" p:name="car4"  parent="parentCar"/>
 </beans>

@@ -70,7 +70,7 @@ public class Car implements BeanFactoryAware,BeanNameAware,InitializingBean,Disp
 	
 	@Override
 	public String toString() {
-		return "car.carId:" + carId + ",car.carName:" + name + "car.maxSpeed:" + maxSpeed;
+		return "car.carId:" + carId + ",car.carName:" + name + ",car.maxSpeed:" + maxSpeed;
 	}
 	
 	public static void main(String[] args) {
