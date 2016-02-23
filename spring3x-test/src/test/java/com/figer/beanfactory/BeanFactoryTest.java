@@ -28,6 +28,9 @@ public class BeanFactoryTest {
 	
 	@Autowired
 	private Car car4;
+	
+	@Autowired
+	private Car carImport;
 	@Test
 	public void testCarFactory(){
 		System.out.println(carByFactory);
@@ -42,8 +45,12 @@ public class BeanFactoryTest {
 	
 	@Test
 	public void testBeanOOP(){
-		//每次拿到的car都不一样
 		System.out.println(car3);
 		System.out.println(car4);
+	}
+	
+	@Test
+	public void testImportResourceFile(){
+		System.out.println(carImport);
 	}
 }
