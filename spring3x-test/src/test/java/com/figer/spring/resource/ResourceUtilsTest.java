@@ -9,7 +9,8 @@ public class ResourceUtilsTest {
 	public static void main(String[] args) throws IOException {
 		PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
 		//classpath*:   classpath: 区别第一个会匹配所有jar，具体看代码
-		Resource[] resources = resolver.getResources("classpath*:**");
+		//Resource[] resources = resolver.getResources("classpath*:org/springframework/core/io/support/*.class");
+		Resource[] resources = resolver.getResources("classpath*:**/*.class");
 		for (Resource resource : resources) {
 			System.out.println(resource.getDescription());
 		}

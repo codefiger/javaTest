@@ -10,7 +10,6 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 
 import com.figer.domain.Car;
-import com.figer.domain.User;
 
 public class BeanLifeCycle {
 	private static void lifeCycleInBeanFactory(){

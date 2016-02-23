@@ -1,5 +1,6 @@
 package com.figer.domain;
 
+import org.apache.commons.logging.Log;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
@@ -74,6 +75,7 @@ public class Car implements BeanFactoryAware,BeanNameAware,InitializingBean,Disp
 	
 	public static void main(String[] args) {
 		System.out.println(Car.class.getClassLoader().getResource("").getPath());
+		System.out.println(Log.class.getClassLoader().getResource("").getPath());
 	}
 
 }
