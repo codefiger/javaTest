@@ -25,4 +25,10 @@
 		/>
 		
 	<bean id="myBeanPostProcessor" class="com.figer.beanfactory.MyBeanPostProcessor"/>	
+	
+	<bean id="carByFactory" class="com.figer.beanfactory.CarFactory" factory-method="getInstance"/>
+	
+	<bean id="carFactory" class="com.figer.beanfactory.CarFactory"/>
+	
+	<bean id="car2" factory-bean="carFactory" factory-method="createCar"/>
 </beans>
