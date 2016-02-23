@@ -12,10 +12,16 @@
        http://www.springframework.org/schema/aop
        http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
     
-	<!-- 配置事务管理器 -->
 	<bean id="user" class="com.figer.domain.User"
 		p:userId="1001"
 		p:userName="figer"
 		p:password="123456" />
+		
+	<bean id="car" class="com.figer.domain.Car"
+		init-method="init"
+		destroy-method="destroy"
+		p:maxSpeed="200"
+		scope="singleton" 
+		/>
 		
 </beans>
