@@ -24,4 +24,5 @@
 		scope="singleton" 
 		/>
 		
+	<bean id="myBeanPostProcessor" class="com.figer.beanfactory.MyBeanPostProcessor"/>	
 </beans>
