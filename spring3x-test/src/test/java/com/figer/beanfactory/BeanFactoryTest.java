@@ -31,6 +31,12 @@ public class BeanFactoryTest {
 	
 	@Autowired
 	private Car carImport;
+	
+//	@Autowired
+//	private Car carFile;
+	
+	@Autowired
+	private Car carFile2;
 	@Test
 	public void testCarFactory(){
 		System.out.println(carByFactory);
@@ -52,5 +58,15 @@ public class BeanFactoryTest {
 	@Test
 	public void testImportResourceFile(){
 		System.out.println(carImport);
+	}
+	
+//	@Test
+//	public void testPropertyImport(){
+//		System.out.println(carFile);
+//	}
+	
+	@Test
+	public void testPropertyImport2(){
+		System.out.println(carFile2);
 	}
 }
