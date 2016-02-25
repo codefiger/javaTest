@@ -19,6 +19,10 @@ public class SpringAdviceTest {
 	private Waiter waiterAround;
 	@Autowired
 	private Car transactionCar;
+	@Autowired
+	private Waiter waiterAdvitor;
+	@Autowired
+	private Seller sellerAdvitor;
 	@Test
 	public void testBeforeAdvice(){
 		waiterProxy.greetTo("figer");
@@ -32,5 +36,11 @@ public class SpringAdviceTest {
 	@Test
 	public void testAopThrowingAdvince(){
 		transactionCar.doSomething();
+	}
+	
+	@Test
+	public void testStaticMethodAdvisor(){
+		waiterAdvitor.greetTo("John");
+		sellerAdvitor.greetTo("Tom");
 	}
 }

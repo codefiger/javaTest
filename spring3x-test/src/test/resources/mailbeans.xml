@@ -39,4 +39,14 @@
 		p:target-ref="car"
 		p:proxyTargetClass="true"
 	/>
+	
+	<bean id="seller" class="com.figer.spring.aop.Seller"/>
+	<bean id="politenessAdvitor" class="com.figer.spring.aop.PolitenessAdvitor" p:advice-ref="politeBeforeAdvice"/>
+	<bean id="parent" abstract="true" class="org.springframework.aop.framework.ProxyFactoryBean"
+		p:interceptorNames="politenessAdvitor"
+		p:proxyTargetClass="true"
+	/>
+	
+	<bean id="waiterAdvitor" parent="parent" p:target-ref="naiveWaiter"/>
+	<bean id="sellerAdvitor" parent="parent" p:target-ref="seller"/>
 </beans>
