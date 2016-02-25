@@ -10,11 +10,18 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration(locations={
 		"classpath*:mailbeans.xml"
 })
-public class SpringBeforeAdviceTest {
+public class SpringAdviceTest {
 	@Autowired
 	private Waiter waiterProxy;
+	@Autowired
+	private Waiter waiterAround;
 	@Test
 	public void testBeforeAdviceTest(){
 		waiterProxy.greetTo("figer");
+	}
+	
+	@Test
+	public void testAopAroudTest(){
+		waiterAround.greetTo("figer");
 	}
 }
