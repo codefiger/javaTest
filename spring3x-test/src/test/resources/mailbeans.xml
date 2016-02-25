@@ -14,4 +14,12 @@
 		
 	<bean class="com.figer.event.MailSendListener"/>	
 	<bean id="mailSender" class="com.figer.event.MailSender"  />
+	
+	<bean id="politeAdvice" class="com.figer.spring.aop.PolitenessBeforeAdvice" />
+	<bean id="naiveWaiter" class="com.figer.spring.aop.NaiveWaiter" />
+	<bean id="waiterProxy" class="org.springframework.aop.framework.ProxyFactoryBean"
+		p:proxyInterfaces="com.figer.spring.aop.Waiter"
+		p:interceptorNames="politeAdvice"
+		p:target-ref="naiveWaiter"
+	/>
 </beans>
