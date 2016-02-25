@@ -31,4 +31,12 @@
 		p:interceptorNames="politeAround"
 		p:target-ref="naiveWaiter"
 	/>
+	
+	<bean id="car" class="com.figer.pattern.proxy.jdk.Car"/>
+	<bean id="transactionManager" class="com.figer.spring.aop.TransactionManager" />
+	<bean id="transactionCar" class="org.springframework.aop.framework.ProxyFactoryBean"
+		p:interceptorNames="transactionManager"
+		p:target-ref="car"
+		p:proxyTargetClass="true"
+	/>
 </beans>

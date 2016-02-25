@@ -19,5 +19,11 @@ public class Car implements Movable {
 			e.printStackTrace();
 		}
 	}
+	
+	public void doSomething(){
+		System.out.println("saving car infomation to db.");
+		System.out.println("doing things,meet some trouble!");
+		throw new RuntimeException("缺少有效信息...");
+	}
 
 }
