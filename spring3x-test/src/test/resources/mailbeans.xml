@@ -47,8 +47,6 @@
 		p:proxyTargetClass="true"
 	/>
 	
-	<bean id="waiterAdvitor" parent="parent" p:target-ref="naiveWaiter"/>
-	<bean id="sellerAdvitor" parent="parent" p:target-ref="seller"/>
 	
 	<bean id="regexAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor" 
 		p:advice-ref="politeBeforeAdvice">
@@ -63,5 +61,11 @@
 		p:target-ref="naiveWaiter"
 		p:proxyTargetClass="true"
 	/>
+	
+	<bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator"
+		p:beanNames="seller,naiveWaiter"
+		p:interceptorNames="politenessAdvitor"
+		p:optimize="true"
+	/>	
 		
 </beans>
