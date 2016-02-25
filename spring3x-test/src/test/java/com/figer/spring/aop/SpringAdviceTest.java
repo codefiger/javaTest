@@ -23,6 +23,8 @@ public class SpringAdviceTest {
 	private Waiter waiterAdvitor;
 	@Autowired
 	private Seller sellerAdvitor;
+	@Autowired
+	private Waiter waiterRegexAdvisor;
 	@Test
 	public void testBeforeAdvice(){
 		waiterProxy.greetTo("figer");
@@ -42,5 +44,11 @@ public class SpringAdviceTest {
 	public void testStaticMethodAdvisor(){
 		waiterAdvitor.greetTo("John");
 		sellerAdvitor.greetTo("Tom");
+	}
+	
+	@Test
+	public void testRegexAdvisor(){
+		waiterRegexAdvisor.greetTo("John");
+		waiterRegexAdvisor.serveTo("Tom");
 	}
 }

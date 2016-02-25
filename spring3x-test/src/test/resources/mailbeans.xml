@@ -49,4 +49,19 @@
 	
 	<bean id="waiterAdvitor" parent="parent" p:target-ref="naiveWaiter"/>
 	<bean id="sellerAdvitor" parent="parent" p:target-ref="seller"/>
+	
+	<bean id="regexAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor" 
+		p:advice-ref="politeBeforeAdvice">
+		<property name="patterns">
+			<list>
+				<value>.*greet.*</value>
+			</list>
+		</property>	
+	</bean>
+	<bean id="waiterRegexAdvisor" class="org.springframework.aop.framework.ProxyFactoryBean"
+		p:interceptorNames="regexAdvisor"
+		p:target-ref="naiveWaiter"
+		p:proxyTargetClass="true"
+	/>
+		
 </beans>
