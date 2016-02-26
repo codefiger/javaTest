@@ -14,6 +14,7 @@
 		
 	<aop:aspectj-autoproxy/>
 	<bean class="com.figer.spring.aop.aspectj.PreGreetingAspect"/>
+	<bean class="com.figer.spring.aop.aspectj.EnableSellerAspect"></bean>
 		
 	<bean id="waiter" class="com.figer.spring.aop.NaiveWaiter" />
 	<bean id="seller" class="com.figer.spring.aop.Seller"/>	
