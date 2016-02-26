@@ -18,4 +18,14 @@
 		
 	<bean id="waiter" class="com.figer.spring.aop.NaiveWaiter" />
 	<bean id="seller" class="com.figer.spring.aop.Seller"/>	
+	<bean id="smartSeller" class="com.figer.domain.SmartSeller"/>
+	<bean id="maleSeller" class="com.figer.domain.MaleSmartSeller"/>
+	
+	<bean id="user" class="com.figer.domain.User"
+		p:userId="111"
+		p:userName="figer"
+	/>
+	
+	<bean class="com.figer.spring.aop.aspectj.AnnotationAspect"/>
+	
 </beans>
