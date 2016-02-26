@@ -12,6 +12,9 @@
        http://www.springframework.org/schema/aop
        http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 		
+	<aop:aspectj-autoproxy/>
+	<bean class="com.figer.spring.aop.aspectj.PreGreetingAspect"/>
+		
 	<bean id="waiter" class="com.figer.spring.aop.NaiveWaiter" />
 	<bean id="seller" class="com.figer.spring.aop.Seller"/>	
 </beans>

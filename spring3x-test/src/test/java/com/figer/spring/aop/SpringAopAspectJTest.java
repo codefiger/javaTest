@@ -30,4 +30,10 @@ public class SpringAopAspectJTest {
 		proxyWaiter.greetTo("figer");
 		proxyWaiter.serveTo("figer");
 	}
+	
+	@Test
+	public void testAspectJAopByConfired(){
+		waiter.greetTo("figer");
+		waiter.serveTo("figer");
+	}
 }
