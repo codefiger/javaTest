@@ -28,4 +28,7 @@
 	
 	<bean class="com.figer.spring.aop.aspectj.AnnotationAspect"/>
 	
+	<bean class="com.figer.spring.aop.aspectj.ExecutionAspect"/>
+	
+	
 </beans>

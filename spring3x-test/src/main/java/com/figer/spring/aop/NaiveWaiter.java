@@ -11,5 +11,9 @@ public class NaiveWaiter implements Waiter {
 	public void serveTo(String name) {
 		System.out.println("waiter serve to " + name);
 	}
+	
+	private void privateMethod(){
+		System.out.println("I'm a private method");
+	}
 
 }

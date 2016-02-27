@@ -9,9 +9,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.figer.domain.MaleSmartSeller;
 import com.figer.domain.Sellable;
-import com.figer.domain.SmartSeller;
 import com.figer.domain.User;
 import com.figer.spring.aop.aspectj.PreGreetingAspect;
 
@@ -66,5 +64,9 @@ public class SpringAopAspectJTest {
 		maleSeller1.sell("male rice");
 		
 		smartSeller.sell("sdsd");
+	}
+	
+	@Test
+	public void testAspectExecution(){
 	}
 }
