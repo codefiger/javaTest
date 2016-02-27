@@ -13,6 +13,7 @@
        http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 		
 	<aop:aspectj-autoproxy/>
+	<aop:config proxy-target-class="true"/>
 	<bean class="com.figer.spring.aop.aspectj.PreGreetingAspect"/>
 	<bean class="com.figer.spring.aop.aspectj.EnableSellerAspect"></bean>
 		
@@ -21,7 +22,10 @@
 	<bean id="smartSeller" class="com.figer.domain.SmartSeller"/>
 	<bean id="maleSeller" class="com.figer.domain.MaleSmartSeller"/>
 	
-	<bean id="user" class="com.figer.domain.User"/>
+	<bean id="user" class="com.figer.domain.User"
+		p:userId="11"
+		p:userName="figer"
+	/>
 	
 	<bean class="com.figer.spring.aop.aspectj.AnnotationAspect"/>
 	

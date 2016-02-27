@@ -25,7 +25,7 @@ public class SpringAopAspectJTest {
 	@Autowired
 	private Seller seller;
 	@Autowired
-	private Serializable user;
+	private User user;
 	@Autowired(required=false)
 	private Sellable smartSeller;
 	@Autowired(required=false)
@@ -79,6 +79,6 @@ public class SpringAopAspectJTest {
 		
 		seller.greetTo("figer");
 		
-		user.toString();
+		System.out.println(user.toString());
 	}
 }
