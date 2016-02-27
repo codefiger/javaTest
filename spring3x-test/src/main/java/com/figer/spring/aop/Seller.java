@@ -1,6 +1,6 @@
 package com.figer.spring.aop;
 
-public class Seller {
+public class Seller{
 	public void greetTo(String name) {
 		System.out.println("seller greet to " + name);
 	}

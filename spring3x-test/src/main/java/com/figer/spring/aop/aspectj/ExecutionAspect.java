@@ -20,7 +20,7 @@ public class ExecutionAspect {
 		System.out.println("matched the execution( * *(eat*))");
 	}
 	
-	@Before("execution(* com.figer.domain.*(..))")
+	@Before("execution(* com.figer.domain..*(..))")
 	public void toSpecialClass(){
 		System.out.println("matched the execution(* com.figer.domain.*(..))");
 	}

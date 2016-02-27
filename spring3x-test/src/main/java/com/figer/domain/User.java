@@ -3,8 +3,6 @@ package com.figer.domain;
 import java.io.Serializable;
 import java.util.Date;
 
-import com.figer.annotation.Description;
-
 public class User implements Serializable{
 	private static final long serialVersionUID = 6038588186931538785L;
 

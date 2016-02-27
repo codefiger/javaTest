@@ -1,5 +1,7 @@
 package com.figer.spring.aop;
 
+import java.io.Serializable;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.aop.aspectj.annotation.AspectJProxyFactory;
@@ -23,7 +25,7 @@ public class SpringAopAspectJTest {
 	@Autowired
 	private Seller seller;
 	@Autowired
-	private User user;
+	private Serializable user;
 	@Autowired(required=false)
 	private Sellable smartSeller;
 	@Autowired(required=false)
@@ -68,5 +70,15 @@ public class SpringAopAspectJTest {
 	
 	@Test
 	public void testAspectExecution(){
+	}
+	
+	@Test
+	public void testAspectAround(){
+		waiter.greetTo("figer");
+		waiter.serveTo("figer");
+		
+		seller.greetTo("figer");
+		
+		user.toString();
 	}
 }

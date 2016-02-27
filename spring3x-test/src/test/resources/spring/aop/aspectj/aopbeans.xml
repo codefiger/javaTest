@@ -21,14 +21,13 @@
 	<bean id="smartSeller" class="com.figer.domain.SmartSeller"/>
 	<bean id="maleSeller" class="com.figer.domain.MaleSmartSeller"/>
 	
-	<bean id="user" class="com.figer.domain.User"
-		p:userId="111"
-		p:userName="figer"
-	/>
+	<bean id="user" class="com.figer.domain.User"/>
 	
 	<bean class="com.figer.spring.aop.aspectj.AnnotationAspect"/>
 	
 	<bean class="com.figer.spring.aop.aspectj.ExecutionAspect"/>
+	
+	<bean class="com.figer.spring.aop.aspectj.AroundAspect"/>
 	
 	
 </beans>
