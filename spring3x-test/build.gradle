@@ -21,7 +21,12 @@ dependencies{
 		libraries.jsp_api,
 	
 		libraries.logback,
-		libraries.logback_ext
+		libraries.logback_ext,
+		
+		libraries.mybatis,
+		libraries.mybatis_spring,
+		libraries.mybatis_generator,
+		libraries.mysql_connector
         )
 }
 
