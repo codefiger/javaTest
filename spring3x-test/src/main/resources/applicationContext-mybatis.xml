@@ -15,6 +15,12 @@
     <!-- 扫描类包，将标注Spring注解的类自动转化Bean，同时完成Bean的注入 -->
     <context:component-scan base-package="com.figer.service.mybatis"/>
     
+    <!-- 基于@aspectj 注解驱动 -->
+    <!-- <aop:aspectj-autoproxy/> -->
+    
+    <!-- 对标注@transactional注解的bean进行加工,织入事务增强 -->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+    
     <!-- 配置数据源 -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close" 
@@ -41,15 +47,8 @@
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
 		p:dataSource-ref="dataSource" />
 		
-	<!-- 通过AOP配置提供事务增强，让service包下所有Bean的所有方法拥有事务 -->
-	<aop:config proxy-target-class="true">
-		<aop:pointcut id="serviceMethod"
-			expression=" execution(* com.figer.service..*(..))" />
-		<aop:advisor pointcut-ref="serviceMethod" advice-ref="txAdvice" />
-	</aop:config>
-	<tx:advice id="txAdvice" transaction-manager="transactionManager">
-		<tx:attributes>
-			<tx:method name="*" />
-		</tx:attributes>
-	</tx:advice>
+	<bean id="transactionManager2"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+		p:dataSource-ref="dataSource" />	
+		
 </beans>
