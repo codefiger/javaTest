@@ -65,10 +65,8 @@ public class ConditionTest {
 				try {
 					lock.lock();
 
-					while (num.value <= 3) {
-						// 等待3输出完毕的信号
-						reachThreeCondition.await();
-					}
+					// 等待3输出完毕的信号
+					reachThreeCondition.await();
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				} finally {
