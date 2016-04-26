@@ -26,7 +26,8 @@ dependencies{
 		libraries.mybatis,
 		libraries.mybatis_spring,
 		libraries.mybatis_generator,
-		libraries.mysql_connector
+		libraries.mysql_connector,
+		libraries.mybatis_paginator
         )
 }
 

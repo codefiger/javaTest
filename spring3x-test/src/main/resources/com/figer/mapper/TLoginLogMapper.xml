@@ -193,4 +193,11 @@
       login_datetime = #{loginDatetime,jdbcType=TIMESTAMP}
     where login_log_id = #{loginLogId,jdbcType=INTEGER}
   </update>
+
+  <select id="findLoginLog" resultMap="BaseResultMap">
+    select
+      <include refid="Base_Column_List" />
+    from t_login_log where ip = #{ip};
+  </select>
+
 </mapper>

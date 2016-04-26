@@ -3,6 +3,9 @@ package com.figer.mapper;
 import com.figer.gen.mybatis.TLoginLog;
 import com.figer.gen.mybatis.TLoginLogExample;
 import java.util.List;
+
+import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
+import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import org.apache.ibatis.annotations.Param;
 
 public interface TLoginLogMapper {
@@ -27,4 +30,6 @@ public interface TLoginLogMapper {
     int updateByPrimaryKeySelective(TLoginLog record);
 
     int updateByPrimaryKey(TLoginLog record);
+
+    PageList<TLoginLog> findLoginLog(String ip, PageBounds pageBounds);
 }

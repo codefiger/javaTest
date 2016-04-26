@@ -5,7 +5,7 @@ import java.util.List;
 
 public abstract class Subject {
 	private String subjectStatus;
-	private List<Oberver> obervers = new ArrayList<>();
+	private List<Oberver> obervers = new ArrayList<Oberver>();
 
 	public List<Oberver> getObervers() {
 		return obervers;

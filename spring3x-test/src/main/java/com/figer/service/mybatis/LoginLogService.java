@@ -1,9 +1,11 @@
 package com.figer.service.mybatis;
 
+import java.util.List;
+
+import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
+import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Isolation;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.figer.gen.mybatis.TLoginLog;
 import com.figer.gen.mybatis.TLoginLogExample;
@@ -51,6 +53,10 @@ public class LoginLogService {
 		}
 		
 		updateLoginLog(log);
+	}
+
+	public PageList<TLoginLog> findLoginLog(String ip, PageBounds pageBounds){
+		return tLoginLogMapper.findLoginLog(ip, pageBounds);
 	}
 	
 	

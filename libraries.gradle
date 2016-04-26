@@ -66,6 +66,7 @@ ext {
     		mybatis_spring:         'org.mybatis:mybatis-spring:1.2.2',
     		mybatis_generator:      'org.mybatis.generator:mybatis-generator-core:1.3.2',
     		mybatis_generator_plugins: 'net.javaforge.mybatis.generator:mybatis-generator-plugins:1.0.0',
+		mybatis_paginator:		'com.github.miemiedev:mybatis-paginator:1.2.17',
 		
 		// postgresql
 		postgresql:             'postgresql:postgresql:9.1-901.jdbc4',
