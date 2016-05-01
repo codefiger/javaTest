@@ -18,4 +18,8 @@ public class MailSender implements ApplicationContextAware {
 		applicationContext.publishEvent(mailSendEvent);
 	}
 
+	public static void main(String[] args) {
+		System.out.println(222);
+	}
+
 }

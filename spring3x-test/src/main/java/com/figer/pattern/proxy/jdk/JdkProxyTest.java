@@ -11,9 +11,9 @@ public class JdkProxyTest {
 		proxyCar.stop();
 		
 		//JDK 代理只支持接口代理，不支持类代理，如下会报错。spring采用CGlib完成类代理
-		Person figer = new Person();
-		performanceHandler = new PerformanceHandler(figer);
-		Person proxyFiger = (Person) Proxy.newProxyInstance(figer.getClass().getClassLoader(), figer.getClass().getInterfaces(), performanceHandler);
-		proxyFiger.eat("rice");
+//		Person figer = new Person();
+//		performanceHandler = new PerformanceHandler(figer);
+//		Person proxyFiger = (Person) Proxy.newProxyInstance(figer.getClass().getClassLoader(), figer.getClass().getInterfaces(), performanceHandler);
+//		proxyFiger.eat("rice");
 	}
 }
