@@ -1,5 +1,6 @@
 apply from: 'spring.settings.gradle'
 apply from: 'mybatis.settings.gradle'
-apply from: 'spring3x.setting.gradle' 
-
+apply from: 'spring3x.setting.gradle'
+apply from: 'rabbitmq-test.setting.gradle'
+//include 'rabbitMQ-test'
 

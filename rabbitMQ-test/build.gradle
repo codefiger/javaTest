@@ -1,0 +1,6 @@
+dependencies{
+        compile(
+		        'com.rabbitmq:amqp-client:3.6.0'
+        )
+}
+
