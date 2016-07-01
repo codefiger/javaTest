@@ -1,6 +1,6 @@
 dependencies{
         compile(
-		libraries.rabbit_mq
+		        libraries.rabbit_mq
         )
 }
 
