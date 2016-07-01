@@ -75,6 +75,9 @@ ext {
 		// pinyin4j
     		pinyin4j:               'com.belerweb:pinyin4j:2.5.0',
 		// mysql connector
-    		mysql_connector:        'mysql:mysql-connector-java:5.1.24'
+    		mysql_connector:        'mysql:mysql-connector-java:5.1.24',
+
+		//message queue
+		rabbit_mq: 		'com.rabbitmq:amqp-client:3.6.0'
 	]
 }
