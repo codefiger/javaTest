@@ -1,5 +1,6 @@
 package com.figer.rpc;
 
+import com.figer.constants.QuenName;
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -14,7 +15,6 @@ import java.util.UUID;
 public class RpcClient {
   private Connection connection;
   private Channel channel;
-  private String requestQueueName = "rpc_queue";
   private String replyQueueName;
   private QueueingConsumer respConsumer;
 
@@ -39,7 +39,7 @@ public class RpcClient {
         .replyTo(replyQueueName)
         .build();
 
-    channel.basicPublish("", requestQueueName, props, message.getBytes("UTF-8"));
+    channel.basicPublish("", QuenName.RPC_REQUEST.name(), props, message.getBytes("UTF-8"));
 
     while (true) {
       QueueingConsumer.Delivery delivery = respConsumer.nextDelivery();

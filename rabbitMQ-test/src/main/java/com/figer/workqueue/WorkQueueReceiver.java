@@ -1,4 +1,5 @@
 package com.figer.workqueue;
+import com.figer.constants.QuenName;
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -13,7 +14,6 @@ import java.io.IOException;
  * Created by figer on 6/30/16.
  */
 public class WorkQueueReceiver {
-  private static final String TASK_QUEUE_NAME = "task_queue";
 
   public static void main(String[] argv) throws Exception {
     ConnectionFactory factory = new ConnectionFactory();
@@ -21,7 +21,7 @@ public class WorkQueueReceiver {
     final Connection connection = factory.newConnection();
     final Channel channel = connection.createChannel();
 
-    channel.queueDeclare(TASK_QUEUE_NAME, true, false, false, null);
+    channel.queueDeclare(QuenName.WORK.name(), true, false, false, null);
     System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
 
     channel.basicQos(1);
@@ -40,7 +40,7 @@ public class WorkQueueReceiver {
         }
       }
     };
-    channel.basicConsume(TASK_QUEUE_NAME, false, consumer);
+    channel.basicConsume(QuenName.WORK.name(), false, consumer);
   }
 
   private static void doWork(String task) {

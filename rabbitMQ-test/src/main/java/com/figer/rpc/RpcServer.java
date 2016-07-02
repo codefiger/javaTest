@@ -1,5 +1,6 @@
 package com.figer.rpc;
 
+import com.figer.constants.QuenName;
 import com.rabbitmq.client.AMQP.BasicProperties;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -11,8 +12,6 @@ import com.rabbitmq.client.QueueingConsumer;
  */
 public class RpcServer {
 
-  private static final String RPC_QUEUE_NAME = "rpc_queue";
-
   public static void main(String[] args) throws Exception{
     Connection connection = null;
     Channel channel = null;
@@ -22,11 +21,11 @@ public class RpcServer {
       connection = factory.newConnection();
       channel = connection.createChannel();
 
-      channel.queueDeclare(RPC_QUEUE_NAME, false, false, false, null);
+      channel.queueDeclare(QuenName.RPC_REQUEST.name(), false, false, false, null);
       channel.basicQos(2);
 
       QueueingConsumer consumer = new QueueingConsumer(channel);
-      channel.basicConsume(RPC_QUEUE_NAME, false, consumer);
+      channel.basicConsume(QuenName.RPC_REQUEST.name(), false, consumer);
 
       System.out.println(" [x] Awaiting RPC requests");
 

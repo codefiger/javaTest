@@ -3,6 +3,7 @@ package com.figer.routing;
 import java.io.IOException;
 import java.util.Arrays;
 
+import com.figer.constants.ExchangeName;
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -15,7 +16,6 @@ import com.rabbitmq.client.Envelope;
  * Created by figer on 7/1/16.
  */
 public class DirectSubscriberFactory {
-  private static final String EXCHANGE_NAME = "direct_logs";
 
   public void runDirectSubscriber(Severity[] severityArray) throws Exception{
     System.out.println("create a " + Arrays.toString(severityArray) + " direct subscriber and run it...");
@@ -24,11 +24,11 @@ public class DirectSubscriberFactory {
     Connection connection = factory.newConnection();
     Channel channel = connection.createChannel();
 
-    channel.exchangeDeclare(EXCHANGE_NAME, "direct");
+    channel.exchangeDeclare(ExchangeName.DIRECT_LOGS.name(), "direct");
     //create a non-durable, exclusive, autodelete queue with a generated name
     String queueName = channel.queueDeclare().getQueue();
     for(Severity severity : severityArray){
-      channel.queueBind(queueName, EXCHANGE_NAME, severity.name());
+      channel.queueBind(queueName, ExchangeName.DIRECT_LOGS.name(), severity.name());
     }
 
     System.out.println(" [*] Waiting for messages. To exit press CTRL+C");

@@ -1,5 +1,6 @@
 package com.figer.helloworld;
 
+import com.figer.constants.QuenName;
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -14,7 +15,6 @@ import java.io.IOException;
  * Created by figer on 6/30/16.
  */
 public class Receiver {
-  private final static String QUEUE_NAME = "hello";
 
   public static void main(String[] argv) throws Exception {
     ConnectionFactory factory = new ConnectionFactory();
@@ -23,7 +23,7 @@ public class Receiver {
     Channel channel = connection.createChannel();
 
     //we declare the queue here. Because we might start the receiver before the sender
-    channel.queueDeclare(QUEUE_NAME, false, false, false, null);
+    channel.queueDeclare(QuenName.HELLO_WORLD.name(), false, false, false, null);
     System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
 
     Consumer consumer = new DefaultConsumer(channel) {
@@ -39,9 +39,9 @@ public class Receiver {
         System.out.println(" [x] Received '" + message + "'");
       }
     };
-    channel.basicConsume(QUEUE_NAME, true, consumer);
+    channel.basicConsume(QuenName.HELLO_WORLD.name(), true, consumer);
     System.out.println("-----");
-    channel.basicConsume(QUEUE_NAME, true, consumer);
+    channel.basicConsume(QuenName.HELLO_WORLD.name(), true, consumer);
     System.out.println("-----");
   }
 }
