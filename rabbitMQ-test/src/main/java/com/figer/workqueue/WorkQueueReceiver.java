@@ -36,11 +36,11 @@ public class WorkQueueReceiver {
           doWork(message);
         } finally {
           System.out.println(" [x] Done");
-          channel.basicAck(envelope.getDeliveryTag(), false);
+          channel.basicAck(envelope.getDeliveryTag(), false);//send ack to RabbitMQ show the message was handled
         }
       }
     };
-    channel.basicConsume(QuenName.WORK.name(), false, consumer);
+    channel.basicConsume(QuenName.WORK.name(), false, consumer);//set auto ack = false
   }
 
   private static void doWork(String task) {
