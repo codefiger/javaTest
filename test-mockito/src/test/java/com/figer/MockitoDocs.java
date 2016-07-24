@@ -168,6 +168,31 @@ public class MockitoDocs {
   }
 
   @Test
+  public void testAvoidInteractions(){
+    List mockOne = mock(List.class);
+    List mockTwo = mock(List.class);
+
+    mockOne.add("one");
+    mockOne.add("dd");
+    //ordinary verification
+    verify(mockOne).add("one");
+    verify(mockOne).add("dd");
+
+    //verify that method was never called on a mock
+    verify(mockOne, never()).add("two");
+
+    //mockTwo.add(mockOne);
+    //verify that method were not interacted, example:mockOne.add(mockTwo); or mockTwo.add(mockOne);
+    verifyZeroInteractions(mockOne, mockTwo);
+
+    //mockOne.add(mockTwo);
+
+    //Checks if any of given mocks has any unverified interaction. --  Finding redundant invocations
+    verifyNoMoreInteractions(mockOne);
+
+  }
+
+  @Test
    public void test(){
 
   }
