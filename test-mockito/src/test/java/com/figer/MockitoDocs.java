@@ -84,6 +84,35 @@ public class MockitoDocs {
   }
 
   @Test
+  public void testVerifyExactNum(){
+    List mockedList = mock(List.class);
+    mockedList.add("once");
+
+    mockedList.add("twice");
+    mockedList.add("twice");
+
+    mockedList.add("three times");
+    mockedList.add("three times");
+    mockedList.add("three times");
+
+    //following two verifications work exactly the same - times(1) is used by default
+    verify(mockedList).add("once");
+    verify(mockedList, times(1)).add("once");
+
+    //exact number of invocations verification
+    verify(mockedList, times(2)).add("twice");
+    verify(mockedList, times(3)).add("three times");
+
+    //verification using never(): is an alias to times(0)
+    verify(mockedList, never()).add("never happened");
+
+    //verification using atLeast()/atMost()
+    verify(mockedList, atLeast(2)).add("twice");
+    verify(mockedList, atLeast(2)).add("three times");
+    verify(mockedList, atMost(1)).add("once");
+  }
+
+  @Test
   public void testStaticImport(){
     out.println("static import System.out:hello world");
     out.println(toHexString(new Random().nextInt(10)));
