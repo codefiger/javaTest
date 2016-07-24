@@ -17,7 +17,7 @@ subprojects {
     	maven { url 'http://archiva.dianrong.com/repository/snapshots'} 
 	mavenCentral()
         mavenLocal()
-
+	jcenter()
     }
 
    eclipse {
