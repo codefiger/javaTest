@@ -1,22 +1,34 @@
 package com.figer;
 
+import com.figer.service.PortfolioService;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
+import org.junit.Assert;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InOrder;
+import org.mockito.Mockito;
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.stubbing.Answer;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.math.BigDecimal;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
 //Let's import Mockito statically so that the code looks clearer
-import static java.lang.System.in;
 import static org.mockito.Mockito.*;
 import static java.lang.System.out;
 import static java.lang.Integer.*;
 /**
  * Created by figer on 7/24/16.
  */
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath*:application-test.xml"})
 public class MockitoDocs {
 
   @Test
@@ -190,6 +202,63 @@ public class MockitoDocs {
     //Checks if any of given mocks has any unverified interaction. --  Finding redundant invocations
     verifyNoMoreInteractions(mockOne);
 
+  }
+
+  @Autowired private PortfolioService portfolioService;
+  @Test
+  public void testShorthandMokCreation(){
+    PortfolioService spy = spy(portfolioService);
+
+    when(spy.purchase(anyLong(), eq("mock-test"), any(BigDecimal.class))).thenReturn(true);
+    when(spy.purchase(anyLong(), eq("others"), any(BigDecimal.class))).thenReturn(false);
+
+    Assert.assertTrue(spy.purchase(12345L, "mock-test", BigDecimal.ONE));
+    Assert.assertFalse(spy.purchase(12345L, "others", BigDecimal.ONE));
+  }
+
+  @Test
+  public void testConsecutiveCalls(){
+    List mock = mock(List.class);
+    when(mock.get(anyInt()))
+        .thenThrow(new RuntimeException("first time throw runtime exception"))
+        .thenReturn("second", "three times", "four times");
+
+    for (int i = 0; i < 4; i++) {
+      if(i == 0){
+        try {
+          mock.get(1);
+        }catch (Exception e){
+          Assert.assertEquals("first time throw runtime exception", e.getMessage());
+        }
+      }else{
+        System.out.println( mock.get(1));
+      }
+
+    }
+
+  }
+
+  @Test
+  public void testStubbingWithCallback(){
+    List mock = mock(List.class);
+
+    when(mock.get(anyInt())).thenAnswer(new Answer<Boolean>() {
+      @Override
+      public Boolean answer(InvocationOnMock invocation) throws Throwable {
+        return true;
+      }
+    });
+
+    for (int i = 0; i < 10; i++) {
+      Assert.assertTrue((Boolean) mock.get(i));
+    }
+  }
+
+  @Test
+  public void testStubbingDefaultReturn(){
+    //I don't understand 这有什么蛋用...
+    PortfolioService mock = mock(PortfolioService.class, Mockito.RETURNS_SMART_NULLS);
+    Assert.assertFalse(mock.purchase(12345L, "others", BigDecimal.ONE));
   }
 
   @Test
