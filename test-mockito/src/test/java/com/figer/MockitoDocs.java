@@ -1,18 +1,21 @@
 package com.figer;
 
+import org.hamcrest.Description;
+import org.hamcrest.Matcher;
 import org.junit.Test;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
+//Let's import Mockito statically so that the code looks clearer
 import static org.mockito.Mockito.*;
 import static java.lang.System.out;
 import static java.lang.Integer.*;
 /**
  * Created by figer on 7/24/16.
  */
-public class HelloWorld {
+public class MockitoDocs {
 
   @Test
   public void testVerify(){
@@ -43,6 +46,41 @@ public class HelloWorld {
 
     //the following prints null because get(999) was not stubbed
     System.out.println(mockedLinkedList.get(999));
+
+    verify(mockedLinkedList).get(0);
+  }
+
+  @Test
+  public void testArgumentMatcher(){
+    List mockedList = mock(List.class);
+    //stubbing using build-in anyInt() argument matcher
+    when(mockedList.get(anyInt())).thenReturn("anyIntMatcher");
+
+    //stubbing using custom matcher(return my own implementation)
+    when(mockedList.contains(argThat(isValid()))).thenReturn(true);
+
+    System.out.println(mockedList.contains(1));
+
+    System.out.println(mockedList.get(2));
+  }
+
+  private Matcher isValid(){
+    return new Matcher() {
+      @Override
+      public boolean matches(Object o) {
+        return false;
+      }
+
+      @Override
+      public void _dont_implement_Matcher___instead_extend_BaseMatcher_() {
+
+      }
+
+      @Override
+      public void describeTo(Description description) {
+
+      }
+    };
   }
 
   @Test
