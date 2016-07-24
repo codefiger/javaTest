@@ -4,8 +4,11 @@ import org.junit.Test;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 import static org.mockito.Mockito.*;
+import static java.lang.System.out;
+import static java.lang.Integer.*;
 /**
  * Created by figer on 7/24/16.
  */
@@ -40,5 +43,11 @@ public class HelloWorld {
 
     //the following prints null because get(999) was not stubbed
     System.out.println(mockedLinkedList.get(999));
+  }
+
+  @Test
+  public void testStaticImport(){
+    out.println("static import System.out:hello world");
+    out.println(toHexString(new Random().nextInt(10)));
   }
 }
