@@ -3,12 +3,14 @@ package com.figer;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.junit.Test;
+import org.mockito.InOrder;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
 //Let's import Mockito statically so that the code looks clearer
+import static java.lang.System.in;
 import static org.mockito.Mockito.*;
 import static java.lang.System.out;
 import static java.lang.Integer.*;
@@ -116,5 +118,57 @@ public class MockitoDocs {
   public void testStaticImport(){
     out.println("static import System.out:hello world");
     out.println(toHexString(new Random().nextInt(10)));
+  }
+
+  @Test
+  public void testStubVoidMethod(){
+    List mockedList = mock(List.class);
+    doThrow(new RuntimeException("Stubbing void method with exceptions")).when(mockedList).clear();
+
+    mockedList.add("once");
+    mockedList.clear();
+  }
+
+  @Test
+  public void testVerificationInOrder(){
+    // A. Single mock whose methods must be invoked in a particular order
+    List singleMock = mock(List.class);
+
+    //using a single mock
+    singleMock.add("was added first");
+    singleMock.add("was added second");
+
+    //create an inOrder verifier for a single mock
+    InOrder inOrder = inOrder(singleMock);
+
+    //following will make sure that add is first called with "was added first, then with "was added second"
+    inOrder.verify(singleMock).add("was added first");
+    inOrder.verify(singleMock).add("was added second");
+
+    // B. Multiple mocks that must be used in a particular order
+    List firstMock = mock(List.class);
+    List secondMock = mock(List.class);
+
+    //using mocks
+    firstMock.add("was called first");
+    secondMock.add("was called second");
+    secondMock.add("secondMock was called second");
+    firstMock.add("firstMock was called second");
+
+    //create inOrder object passing any mocks that need to be verified in order
+    InOrder multiInOrder = inOrder(firstMock, secondMock);
+
+    //following will make sure that firstMock was called before secondMock
+    multiInOrder.verify(firstMock).add("was called first");
+    multiInOrder.verify(secondMock).add("was called second");
+    multiInOrder.verify(secondMock).add("secondMock was called second");
+    multiInOrder.verify(firstMock).add("firstMock was called second");
+
+    // Oh, and A + B can be mixed together at will
+  }
+
+  @Test
+   public void test(){
+
   }
 }
