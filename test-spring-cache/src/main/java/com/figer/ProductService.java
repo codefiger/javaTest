@@ -6,7 +6,7 @@ import com.figer.entity.Product;
 /**
  * Created by figer on 8/15/16.
  */
-public class ProductService {
+public class ProductService implements IProductService{
   private static final MyCacheManager<String, Product> productCache = new MyCacheManager<String, Product>();
 
   public Product getProduct(Long id){
