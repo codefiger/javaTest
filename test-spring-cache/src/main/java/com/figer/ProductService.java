@@ -6,7 +6,7 @@ import com.figer.entity.Product;
 /**
  * Created by figer on 8/15/16.
  */
-public class ProductService implements IProductService{
+public class ProductService{
   private static final MyCacheManager<String, Product> productCache = new MyCacheManager<String, Product>();
 
   public Product getProduct(Long id){
@@ -20,16 +20,6 @@ public class ProductService implements IProductService{
       System.out.println("  get product from cache");
       return cache;
     }
-  }
-
-  @Override
-  public void updateProduct(Product product) {
-
-  }
-
-  @Override
-  public void reloadCache() {
-
   }
 
   public MyCacheManager<String, Product> getProductCache() {

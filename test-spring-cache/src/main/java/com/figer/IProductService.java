@@ -7,6 +7,8 @@ import com.figer.entity.Product;
  */
 public interface IProductService {
   Product getProduct(Long id);
+  Product getProductWithConditionCache(Long id);
+  Product getProductWithMultiParams(Long id, String name);
   void updateProduct(Product product);
   void reloadCache();
 }

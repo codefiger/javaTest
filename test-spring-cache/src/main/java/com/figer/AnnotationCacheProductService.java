@@ -16,6 +16,19 @@ public class AnnotationCacheProductService implements IProductService {
     return new Product(id, "productName");
   }
 
+  @Override
+  @Cacheable(value = "productCache", condition = "#id > 1000")
+  public Product getProductWithConditionCache(Long id) {
+    System.out.println("get from db");
+    return new Product(id, "productName");
+  }
+
+  @Cacheable(value = "productCache", key = "#name.concat(#id)")
+  public Product getProductWithMultiParams(Long id, String name) {
+    System.out.println("get from db");
+    return new Product(id, "productName");
+  }
+
   @CacheEvict(value="productCache",key="#product.getId()")
   public void updateProduct(Product product) {
     updateDB(product);

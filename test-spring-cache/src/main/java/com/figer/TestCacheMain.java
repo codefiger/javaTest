@@ -8,7 +8,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * Created by figer on 8/15/16.
  */
 
-public class TestOldCache {
+public class TestCacheMain {
   public static void main(String[] args) {
     ProductService service = new ProductService();
     for(int i = 1; i < 3;i ++){
@@ -39,5 +39,17 @@ public class TestOldCache {
 
     annotationService.reloadCache();
     System.out.println(annotationService.getProduct(123L));
+
+    //cache with condition
+    System.out.println(annotationService.getProductWithConditionCache(123L));
+    System.out.println(annotationService.getProductWithConditionCache(123L));
+    System.out.println(annotationService.getProductWithConditionCache(1230L));
+    System.out.println(annotationService.getProductWithConditionCache(1230L));
+
+    //caching data with multi params
+    System.out.println(annotationService.getProductWithMultiParams(123L, "firstName"));
+    System.out.println(annotationService.getProductWithMultiParams(123L, "secondName"));
+    System.out.println(annotationService.getProductWithMultiParams(333L, "secondName"));
+    System.out.println(annotationService.getProductWithMultiParams(333L, "secondName"));
   }
 }
