@@ -22,6 +22,16 @@ public class ProductService implements IProductService{
     }
   }
 
+  @Override
+  public void updateProduct(Product product) {
+
+  }
+
+  @Override
+  public void reloadCache() {
+
+  }
+
   public MyCacheManager<String, Product> getProductCache() {
     return productCache;
   }

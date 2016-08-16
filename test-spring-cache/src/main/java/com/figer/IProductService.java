@@ -7,4 +7,6 @@ import com.figer.entity.Product;
  */
 public interface IProductService {
   Product getProduct(Long id);
+  void updateProduct(Product product);
+  void reloadCache();
 }
