@@ -1,6 +1,5 @@
 package com.figer;
 
-import com.figer.entity.Product;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -25,31 +24,12 @@ public class TestCacheMain {
     System.out.println("I am a line------------------");
     ApplicationContext applicationContext = new ClassPathXmlApplicationContext("cache-context.xml");
     IProductService annotationService = applicationContext.getBean("productService", IProductService.class);
-    for(int i = 1; i < 6;i ++){
-      System.out.println("get product times:" + i);
-      System.out.println( annotationService.getProduct(123L));
-    }
+    //new TestProcessor().testProductServiceWithCache(annotationService);
 
-    Product product = new Product(123L, "new productName");
-    annotationService.updateProduct(product);
-    System.out.println("get product times:6");
-    System.out.println(annotationService.getProduct(123L));
-
-    System.out.println(annotationService.getProduct(123L));
-
-    annotationService.reloadCache();
-    System.out.println(annotationService.getProduct(123L));
-
-    //cache with condition
-    System.out.println(annotationService.getProductWithConditionCache(123L));
-    System.out.println(annotationService.getProductWithConditionCache(123L));
-    System.out.println(annotationService.getProductWithConditionCache(1230L));
-    System.out.println(annotationService.getProductWithConditionCache(1230L));
-
-    //caching data with multi params
-    System.out.println(annotationService.getProductWithMultiParams(123L, "firstName"));
-    System.out.println(annotationService.getProductWithMultiParams(123L, "secondName"));
-    System.out.println(annotationService.getProductWithMultiParams(333L, "secondName"));
-    System.out.println(annotationService.getProductWithMultiParams(333L, "secondName"));
+    //test div cache manager and cache
+    ApplicationContext divContext = new ClassPathXmlApplicationContext("div-cache-context.xml");
+    IProductService annotService = divContext.getBean("productService", IProductService.class);
+    new TestProcessor().testProductServiceWithCache(annotService);
   }
+
 }
