@@ -35,7 +35,7 @@ public class AnnotationCacheProductService implements IProductService {
   }
 
   @Override
-  @CacheEvict(value = "productCache",allEntries = true)
+  @CacheEvict(value = "productCache",allEntries = true, beforeInvocation = true)
   public void reloadCache() {
 
   }
