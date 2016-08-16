@@ -24,7 +24,7 @@ public class TestCacheMain {
     System.out.println("I am a line------------------");
     ApplicationContext applicationContext = new ClassPathXmlApplicationContext("cache-context.xml");
     IProductService annotationService = applicationContext.getBean("productService", IProductService.class);
-    //new TestProcessor().testProductServiceWithCache(annotationService);
+    new TestProcessor().testProductServiceWithCache(annotationService);
 
     //test div cache manager and cache
     ApplicationContext divContext = new ClassPathXmlApplicationContext("div-cache-context.xml");
