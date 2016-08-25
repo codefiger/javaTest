@@ -10,6 +10,7 @@
        http://www.springframework.org/schema/cache/spring-cache.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!--must start the VM with the Spring agent:JVM options "-javaagent:/path/to/org.springframework.instrument-{version}.jar" for Generic Java applications-->
+    <!--watch out: loadtimeweaving must be loaded before class load-->
     <context:load-time-weaver weaver-class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver"/>
     <cache:annotation-driven mode="aspectj"/>
     <bean id="productService" class="com.figer.AnnotationCacheProductService"/>

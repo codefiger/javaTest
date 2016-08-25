@@ -1,19 +1,17 @@
 package com.figer.config;
 
-import com.figer.AnnotationCacheProductService;
+import com.figer.InnerInvocationableProductService;
+import com.figer.springframent.InjectBeanSelfProcessor;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.concurrent.ConcurrentMapCache;
 import org.springframework.cache.support.SimpleCacheManager;
-import org.springframework.context.annotation.AdviceMode;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.EnableLoadTimeWeaving;
 import org.springframework.context.annotation.LoadTimeWeavingConfigurer;
 import org.springframework.context.annotation.Primary;
-import org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver;
 import org.springframework.instrument.classloading.LoadTimeWeaver;
 import org.springframework.instrument.classloading.ReflectiveLoadTimeWeaver;
 
@@ -25,9 +23,8 @@ import java.util.concurrent.TimeUnit;
  * Created by figer on 8/24/16.
  */
 @Configuration
-@ComponentScan(basePackageClasses = AnnotationCacheProductService.class)
-@EnableCaching(mode = AdviceMode.ASPECTJ, proxyTargetClass = true)
-@EnableLoadTimeWeaving(aspectjWeaving = EnableLoadTimeWeaving.AspectJWeaving.ENABLED)
+@ComponentScan(basePackageClasses = {InnerInvocationableProductService.class, InjectBeanSelfProcessor.class})
+@EnableCaching(proxyTargetClass = true)
 public class CacheConfig implements LoadTimeWeavingConfigurer {
   public static final long DEFAULT_EXPIRE_TIME = 60;
   public static final TimeUnit DEFAULT_TIME_UNIT = TimeUnit.SECONDS;
@@ -92,12 +89,6 @@ public class CacheConfig implements LoadTimeWeavingConfigurer {
     }
     cacheManager.setCaches(caches);
     return cacheManager;
-  }
-
-  @Bean
-  public LoadTimeWeaver loadTimeWeaver() throws Throwable{
-    InstrumentationLoadTimeWeaver loadTimeWeaver = new InstrumentationLoadTimeWeaver();
-    return loadTimeWeaver;
   }
 
 }

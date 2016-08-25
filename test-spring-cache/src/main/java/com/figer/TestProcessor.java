@@ -42,6 +42,12 @@ public class TestProcessor {
     System.out.println("==================");
     System.out.println(productService.getProductDetail("first"));
     System.out.println(productService.getProductDetail("first"));
+    System.out.println(productService.getProductDetail("first"));
+    System.out.println(productService.getProductDetail("first"));
+    System.out.println(productService.getProductDetail("first"));
+    System.out.println(productService.getProductDetail("second"));
+    System.out.println(productService.getProductDetail("second"));
+    System.out.println(productService.getProductDetail("second"));
     System.out.println(productService.getProductDetail("second"));
   }
 }
