@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 @Service
 public class PortfolioServiceImpl implements PortfolioService{
   @Override
-  public boolean purchase(Long userId, String portflolioId, BigDecimal amount) {
+  public boolean purchase(Long userId, String portfolioId, BigDecimal amount) {
     System.out.println("-------invoke real implementation.");
     return true;
   }

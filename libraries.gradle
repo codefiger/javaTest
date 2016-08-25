@@ -1,7 +1,7 @@
 ext {
    	versions = [
 		slf4j:                  '1.7.7',
-		spring:                 '3.2.9.RELEASE'
+		spring:                 '4.3.2.RELEASE'
 	]
 
 	libraries = [
@@ -30,7 +30,8 @@ ext {
 		spring_test:		"org.springframework:spring-test:${versions.spring}",
 		spring_web:             "org.springframework:spring-web:${versions.spring}",
     		spring_webmvc:          "org.springframework:spring-webmvc:${versions.spring}",
-
+		spring_aspects:         "org.springframework:spring-aspects:${versions.spring}",
+		spring_instrument:      "org.springframework:spring-instrument:${versions.spring}",
 		// servlet api
     		servlet_api:            'javax.servlet:javax.servlet-api:3.1.0',
 		
@@ -58,7 +59,7 @@ ext {
    		commons_pool:           'commons-pool:commons-pool:1.6',
 
 		//junit
-		junit:			'junit:junit:4.11',
+		junit:			'junit:junit:4.12',
 		
 		//mock
 		mockito:       		'org.mockito:mockito-core:1.9.5',

@@ -37,5 +37,11 @@ public class TestProcessor {
     System.out.println(productService.getProductWithMultiParams(333L, "secondName"));
     System.out.println(productService.getProductWithMultiParams(333L, "secondName"));
     System.out.println("[TestProcessor] end-------------");
+
+    //test cache proxy by aspectJ
+    System.out.println("==================");
+    System.out.println(productService.getProductDetail("first"));
+    System.out.println(productService.getProductDetail("first"));
+    System.out.println(productService.getProductDetail("second"));
   }
 }

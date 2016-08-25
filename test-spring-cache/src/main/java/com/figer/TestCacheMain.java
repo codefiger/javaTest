@@ -15,11 +15,9 @@ public class TestCacheMain {
       service.getProduct(123L);
     }
 
-
     service.getProductCache().clearCache();
     System.out.println("clear cache");
     service.getProduct(123L);
-
 
     System.out.println("I am a line------------------");
     ApplicationContext applicationContext = new ClassPathXmlApplicationContext("cache-context.xml");
@@ -27,9 +25,9 @@ public class TestCacheMain {
     new TestProcessor().testProductServiceWithCache(annotationService);
 
     //test div cache manager and cache
-    ApplicationContext divContext = new ClassPathXmlApplicationContext("div-cache-context.xml");
-    IProductService annotService = divContext.getBean("productService", IProductService.class);
-    new TestProcessor().testProductServiceWithCache(annotService);
+    //ApplicationContext divContext = new ClassPathXmlApplicationContext("div-cache-context.xml");
+    //IProductService annotService = divContext.getBean("productService", IProductService.class);
+    //new TestProcessor().testProductServiceWithCache(annotService);
   }
 
 }

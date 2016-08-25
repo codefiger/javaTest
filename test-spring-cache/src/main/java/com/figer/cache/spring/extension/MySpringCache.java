@@ -4,6 +4,7 @@ import org.springframework.cache.Cache;
 import org.springframework.cache.support.SimpleValueWrapper;
 
 import java.util.Map;
+import java.util.concurrent.Callable;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -39,8 +40,23 @@ public class MySpringCache implements Cache{
   }
 
   @Override
+  public <T> T get(Object key, Class<T> type) {
+    return null;
+  }
+
+  @Override
+  public <T> T get(Object key, Callable<T> valueLoader) {
+    return null;
+  }
+
+  @Override
   public void put(Object key, Object value) {
     nativeCache.put(key.toString(), value);
+  }
+
+  @Override
+  public ValueWrapper putIfAbsent(Object key, Object value) {
+    return null;
   }
 
   @Override
