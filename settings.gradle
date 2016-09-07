@@ -5,5 +5,6 @@ apply from: 'spring3x.setting.gradle'
 apply from: 'rabbitmq-test.setting.gradle'
 apply from: 'test-mockito.setting.gradle'
 apply from: 'test-spring-cache.gradle'
+apply from: 'http-client.setting.gradle'
 //include 'rabbitMQ-test'
 
