@@ -20,6 +20,12 @@ ext {
 		//aspectj
 		aspectj:		'org.aspectj:aspectjweaver:1.7.2',
 		
+		//httpclient
+		httpclient:		'commons-httpclient:commons-httpclient:3.1',		
+
+		//utils
+		util_guava: 		'com.google.guava:guava:17.0',	
+	
 		//spring
 		spring_core:		"org.springframework:spring-core:${versions.spring}",
 		spring_context:		"org.springframework:spring-context:${versions.spring}",
@@ -38,6 +44,9 @@ ext {
 		//jstl
 		jstl:			'jstl:jstl:1.2',
 		jsp_api:		'javax.servlet:jsp-api:2.0',
+
+		//json
+		fastjson:		'com.alibaba:fastjson:1.2.7',
 		
 		//commons
 		commons_beanutils:      'commons-beanutils:commons-beanutils:1.8.3',
