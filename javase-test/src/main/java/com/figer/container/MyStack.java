@@ -8,7 +8,7 @@ import java.util.LinkedList;
  * @param <T>
  */
 public class MyStack<T> {
-	private LinkedList<T> linkedList = new LinkedList<>();
+	private LinkedList<T> linkedList = new LinkedList<T>();
 	
 	public void push(T t){
 		linkedList.addFirst(t);
@@ -23,7 +23,7 @@ public class MyStack<T> {
 	}
 	
 	public static void main(String[] args) {
-		MyStack<String> stringStack = new MyStack<>();
+		MyStack<String> stringStack = new MyStack<String>();
 		stringStack.push("one");
 		stringStack.push("two");
 		stringStack.push("three");

@@ -5,8 +5,8 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public class QueueTest {
 	public static void main(String[] args) {
-		ArrayBlockingQueue<String> arrayBlockingQueue = new ArrayBlockingQueue<>(3);
-		LinkedBlockingQueue<String> linkedBlockingDeque = new LinkedBlockingQueue<>();
+		ArrayBlockingQueue<String> arrayBlockingQueue = new ArrayBlockingQueue<String>(3);
+		LinkedBlockingQueue<String> linkedBlockingDeque = new LinkedBlockingQueue<String>();
 		
 		for(int i  = 0 ;i < 10; i ++){
 			linkedBlockingDeque.add("str:" + i);

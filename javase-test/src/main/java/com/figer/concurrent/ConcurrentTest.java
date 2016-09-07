@@ -36,7 +36,7 @@ public class ConcurrentTest {
 	
 	@Test
 	public void testConcurrentHashMap(){
-		ConcurrentMap<Integer, String> map = new ConcurrentHashMap<>();
+		ConcurrentMap<Integer, String> map = new ConcurrentHashMap<Integer, String>();
 		String key = map.put(1, "figer");
 		System.out.println("key:" + key);
 		
@@ -48,7 +48,7 @@ public class ConcurrentTest {
 	
 	@Test
 	public void testConcurrentLinkedQueue(){
-		ConcurrentLinkedQueue queue = new ConcurrentLinkedQueue<>();
+		ConcurrentLinkedQueue queue = new ConcurrentLinkedQueue();
 		queue.add("figer 1");
 		queue.add("tom 2");
 		queue.add("sam 3");
@@ -75,7 +75,7 @@ public class ConcurrentTest {
 	
 	@Test
 	public void hashMapInConcurrent() throws Exception{
-		final HashMap<String, String> map = new HashMap<>();
+		final HashMap<String, String> map = new HashMap<String, String>();
 		Thread thread = new Thread(new Runnable() {
 			
 			@Override

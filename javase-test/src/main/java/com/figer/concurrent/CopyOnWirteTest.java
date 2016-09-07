@@ -13,7 +13,7 @@ public class CopyOnWirteTest {
 	}
 	
 	private static void testCopyOnwriteArrayList() throws Exception{
-		final ArrayList<Integer> list = new ArrayList<>(); 
+		final ArrayList<Integer> list = new ArrayList<Integer>();
 		Thread t1 = new Thread(new Runnable() {
 			
 			@Override
@@ -42,7 +42,7 @@ public class CopyOnWirteTest {
 		System.out.println("线程不安全的:" + list.size());
 		
 		System.out.println("========下面是CopyOnWriteArrayList的表演...");
-		final CopyOnWriteArrayList<Integer> cowList = new CopyOnWriteArrayList<>();
+		final CopyOnWriteArrayList<Integer> cowList = new CopyOnWriteArrayList<Integer>();
 		Thread t4 = new Thread(new Runnable() {
 			
 			@Override
@@ -83,13 +83,13 @@ class MyCOWHashMap<K,V> implements Map<K, V>{
 	private volatile Map<K, V> internalMap;
 	
 	public MyCOWHashMap() {
-		this.internalMap = new HashMap<>();
+		this.internalMap = new HashMap<K, V>();
 	}
 	
 	@Override
 	public V put(K key, V value) {
 		synchronized (this) {
-			Map<K, V> hashMap = new HashMap<>(internalMap);
+			Map<K, V> hashMap = new HashMap<K, V>(internalMap);
 			V returnVal = hashMap.put(key, value);
 			internalMap = hashMap;
 			return returnVal;

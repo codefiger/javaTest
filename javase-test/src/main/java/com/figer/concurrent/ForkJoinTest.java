@@ -18,7 +18,7 @@ public class ForkJoinTest {
 		Counter counter = new Counter(1, num);
 		try {
 			System.out.println(pool.submit(counter).get());
-		} catch (InterruptedException | ExecutionException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		long endTime = System.currentTimeMillis();

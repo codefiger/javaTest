@@ -31,7 +31,7 @@ public class FutureTest {
 		
 		
 		//or 
-		FutureTask<String> futureTask = new FutureTask<>(new Callable<String>() {
+		FutureTask<String> futureTask = new FutureTask<String>(new Callable<String>() {
 
 			@Override
 			public String call() throws Exception {

@@ -30,7 +30,7 @@ public class CollectionTest {
 	 * 测试HashSet,使用其做去重需要重写hashCode 以及 equals方法
 	 */
 	private static void testHashSet(){
-		HashSet<User> users = new HashSet<>();
+		HashSet<User> users = new HashSet<User>();
 		users.add(new User(1, "user1"));
 		users.add(new User(1, "user2"));
 		users.add(new User(1, "user3"));
@@ -41,7 +41,7 @@ public class CollectionTest {
 			System.out.println(user);
 		}
 		
-		HashSet<Student> students = new HashSet<>();
+		HashSet<Student> students = new HashSet<Student>();
 		students.add(new Student(1, "student1"));
 		students.add(new Student(1, "student2"));
 		students.add(new Student(1, "student3"));
@@ -57,7 +57,7 @@ public class CollectionTest {
 	 * 可排序的Set集合
 	 */
 	private static void testTreeSet(){
-		TreeSet<Student> treeSet = new TreeSet<>();
+		TreeSet<Student> treeSet = new TreeSet<Student>();
 		treeSet.add(new Student(2, "sam"));
 		treeSet.add(new Student(1, "figer"));
 		treeSet.add(new Student(2, "tom"));
@@ -76,7 +76,7 @@ public class CollectionTest {
 	 * 2 使用comparator比较器
 	 */
 	private static void testSort(){
-		List<Student> students = new ArrayList<>();
+		List<Student> students = new ArrayList<Student>();
 		students.add(new Student(1, "student1"));
 		students.add(new Student(1, "student2"));
 		students.add(new Student(1, "student3"));
@@ -90,7 +90,7 @@ public class CollectionTest {
 		System.out.println("-------");
 		printContainer(students);
 		
-		List<Student> students2 = new ArrayList<>();
+		List<Student> students2 = new ArrayList<Student>();
 		students2.add(new Student(1, "student1"));
 		students2.add(new Student(1, "student2"));
 		students2.add(new Student(1, "student3"));
@@ -117,7 +117,7 @@ public class CollectionTest {
 	 * 使用Iterator进行遍历集合时，不能直接从集合中移除元素，使用iterator的remove方法
 	 */
 	private static void removeElement(){
-		List<Student> students = new ArrayList<>();
+		List<Student> students = new ArrayList<Student>();
 		students.add(new Student(1, "student1"));
 		students.add(new Student(1, "student2"));
 		students.add(new Student(1, "student3"));

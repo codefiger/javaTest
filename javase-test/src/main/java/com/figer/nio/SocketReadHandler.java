@@ -12,7 +12,6 @@ import org.slf4j.LoggerFactory;
 public class SocketReadHandler implements Runnable {
 	public static Logger logger = LoggerFactory.getLogger(SocketReadHandler.class);
 
-	private Test test = new Test();
 
 	final SocketChannel socket;
 	final SelectionKey sk;

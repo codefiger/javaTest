@@ -28,7 +28,7 @@ subprojects {
 
 
     dependencies {
-        testCompile libraries.junit
+        compile libraries.junit
     }
 
     version = '1.0'

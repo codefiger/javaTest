@@ -13,7 +13,7 @@ public class ProducerConsumerTest {
 		
 		private static void threadPoolTest() throws Exception{
 			long startTime = System.currentTimeMillis();
-			ArrayBlockingQueue<String> blockingQueue = new ArrayBlockingQueue<>(10);
+			ArrayBlockingQueue<String> blockingQueue = new ArrayBlockingQueue<String>(10);
 			
 			Producer producer = new Producer(blockingQueue);
 			Thread producerT1 = new Thread(producer, "Producer");
@@ -37,8 +37,9 @@ public class ProducerConsumerTest {
 		
 		private static void test() throws Exception{
 			long startTime = System.currentTimeMillis();
-			ArrayBlockingQueue<String> blockingQueue = new ArrayBlockingQueue<>(10);
-			
+			//ArrayBlockingQueue<String> blockingQueue = new ArrayBlockingQueue<String>(10);
+			ArrayBlockingQueue<String> blockingQueue = new ArrayBlockingQueue<String>(10);
+
 			Producer producer = new Producer(blockingQueue);
 			Thread producerT1 = new Thread(producer, "Producer");
 			

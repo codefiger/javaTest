@@ -86,6 +86,11 @@ public class MockitoDocs {
       }
 
       @Override
+      public void describeMismatch(Object item, Description mismatchDescription) {
+
+      }
+
+      @Override
       public void _dont_implement_Matcher___instead_extend_BaseMatcher_() {
 
       }

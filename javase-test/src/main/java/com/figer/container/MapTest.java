@@ -21,7 +21,7 @@ public class MapTest {
 		System.out.println("String:" + "figer".hashCode());
 		System.out.println("Integer:" + new Integer(3).hashCode());
 		
-		HashMap<String, Student> map = new HashMap<>();
+		HashMap<String, Student> map = new HashMap<String, Student>();
 	}
 	
 	private static void binary(){
