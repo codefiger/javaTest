@@ -10,6 +10,7 @@ import javax.crypto.spec.SecretKeySpec;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+import java.util.Arrays;
 
 /**
  * Created by figer on 9/7/16.
@@ -23,6 +24,7 @@ public class AESTest {
     //加密
     System.out.println("加密前：" + content);
     byte[] encryptResult = encrypt(content, password);
+    System.out.println(Arrays.toString(encryptResult));
     //解密
     byte[] decryptResult = decrypt(encryptResult,password);
     System.out.println("解密后：" + new String(decryptResult));
