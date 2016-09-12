@@ -4,7 +4,7 @@ dependencies{
                 libraries.httpclient,
                 libraries.fastjson,
                 libraries.slf4j_api,
-                libraries.logback,
+                //libraries.logback,
         )
 }
 

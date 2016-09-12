@@ -41,8 +41,9 @@ public class HttpUtil {
 private static HttpConnectionManagerParams loadConfFromFile() {
     Properties p = new Properties();
     try {
-        p.load(HttpUtil.class.getResourceAsStream("/httputil.properties"));
+      p.load(HttpUtil.class.getClassLoader().getResourceAsStream("/httputil.properties"));
     } catch (IOException e) {
+      e.printStackTrace();
     }
 
     DEFAULT_ENCODE = p.getProperty("http.content.encoding");
