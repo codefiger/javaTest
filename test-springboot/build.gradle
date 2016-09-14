@@ -1,0 +1,36 @@
+/*
+apply plugin: 'war'
+
+war {
+    baseName = 'myapp'
+    version =  '0.5.0'
+}
+*/
+apply plugin: 'application'
+mainClassName = "com.figer.Main"
+
+repositories {
+    maven { url "http://repo.spring.io/snapshot" }
+    maven { url "http://repo.spring.io/milestone" }
+}
+
+dependencies{
+        compile(
+		    "org.springframework.boot:spring-boot-starter-web:1.4.0.RELEASE"
+        )
+
+}
+
+jar {
+    manifest {
+        attributes(
+                'Class-Path': configurations.runtime.collect { it.getName() }.join(' '),
+                'Main-Class': 'com.figer.Main'
+        )
+    }
+
+    into('lib') {
+        from configurations.runtime
+    }
+}
+
