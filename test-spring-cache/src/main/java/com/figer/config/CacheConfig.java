@@ -4,6 +4,7 @@ import com.figer.InnerInvocationableProductService;
 import com.figer.springframent.InjectBeanSelfProcessor;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.concurrent.ConcurrentMapCache;
 import org.springframework.cache.support.SimpleCacheManager;
@@ -89,6 +90,15 @@ public class CacheConfig implements LoadTimeWeavingConfigurer {
     }
     cacheManager.setCaches(caches);
     return cacheManager;
+  }
+
+  //@CacheEvict(value = "productCache",allEntries = true, beforeInvocation = true)
+  public void evictProductCache() {
+    CacheManager cacheManager =  guavaCacheManager();
+    Cache cache = cacheManager.getCache(CacheConstant.productCache.name());
+    cache.clear();
+
+    System.out.println("evict productCache----");
   }
 
 }

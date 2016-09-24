@@ -34,7 +34,8 @@ public class TestCacheMain {
     System.out.println("---------------ever proxy service line------------------");
     AnnotationConfigApplicationContext annotationContext = new AnnotationConfigApplicationContext(CacheConfig.class);
     IProductService everProxyService = annotationContext.getBean("proxyProductService", IProductService.class);
-    new TestProcessor().testProductServiceWithCache(everProxyService);
+    CacheConfig cacheConfig = annotationContext.getBean("cacheConfig", CacheConfig.class);
+    new TestProcessor(cacheConfig).testProductServiceWithCache(everProxyService);
   }
 
 }

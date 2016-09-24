@@ -1,11 +1,21 @@
 package com.figer;
 
+import com.figer.config.CacheConfig;
 import com.figer.entity.Product;
 
 /**
  * Created by figer on 8/16/16.
  */
 public class TestProcessor {
+  CacheConfig cacheConfig;
+
+  public TestProcessor() {
+  }
+
+  public TestProcessor(CacheConfig cacheConfig) {
+    this.cacheConfig = cacheConfig;
+  }
+
   public void testProductServiceWithCache(IProductService productService){
     System.out.println();
     System.out.println();
@@ -46,6 +56,7 @@ public class TestProcessor {
     System.out.println(productService.getProductDetail("first"));
     System.out.println(productService.getProductDetail("first"));
     System.out.println(productService.getProductDetail("second"));
+    cacheConfig.evictProductCache();
     System.out.println(productService.getProductDetail("second"));
     System.out.println(productService.getProductDetail("second"));
     System.out.println(productService.getProductDetail("second"));
