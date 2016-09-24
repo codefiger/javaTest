@@ -13,6 +13,7 @@ dependencies{
                 libraries.mysql_connector,
                 libraries.commons_dbcp,
                 libraries.commons_pool,
+                libraries.commons_io,
 
 
                 libraries.logback,
