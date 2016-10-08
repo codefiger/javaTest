@@ -1,0 +1,19 @@
+dependencies{
+        compile(
+                libraries.spring_core,
+                libraries.spring_context,
+                libraries.spring_beans,
+                libraries.spring_orm,
+                libraries.spring_test,
+                libraries.spring_webmvc,
+                //libraries.aspectj,
+                libraries.spring_aspects,
+                libraries.spring_instrument,
+                libraries.spring_redis,
+		libraries.jedis,		
+
+                libraries.slf4j_api,
+                libraries.logback
+        )
+}
+
