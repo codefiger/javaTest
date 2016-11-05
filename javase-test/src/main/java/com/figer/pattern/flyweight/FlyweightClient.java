@@ -11,5 +11,9 @@ public class FlyweightClient {
     System.out.println("-------");
 
     provider.getShape(ShapeTp.CIRCLE).draw();
+
+    //JDK example:
+    Integer a = Integer.valueOf("1");
+    System.out.println(a);
   }
 }
