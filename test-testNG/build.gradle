@@ -1,0 +1,14 @@
+dependencies{
+        compile(
+        )
+
+        testCompile(
+               libraries.testng
+        )
+
+        test{
+                useTestNG{}
+        }
+
+}
+
