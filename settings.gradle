@@ -8,5 +8,6 @@ apply from: 'test-spring-cache.gradle'
 apply from: 'http-client.setting.gradle'
 apply from: 'test-springboot.setting.gradle'
 apply from: 'test-spring-redis.setting.gradle'
+apply from: 'test-gradle-logback.setting.gradle'
 //include 'rabbitMQ-test'
 
