@@ -3,7 +3,7 @@ package com.figer.pattern.templatemethod;
 /**
  * Created by figer on 18/11/2016.
  */
-public abstract class SubmitAbsTemplate {
+public abstract class OrderSubmitTemplate {
   protected abstract void prepareData();
   protected abstract void changeStatus();
   protected abstract void request();

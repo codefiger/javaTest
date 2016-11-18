@@ -5,11 +5,11 @@ package com.figer.pattern.templatemethod;
  */
 public class TemplateMethodClient {
   public static void main(String[] args) {
-    SubmitAbsTemplate submitMethod = new MessageQueueSubmit();
+    OrderSubmitTemplate submitMethod = new MessageQueueOrderSubmit();
     submitMethod.submit();
 
     System.out.println("-------------------");
-    submitMethod = new NullSubmit();
+    submitMethod = new NullOrderSubmit();
     submitMethod.submit();
   }
 }
