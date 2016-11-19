@@ -35,7 +35,7 @@ public class PdfReader {
         document.close();
       }
 
-      wordCounter.printCounterMap();
+      wordCounter.printAddShanbayJS();
       long endTime = System.currentTimeMillis();
       System.out.println("耗时：");
       System.out.println(endTime - starTime+"ms");

@@ -57,12 +57,26 @@ repositories {
 }
 
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-web")
+    compile(
+            "org.springframework.boot:spring-boot-starter-web",
+            libraries.swagger,
+            libraries.swagger_ui,
+            libraries.swagger_petstore,
+
+            libraries.mysql_connector,
+            libraries.commons_dbcp,
+            libraries.commons_pool,
+            libraries.mybatis,
+            libraries.mybatis_spring,
+            libraries.mybatis_generator,
+            libraries.mybatis_paginator,
+            libraries.spring_jdbc
+    )
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
 
 
-jar {
+/*jar {
     //from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
     manifest {
         attributes(
@@ -74,7 +88,7 @@ jar {
     into('lib') {
         from configurations.runtime
     }
-}
+}*/
 
 fatJar {
 

@@ -11,11 +11,12 @@ public class Order {
   }
 
   public void transformStatus() {
-    if(status == null || status.ordinal() == Status.values().length-1){
+    if(status == null){
       status = Status.CREATED;
+      return;
     }
 
-    this.status = Status.values()[status.ordinal() + 1];
+    this.status = Status.values()[(status.ordinal() + 1) % Status.values().length];
   }
 
   public void setStatus(Status status) {

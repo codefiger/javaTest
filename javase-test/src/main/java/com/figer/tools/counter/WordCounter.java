@@ -80,6 +80,39 @@ public class WordCounter {
     for (Map.Entry<String, Integer> entry : list){
       System.out.println(String.format("index %4d : %s - %d", index++, entry.getKey(), entry.getValue()));
     }
+  }
+
+  public void printAddShanbayJS(){
+    List<Map.Entry<String, Integer>> list = new ArrayList<Map.Entry<String, Integer>>(counterMap.entrySet());
+    Comparator<Map.Entry<String, Integer>> comparator = new Comparator<Map.Entry<String, Integer>>() {
+      public int compare(Map.Entry<String, Integer> left,Map.Entry<String, Integer> right) {
+        return -(left.getValue()).compareTo(right.getValue());
+      }
+    };
+    Collections.sort(list, comparator);
+
+    System.out.println("function sleep(numberMillis) {\n" +
+        "    var now = new Date();\n" +
+        "    var exitTime = now.getTime() + numberMillis;\n" +
+        "    while (true) {\n" +
+        "        now = new Date();\n" +
+        "        if (now.getTime() > exitTime)\n" +
+        "            return;\n" +
+        "    }\n" +
+        "}");
+    int index = 1;
+    for (Map.Entry<String, Integer> entry : list){
+        System.out.print("sleep(500);");
+        System.out.print(String.format("$(\"#to_add_vocabulary\").val(\"%s\");", entry.getKey()));
+        System.out.print("add_vocabulary();");
+
+
+
+
+
+        if(index++ > 200)
+          break;
+    }
 
   }
 }

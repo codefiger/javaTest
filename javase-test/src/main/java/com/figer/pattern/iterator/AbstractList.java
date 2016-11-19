@@ -13,4 +13,7 @@ public abstract class AbstractList<A> {
   public abstract void add(A obj);
   public abstract void remove(int index);
   public abstract Iterator<A> createIterator();
+  public int size(){
+    return list.size();
+  }
 }

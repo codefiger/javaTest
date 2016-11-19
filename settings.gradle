@@ -9,5 +9,7 @@ apply from: 'http-client.setting.gradle'
 apply from: 'test-springboot.setting.gradle'
 apply from: 'test-spring-redis.setting.gradle'
 apply from: 'test-gradle-logback.setting.gradle'
+apply from: 'test-testNG.setting.gradle'
 //include 'rabbitMQ-test'
+
 
