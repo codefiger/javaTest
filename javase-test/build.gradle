@@ -23,8 +23,15 @@ dependencies{
                 libraries.mybatis_spring,
                 libraries.mybatis_generator,
                 libraries.mysql_connector,
+
+                //utils
                 libraries.itext_pdf,
-                libraries.commons_pdfbox
+                libraries.commons_pdfbox,
+                libraries.util_guava,
+                libraries.httpclient,
+                libraries.crawler4j,
+                libraries.fastjson
         )
+    compile 'com.starwin:common:1.0.0-Snapshot'
 }
 

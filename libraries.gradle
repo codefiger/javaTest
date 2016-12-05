@@ -30,17 +30,19 @@ ext {
 		//utils
 		util_guava: 		'com.google.guava:guava:17.0',
         itext_pdf:          'com.itextpdf:itextpdf:5.5.10',
+        crawler4j:          'edu.uci.ics:crawler4j:4.2',
 
         //spring
 		spring_core:		"org.springframework:spring-core:${versions.spring}",
 		spring_context:		"org.springframework:spring-context:${versions.spring}",
+        spring_context_support: "org.springframework:spring-context-support:${versions.spring}",
 		spring_beans:		"org.springframework:spring-beans:${versions.spring}",
 		spring_tx:              "org.springframework:spring-tx:${versions.spring}",
 		spring_jdbc:            "org.springframework:spring-jdbc:${versions.spring}",
 		spring_orm:             "org.springframework:spring-orm:${versions.spring}",
 		spring_test:		"org.springframework:spring-test:${versions.spring}",
 		spring_web:             "org.springframework:spring-web:${versions.spring}",
-    		spring_webmvc:          "org.springframework:spring-webmvc:${versions.spring}",
+        spring_webmvc:          "org.springframework:spring-webmvc:${versions.spring}",
 		spring_aspects:         "org.springframework:spring-aspects:${versions.spring}",
 		spring_instrument:      "org.springframework:spring-instrument:${versions.spring}",
 		spring_redis:		"org.springframework.data:spring-data-redis:1.7.4.RELEASE",

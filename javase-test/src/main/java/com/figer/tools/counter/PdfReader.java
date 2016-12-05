@@ -4,52 +4,52 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
-public class PdfReader {
-  public void readPdf(String file) throws Exception {
-    long starTime = System.currentTimeMillis();
-    boolean sort = false;
-    PDDocument document = null;
-    WordCounter wordCounter = new WordCounter();
-    try {
-      try {
-        document = PDDocument.load(new File(file));
-      } catch (MalformedURLException e) {
-        e.printStackTrace();
-      }
+import java.util.Iterator;
 
-      PDFTextStripper stripper = new PDFTextStripper();
-      stripper.setSortByPosition(sort);
-      System.out.println("NumberOfPages:" + document.getNumberOfPages());
-      for(int i = 1; i<= document.getNumberOfPages(); i++){
-        stripper.setStartPage(i);
-        stripper.setEndPage(i);
-        String txtContent = stripper.getText(document);
-        wordCounter.processEnglishContent(txtContent);
-        //System.out.println(txtContent);
-      }
+public class PdfReader implements Iterator<String>{
+  private int pageIndex = -1;
+  private int totalPages = -1;
+  private PDDocument document;
+  private PDFTextStripper stripper;
 
-    } finally {
-
-      if (document != null) {
-        document.close();
-      }
-
-      wordCounter.printAddShanbayJS();
-      long endTime = System.currentTimeMillis();
-      System.out.println("耗时：");
-      System.out.println(endTime - starTime+"ms");
-    }
+  public PdfReader(String filePath) {
+    initPdfFile(filePath);
   }
-  /**
-   * @param args
-   */
-  public static void main(String[] args) {
-    PdfReader pdfReader = new PdfReader();
+
+  private void initPdfFile(String file){
     try {
-      pdfReader.readPdf("/Users/figer/Documents/books/computer_science/Effective_java_second_edition.pdf");
+      document = PDDocument.load(new File(file));
+      pageIndex = 0;
+      totalPages = document.getNumberOfPages();
+      stripper = new PDFTextStripper();
+      stripper.setSortByPosition(false);
     } catch (Exception e) {
       e.printStackTrace();
     }
+  }
+
+  @Override
+  public boolean hasNext() {
+    return pageIndex < totalPages;
+  }
+
+  @Override
+  public String next() {
+    ++pageIndex;
+    stripper.setStartPage(pageIndex);
+    stripper.setEndPage(pageIndex);
+    try {
+      return stripper.getText(document);
+    } catch (IOException e) {
+      e.printStackTrace();
+      return null;
+    }
+  }
+
+  @Override
+  public void remove() {
+    throw new UnsupportedOperationException();
   }
 }

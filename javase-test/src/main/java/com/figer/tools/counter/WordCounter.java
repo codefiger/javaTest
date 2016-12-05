@@ -1,5 +1,9 @@
 package com.figer.tools.counter;
 
+import com.figer.tools.shanbay.ShanbayApi;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -17,14 +21,14 @@ public class WordCounter {
   public static void main(String[] args) throws Exception{
     long starTime = System.currentTimeMillis();
 
-    /*BufferedReader reader = new BufferedReader(new FileReader("/Users/figer/Downloads/test-counter.txt"));
+    WordCounter wordCounter = new WordCounter();
+    BufferedReader reader = new BufferedReader(new FileReader("/Users/figer/Downloads/test-counter.txt"));
     String line;
     while ((line = reader.readLine()) != null) {
-      processEnglishContent(line);
+      wordCounter.processEnglishContent(line);
     }
     reader.close();
 
-    printCounterMap();*/
     long endTime = System.currentTimeMillis();
     System.out.println("耗时：");
     System.out.println(endTime - starTime+"ms");
@@ -46,6 +50,10 @@ public class WordCounter {
     for (int i = 0; i < ignoreWordsConfig.length; i++) {
       ignoreWords.add(ignoreWordsConfig[i]);
     }
+  }
+
+  public Map<String, Integer> getCounterMap() {
+    return counterMap;
   }
 
   public void processEnglishContent(String englishContent){
@@ -82,37 +90,4 @@ public class WordCounter {
     }
   }
 
-  public void printAddShanbayJS(){
-    List<Map.Entry<String, Integer>> list = new ArrayList<Map.Entry<String, Integer>>(counterMap.entrySet());
-    Comparator<Map.Entry<String, Integer>> comparator = new Comparator<Map.Entry<String, Integer>>() {
-      public int compare(Map.Entry<String, Integer> left,Map.Entry<String, Integer> right) {
-        return -(left.getValue()).compareTo(right.getValue());
-      }
-    };
-    Collections.sort(list, comparator);
-
-    System.out.println("function sleep(numberMillis) {\n" +
-        "    var now = new Date();\n" +
-        "    var exitTime = now.getTime() + numberMillis;\n" +
-        "    while (true) {\n" +
-        "        now = new Date();\n" +
-        "        if (now.getTime() > exitTime)\n" +
-        "            return;\n" +
-        "    }\n" +
-        "}");
-    int index = 1;
-    for (Map.Entry<String, Integer> entry : list){
-        System.out.print("sleep(500);");
-        System.out.print(String.format("$(\"#to_add_vocabulary\").val(\"%s\");", entry.getKey()));
-        System.out.print("add_vocabulary();");
-
-
-
-
-
-        if(index++ > 200)
-          break;
-    }
-
-  }
 }
