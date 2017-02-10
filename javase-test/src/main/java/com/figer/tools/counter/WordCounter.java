@@ -1,6 +1,5 @@
 package com.figer.tools.counter;
 
-import com.figer.tools.shanbay.ShanbayApi;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -22,14 +21,28 @@ public class WordCounter {
     long starTime = System.currentTimeMillis();
 
     WordCounter wordCounter = new WordCounter();
-    BufferedReader reader = new BufferedReader(new FileReader("/Users/figer/Downloads/test-counter.txt"));
+    BufferedReader reader = new BufferedReader(new FileReader("/Users/figer/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9/2f572a9b4d3ccd15af6730a8aa281fc6/Message/MessageTemp/e09accae4177960ed90470b455d17e10/File/经济学人词频/The Economist.txt"));
     String line;
     while ((line = reader.readLine()) != null) {
-      wordCounter.processEnglishContent(line);
+    /*  String[] lineArray = line.split("[\\s]+");
+      System.out.println(Arrays.toString(lineArray));
+      for (int i = 1; i < lineArray.length ; ) {
+        if(i < 2 && (i % 2) != 0){
+          System.out.println(String.format("word:%s - %s", lineArray[i+1], lineArray[i]));
+        }else {
+          if((i % 2) != 0){
+            System.out.println(String.format("word:%s - %s", lineArray[i], lineArray[i+1]));
+          }
+        }
+        i++;
+      }*/
+
+      wordCounter.processRegularEnglishContext(line);
     }
     reader.close();
 
     long endTime = System.currentTimeMillis();
+    wordCounter.printCounterMap();
     System.out.println("耗时：");
     System.out.println(endTime - starTime+"ms");
   }
@@ -56,7 +69,30 @@ public class WordCounter {
     return counterMap;
   }
 
+  public void processRegularEnglishContext(String content){
+    String[] lineArray = content.split("[\\s]+");
+    for (int i = 1; i < lineArray.length ; ) {
+      if(i < 2 && (i % 2) != 0){
+        putWords(lineArray[i+1], Integer.parseInt(lineArray[i]));
+      }else {
+        if((i % 2) != 0){
+          putWords(lineArray[i], Integer.parseInt(lineArray[i+1]));
+        }
+      }
+      i++;
+    }
+  }
+
+  private void putWords(String word, int times){
+    if(ignoreWords.contains(word)){
+      return;
+    }
+    counterMap.put(word, times);
+  }
+
   public void processEnglishContent(String englishContent){
+
+
     //TODO: how to exclude useless words
     Pattern expression = Pattern.compile("[a-zA-Z]{3,}");// 定义正则表达式匹配单词
     Matcher matcher = expression.matcher(englishContent);//

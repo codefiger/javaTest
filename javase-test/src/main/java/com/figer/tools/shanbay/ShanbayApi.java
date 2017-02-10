@@ -2,6 +2,7 @@ package com.figer.tools.shanbay;
 
 import com.dr.coffee.common.util.JsonUtil;
 import com.figer.tools.counter.PdfReader;
+import com.figer.tools.counter.TxtReader;
 import com.figer.tools.counter.WordCounter;
 import com.figer.tools.shanbay.http.HttpClientUtil;
 
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -87,9 +89,9 @@ public class ShanbayApi implements IShanbayService{
   @Override
   public void createShanbayWordBook(String filePath, String wordBookId, String userName, String password) {
     WordCounter wordCounter = new WordCounter();
-    PdfReader pdfReader = new PdfReader(filePath);
+    Iterator<String> pdfReader = new TxtReader(filePath);
     while (pdfReader.hasNext()){
-      wordCounter.processEnglishContent(pdfReader.next());
+      wordCounter.processRegularEnglishContext(pdfReader.next());
     }
 
     Map<String, Integer> counterMap = wordCounter.getCounterMap();
@@ -114,11 +116,11 @@ public class ShanbayApi implements IShanbayService{
     String wordListId = shanbayApi.createWordList(wordBookId, "unit 0", "Created by figer via Java");
     boolean createdSuccess;
     for (Map.Entry<String, Integer> entry : list){
-      try {
-        Thread.sleep(2);
+      /*try {
+        Thread.sleep(1);
       } catch (InterruptedException e) {
         e.printStackTrace();
-      }
+      }*/
       try {
         createdSuccess = shanbayApi.addVocabulary(entry.getKey(), wordListId);
         if(createdSuccess){

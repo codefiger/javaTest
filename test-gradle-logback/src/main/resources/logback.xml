@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration>
 
-<!-- 
+<!--
 Logback默认配置的步骤:
 
      (1). 尝试在 classpath 下查找文件 logback-test.xml；
@@ -23,7 +23,7 @@ Logback默认配置的步骤:
     (5)If none of the above succeeds, logback configures itself automatically using the BasicConfigurator which will cause logging output to be directed to the console.
  -->
 
-<!-- 
+<!--
 	 scan:当此属性设置为true时，配置文件如果发生改变，将会被重新加载，默认值为true
 	 scanPeriod:设置监测配置文件是否有修改的时间间隔，如果没有给出时间单位，默认单位是毫秒。当scan为true时，此属性生效。默认的时间间隔为1分钟。
 	 debug:当此属性设置为true时，将打印出logback内部日志信息，实时查看logback运行状态。默认值为false。 
@@ -41,13 +41,13 @@ Logback默认配置的步骤:
 	
 	<!-- xEx :stack track information followed by the "implementation-version" ,if the version is uncertain ,will be preceded by "~"-->
 	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">   
-   		<!-- encoder 默认配置为PatternLayoutEncoder -->   
+   		<!-- encoder 默认配置为PatternLayoutEncoder -->
 	    <encoder>   
 	      <pattern>[${timeFormat}] [%class:%line] - [%-4level] %X{rpid} [%logger{50}] -> %m %n %xEx</pattern>   
 	    </encoder>   
  	</appender> 
  	
- 	 <!-- 按照每天生成日志文件 --> 
+ 	 <!-- 按照每天生成日志文件 -->
     <appender name="LOG_DAILY" class="ch.qos.logback.core.rolling.RollingFileAppender"> 
         <Encoding>UTF-8</Encoding> 
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy"> 
@@ -122,31 +122,7 @@ Logback默认配置的步骤:
 		<appender-ref ref ="FILE"/>
 	</appender>
 	
-	<!--日志异步到数据库 未测试成功-->  
-    <appender name="DB" class="ch.qos.logback.classic.db.DBAppender">
-        <!--日志异步到数据库 --> 
-        <connectionSource class="ch.qos.logback.core.db.DriverManagerConnectionSource">
-           <!--连接池 --> 
-           <dataSource class="org.apache.commons.dbcp.BasicDataSource">
-              <driverClass>org.postgresql.Driver</driverClass>
-              <url>jdbc:postgresql://localhost:5432/postgres</url>
-              <user>postgres</user>
-              <password>123456</password>
-            </dataSource>
-        </connectionSource>
- 	</appender> 
- 	
- 	<!-- 未设置打印级别，所以继承他上级<root>的日志级别；没有设置addtivity，默认为true，将此loger的打印信息向上级传递,测试即使false向上级传递-->
- 	<logger name="com.zpeng.utils.LoggerDemo" level="info" addtivity="false">
- 		<appender-ref ref="FILE" />   
- 	</logger>
- 
- 	<!-- 性能日志 -->
- 	<logger name="performance_logger" level="debug" addtivity="false">
- 		<appender-ref ref="PERFORMANCE_LOGGER_FILE" />   
- 	</logger>
- 	
- 	<root level="debug">             
+ 	<root level="info">
 	    <appender-ref ref="STDOUT" />   
 	</root>  
 </configuration>

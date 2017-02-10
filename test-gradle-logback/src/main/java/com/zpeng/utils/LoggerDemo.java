@@ -2,6 +2,8 @@ package com.zpeng.utils;
 
 import java.util.Random;
 
+import ch.qos.logback.classic.Level;
+import ch.qos.logback.core.FileAppender;
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.transport.TFramedTransport;
@@ -23,8 +25,7 @@ public class LoggerDemo {
 	 * logger logger1拿到的是同一 Logger实例
 	 */
 	public static final Logger logger = LoggerFactory.getLogger(LoggerDemo.class);
-	public static final Logger logger1 = LoggerFactory.getLogger(LoggerDemo.class);
-	
+
 	public static void main(String[] args){
 		RequestIdentityHolder.init();
 		logger.trace("trace log content");
@@ -35,6 +36,9 @@ public class LoggerDemo {
 		logger.info("{},it's OK.","Hi");//参数化
 		logger.info(MarkerFactory.getMarker("p2"), "value:{}", 1111);
 		logger.info(MarkerFactory.getMarker("marker has niao yong?"), "value:{}", 22222);
+    ch.qos.logback.classic.Logger root = (ch.qos.logback.classic.Logger)LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME);
+    root.setLevel(Level.DEBUG);
+    logger.debug("debug log content");
 		try {
 			LoggerBean loggerBean = new LoggerBean();
 		} catch (Exception e) {

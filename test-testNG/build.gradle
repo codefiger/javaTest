@@ -1,9 +1,15 @@
 dependencies{
         compile(
+                libraries.spring_core,
+                libraries.spring_context,
+                libraries.spring_beans,
+                libraries.spring_test,
+                libraries.logback
         )
 
         testCompile(
-               libraries.testng
+                libraries.mockito,
+                libraries.testng
         )
 
         test{

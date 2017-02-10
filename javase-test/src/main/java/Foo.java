@@ -1,6 +1,12 @@
+import com.dr.coffee.common.util.JsonUtil;
+import com.figer.tools.counter.PdfReader;
 import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
+import com.sun.syndication.feed.atom.Person;
 
 import java.io.UnsupportedEncodingException;
+import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 public class Foo {
@@ -17,16 +23,9 @@ public class Foo {
 	}
 
   public static void main(String[] args) {
-    UUID uuid = UUID.randomUUID();
-
-    System.out.println(uuid.toString());
-    String str = "Hello World";
-    try{
-      System.out.println(uuid);
-      String encodeBase64 = Base64.encode(uuid.toString().getBytes("UTF-8"));
-      System.out.println("RESULT: " + encodeBase64);
-    } catch(UnsupportedEncodingException e){
-      e.printStackTrace();
+    PdfReader pdfReader = new PdfReader("");
+    while (pdfReader.hasNext()){
+      System.out.print(pdfReader.next());
     }
   }
 }

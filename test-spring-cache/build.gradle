@@ -1,7 +1,9 @@
+apply plugin: 'application'
 dependencies{
         compile(
                 libraries.spring_core,
                 libraries.spring_context,
+                libraries.spring_context_support,
                 libraries.spring_beans,
                 libraries.spring_orm,
                 libraries.spring_jdbc,
@@ -10,9 +12,29 @@ dependencies{
                 //libraries.aspectj,
                 libraries.spring_aspects,
                 libraries.spring_instrument,
+                libraries.spring_redis,
+                libraries.jedis,
 
                 libraries.slf4j_api,
-                libraries.logback
+                libraries.logback,
+                libraries.util_guava
         )
+}
+
+jar {
+    manifest {
+        attributes (
+                "Manifest-Version"       : version,
+                "Created-By"             : "Gradle 1.10",
+                "Implementation-Title"   : "test-title",
+                "Implementation-Version" : version,
+                "Main-Class": "com.figer.TestCacheMain",
+        )
+        def manifestClasspath = configurations.runtime.collect { File file = it
+            "lib/${file.name}"
+        }.join(' ')
+        attributes 'Class-Path': manifestClasspath
+        attributes 'Build-At': new Date()
+    }
 }
 

@@ -1,9 +1,11 @@
 package com.figer.entity;
 
+import java.io.Serializable;
+
 /**
  * Created by figer on 8/15/16.
  */
-public class Product {
+public class Product implements Serializable{
   private Long id;
   private String name;
 

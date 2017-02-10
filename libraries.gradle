@@ -46,7 +46,7 @@ ext {
 		spring_aspects:         "org.springframework:spring-aspects:${versions.spring}",
 		spring_instrument:      "org.springframework:spring-instrument:${versions.spring}",
 		spring_redis:		"org.springframework.data:spring-data-redis:1.7.4.RELEASE",
-		
+
 		// servlet api
 		servlet_api:            'javax.servlet:javax.servlet-api:3.1.0',
 

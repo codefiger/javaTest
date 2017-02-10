@@ -4,6 +4,8 @@ package com.figer;
  * Created by figer on 8/30/16.
  */
 public class Example {
+  public static final String cacheName = "productCache";
+
   public static void main(String[] args) {
     // 1 build plane
 

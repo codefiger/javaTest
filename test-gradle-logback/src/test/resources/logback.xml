@@ -146,7 +146,7 @@ Logback默认配置的步骤:
  		<appender-ref ref="PERFORMANCE_LOGGER_FILE" />   
  	</logger>
  	
- 	<root level="debug">             
+ 	<root level="info">
 	    <appender-ref ref="STDOUT" />   
 	</root>  
 </configuration>

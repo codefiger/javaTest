@@ -9,9 +9,11 @@ import org.springframework.cache.annotation.Cacheable;
 public interface IProductService {
   @Cacheable(value = "productCache", key = "#id", cacheManager = "guavaCacheManager")
   Product getProduct(Long id);
+  Product resultUnless(Long id);
   Product getProductWithConditionCache(Long id);
   Product getProductWithMultiParams(Long id, String name);
   String queryAllProducts();
+  String aspectCacheTest(String name);
   String getProductDetail(String name);
 
   String queryAllProducts2();

@@ -18,6 +18,11 @@ public class AnnotationCacheProductService implements IProductService {
   }
 
   @Override
+  public Product resultUnless(Long id) {
+    return null;
+  }
+
+  @Override
   @Cacheable(value = "productCache", condition = "#id > 1000")
   public Product getProductWithConditionCache(Long id) {
     System.out.print("【get from db】");
