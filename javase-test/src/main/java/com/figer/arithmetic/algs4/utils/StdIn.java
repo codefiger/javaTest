@@ -1,5 +1,8 @@
 package com.figer.arithmetic.algs4.utils;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Locale;
@@ -592,6 +595,21 @@ public final class StdIn {
   @Deprecated
   public static String[] readStrings() {
     return readAllStrings();
+  }
+
+  /**
+   * created by figer
+   * @param filename
+   */
+  public static void resyncSystemInByFile(String filename){
+    InputStream stream = null;
+    try {
+      stream = new FileInputStream(filename);
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
+    }
+    System.setIn(stream);
+    resync();
   }
 
 
