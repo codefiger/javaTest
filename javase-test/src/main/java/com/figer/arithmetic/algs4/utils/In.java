@@ -1,6 +1,9 @@
 package com.figer.arithmetic.algs4.utils;
 
+import com.google.common.base.Preconditions;
+
 import java.io.BufferedReader;
+import java.io.Closeable;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -41,16 +44,16 @@ public class In {
       e.printStackTrace();
       return new int[]{};
     } finally {
-      if (br != null) {
+      close(reader, br);
+    }
+  }
+
+  private void close(Closeable ... a){
+    Preconditions.checkNotNull(a);
+    for (int i = 0; i < a.length; i++) {
+      if (a[i] != null) {
         try {
-          br.close();
-        } catch (IOException e) {
-          e.printStackTrace();
-        }
-      }
-      if (reader != null) {
-        try {
-          reader.close();
+          a[i].close();
         } catch (IOException e) {
           e.printStackTrace();
         }
