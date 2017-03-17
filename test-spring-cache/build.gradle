@@ -1,4 +1,4 @@
-apply plugin: 'application'
+//apply plugin: 'application'
 dependencies{
         compile(
                 libraries.spring_core,
@@ -21,7 +21,7 @@ dependencies{
         )
 }
 
-jar {
+/*jar {
     manifest {
         attributes (
                 "Manifest-Version"       : version,
@@ -36,5 +36,5 @@ jar {
         attributes 'Class-Path': manifestClasspath
         attributes 'Build-At': new Date()
     }
-}
+}*/
 
