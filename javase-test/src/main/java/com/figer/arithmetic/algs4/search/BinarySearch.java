@@ -2,7 +2,6 @@ package com.figer.arithmetic.algs4.search;
 
 import com.figer.arithmetic.algs4.utils.In;
 import com.figer.arithmetic.algs4.utils.StdIn;
-import com.figer.arithmetic.algs4.utils.StdOut;
 
 import java.util.Arrays;
 
@@ -12,21 +11,14 @@ import java.util.Arrays;
 public class BinarySearch {
   public static int rank(int key, int[] a){
     //a must be sorted
-    int lowIndex = 0;
-    int highIndex = a.length - 1;
-    if(key < a[lowIndex] || key > a[highIndex]){
-      return -1;
-    }
-
-    while (lowIndex <= highIndex){
-      int middle = lowIndex + (highIndex - lowIndex)/2;
-      if(key > a[middle]){
-        lowIndex = middle + 1;
-      }else if(key < a[middle]){
-        highIndex = middle - 1;
-      }else{
-        return middle;
-      }
+    int lo = 0;
+    int hi = a.length - 1;
+    while (lo <= hi) {
+      // Key is in a[lo..hi] or not present.
+      int mid = lo + (hi - lo) / 2;
+      if      (key < a[mid]) hi = mid - 1;
+      else if (key > a[mid]) lo = mid + 1;
+      else return mid;
     }
     return -1;
   }
@@ -38,12 +30,27 @@ public class BinarySearch {
     System.out.println(Arrays.toString(whiteList));
     StdIn.resyncSystemInByFile(args[1]);
     long startTime = System.currentTimeMillis();
+    int count = 0;
     while (!StdIn.isEmpty()){
       int key = StdIn.readInt();
       if(rank(key, whiteList) == -1){
-        StdOut.println(key);
+        //StdOut.println(key);
+        count ++;
       }
     }
-    System.out.println("total use: " + (System.currentTimeMillis() - startTime) + " ms");
+    System.out.println("binary search total use: " + (System.currentTimeMillis() - startTime) + " ms, count: " + count);
+
+    StdIn.resyncSystemInByFile(args[1]);
+    long bruteStartTime = System.currentTimeMillis();
+    count = 0;
+    while (!StdIn.isEmpty()){
+      int key = StdIn.readInt();
+      if(BruteForceSearch.rank(key, whiteList) == -1){
+        //StdOut.println(key);
+        count ++;
+      }
+    }
+    System.out.println("brute search total use: " + (System.currentTimeMillis() - bruteStartTime) + " ms, count:" + count);
+
   }
 }
