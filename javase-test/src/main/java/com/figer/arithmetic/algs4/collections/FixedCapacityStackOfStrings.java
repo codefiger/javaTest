@@ -1,11 +1,12 @@
 package com.figer.arithmetic.algs4.collections;
 
+import com.figer.arithmetic.algs4.collections.api.IStack;
 import com.figer.arithmetic.algs4.utils.StdIn;
 
 /**
  * Created by figer on 21/03/2017.
  */
-public class FixedCapacityStackOfStrings implements Stackable<String>{
+public class FixedCapacityStackOfStrings implements IStack<String> {
   private String elements[];
   private int capacity;
   private int elementCount;//default value is zero
@@ -41,7 +42,7 @@ public class FixedCapacityStackOfStrings implements Stackable<String>{
     String inputStr;
     while (!(inputStr = StdIn.readLine()).equals("end")) {
       String inputList[] = inputStr.split(" ");
-      Stackable<String> stack = new FixedCapacityStackOfStrings(100);
+      IStack<String> stack = new FixedCapacityStackOfStrings(100);
       for (int i = 0; i < inputList.length; i++) {
         if(!inputList[i].equals("-")){
           stack.push(inputList[i]);

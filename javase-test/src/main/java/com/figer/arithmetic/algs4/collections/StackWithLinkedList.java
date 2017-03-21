@@ -1,5 +1,6 @@
 package com.figer.arithmetic.algs4.collections;
 
+import com.figer.arithmetic.algs4.collections.api.IStack;
 import com.figer.arithmetic.algs4.utils.StdIn;
 
 import java.util.Iterator;
@@ -7,7 +8,7 @@ import java.util.Iterator;
 /**
  * Created by figer on 21/03/2017.
  */
-public class StackWithLinkedList<T> implements Stackable<T>,Iterable<T>{
+public class StackWithLinkedList<T> implements IStack<T>,Iterable<T>{
   private Node<T> first;
   private int elementCount;//default value is 0
 
