@@ -1,67 +1,41 @@
 package com.figer.arithmetic.algs4.collections;
 
+import com.figer.arithmetic.algs4.utils.StdIn;
+
 import java.util.Iterator;
 
 /**
  * Created by figer on 21/03/2017.
  */
-public class Stack<T> implements Iterable<T>{
-  private T elements[];
-  private int capacity;
+public class StackWithLinkedList<T> implements Iterable<T>{
+  private Node<T> first;
   private int elementCount;//default value is 0
 
-  public Stack(int capacity) {
-    this.elements = (T[])new Object[capacity];
-    this.capacity = capacity;
-  }
-
   public void push(T element){
-    if(elementCount == capacity){
-      resize(capacity*2);
-    }
-
-    elements[elementCount++] = element;
+    elementCount ++;
+    Node<T> oldFirst = first;
+    first = new Node<>();
+    first.value = element;
+    first.next = oldFirst;
   }
 
   public T pop(){
     if(isEmpty()){
       throw new ArrayIndexOutOfBoundsException();
     }
-
-    if(elementCount == capacity/4){
-      resize(capacity/2);
-    }
-
-    T temp = peek(--elementCount);
-    elements[elementCount] = null;//to let gc do its work
-    return temp;
+    elementCount --;
+    T value = first.value;
+    first = first.next;
+    return value;
   }
 
-  private T peek(int index){
-    return elements[index];
-  }
 
   public boolean isEmpty(){
-    return elementCount == 0;
+    return first == null;
   }
 
   public int size(){
     return elementCount;
-  }
-
-  private void resize(int capacity){
-    System.out.println(String.format("(resize old %d , new %d)", this.size(), capacity));
-    if(capacity < elementCount){
-      throw new ArrayIndexOutOfBoundsException();
-    }
-
-    this.capacity = capacity;
-
-    T newElements[] = (T[])new Object[capacity];
-    for (int i = 0; i < elementCount; i ++){
-      newElements[i] = elements[i];
-    }
-    elements = newElements;
   }
 
   //@Override
@@ -80,10 +54,10 @@ public class Stack<T> implements Iterable<T>{
   }
 
   public static void main(String args[]){
-    /*String inputStr;
+    String inputStr;
     while (!(inputStr = StdIn.readLine()).equals("end")) {
       String inputList[] = inputStr.split(" ");
-      Stack<Double> stack = new Stack(1);
+      StackWithLinkedList<Double> stack = new StackWithLinkedList();
       for (int i = 0; i < inputList.length; i++) {
         if(!inputList[i].equals("-")){
           stack.push(Double.parseDouble(inputList[i]));
@@ -95,11 +69,10 @@ public class Stack<T> implements Iterable<T>{
       System.out.println(stack.size() + " elements left in stack");
     }
 
-    */
 
 
     System.out.println("======test foreach=====");
-    Stack<String> stack = new Stack<>(10);
+    StackWithLinkedList<String> stack = new StackWithLinkedList<>();
     stack.push("a");
     stack.push("b");
     stack.push("c");
