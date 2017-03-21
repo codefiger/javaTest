@@ -7,12 +7,12 @@ import java.util.Iterator;
 /**
  * Created by figer on 21/03/2017.
  */
-public class Stack<T> implements IStack<T>,Iterable<T>{
+public class ArrayStack<T> implements IStack<T>,Iterable<T>{
   private T elements[];
   private int capacity;
   private int elementCount;//default value is 0
 
-  public Stack(int capacity) {
+  public ArrayStack(int capacity) {
     this.elements = (T[])new Object[capacity];
     this.capacity = capacity;
   }
@@ -85,7 +85,7 @@ public class Stack<T> implements IStack<T>,Iterable<T>{
     /*String inputStr;
     while (!(inputStr = StdIn.readLine()).equals("end")) {
       String inputList[] = inputStr.split(" ");
-      Stack<Double> stack = new Stack(1);
+      ArrayStack<Double> stack = new ArrayStack(1);
       for (int i = 0; i < inputList.length; i++) {
         if(!inputList[i].equals("-")){
           stack.push(Double.parseDouble(inputList[i]));
@@ -101,7 +101,7 @@ public class Stack<T> implements IStack<T>,Iterable<T>{
 
 
     System.out.println("======test foreach=====");
-    Stack<String> stack = new Stack<>(10);
+    ArrayStack<String> stack = new ArrayStack<>(10);
     stack.push("a");
     stack.push("b");
     stack.push("c");

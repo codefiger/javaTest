@@ -8,7 +8,7 @@ import java.util.Iterator;
 /**
  * Created by figer on 21/03/2017.
  */
-public class StackWithLinkedList<T> implements IStack<T>,Iterable<T>{
+public class LinkedListStack<T> implements IStack<T>,Iterable<T>{
   private Node<T> first;
   private int elementCount;//default value is 0
 
@@ -58,7 +58,7 @@ public class StackWithLinkedList<T> implements IStack<T>,Iterable<T>{
     String inputStr;
     while (!(inputStr = StdIn.readLine()).equals("end")) {
       String inputList[] = inputStr.split(" ");
-      StackWithLinkedList<Double> stack = new StackWithLinkedList();
+      LinkedListStack<Double> stack = new LinkedListStack();
       for (int i = 0; i < inputList.length; i++) {
         if(!inputList[i].equals("-")){
           stack.push(Double.parseDouble(inputList[i]));
@@ -73,7 +73,7 @@ public class StackWithLinkedList<T> implements IStack<T>,Iterable<T>{
 
 
     System.out.println("======test foreach=====");
-    StackWithLinkedList<String> stack = new StackWithLinkedList<>();
+    LinkedListStack<String> stack = new LinkedListStack<>();
     stack.push("a");
     stack.push("b");
     stack.push("c");
