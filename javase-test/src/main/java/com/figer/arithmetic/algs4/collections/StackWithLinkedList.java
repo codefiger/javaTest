@@ -12,20 +12,20 @@ public class StackWithLinkedList<T> implements Stackable<T>,Iterable<T>{
   private int elementCount;//default value is 0
 
   public void push(T element){
-    elementCount ++;
     Node<T> oldFirst = first;
     first = new Node<>();
     first.value = element;
     first.next = oldFirst;
+    elementCount ++;
   }
 
   public T pop(){
     if(isEmpty()){
       throw new ArrayIndexOutOfBoundsException();
     }
-    elementCount --;
     T value = first.value;
     first = first.next;
+    elementCount --;
     return value;
   }
 
