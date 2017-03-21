@@ -3,10 +3,12 @@ package com.figer.arithmetic.algs4.collections;
 import com.figer.arithmetic.algs4.collections.api.IQueue;
 import com.figer.arithmetic.algs4.utils.StdIn;
 
+import java.util.Iterator;
+
 /**
  * Created by figer on 21/03/2017.
  */
-public class LinkedListQueue<T> implements IQueue<T> {
+public class LinkedListQueue<T> implements IQueue<T>,Iterable<T>{
 
   public static void main(String[] args) {
     String input;
@@ -60,5 +62,20 @@ public class LinkedListQueue<T> implements IQueue<T> {
   @Override
   public int size() {
     return elementCount;
+  }
+
+  @Override
+  public Iterator<T> iterator() {
+    return new Iterator<T>() {
+      @Override
+      public boolean hasNext() {
+        return !isEmpty();
+      }
+
+      @Override
+      public T next() {
+        return dequeue();
+      }
+    };
   }
 }
