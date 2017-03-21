@@ -5,7 +5,7 @@ import java.util.Iterator;
 /**
  * Created by figer on 21/03/2017.
  */
-public class Stack<T> implements Iterable<T>{
+public class Stack<T> implements Stackable<T>,Iterable<T>{
   private T elements[];
   private int capacity;
   private int elementCount;//default value is 0

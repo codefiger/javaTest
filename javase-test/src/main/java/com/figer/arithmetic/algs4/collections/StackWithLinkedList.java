@@ -7,7 +7,7 @@ import java.util.Iterator;
 /**
  * Created by figer on 21/03/2017.
  */
-public class StackWithLinkedList<T> implements Iterable<T>{
+public class StackWithLinkedList<T> implements Stackable<T>,Iterable<T>{
   private Node<T> first;
   private int elementCount;//default value is 0
 

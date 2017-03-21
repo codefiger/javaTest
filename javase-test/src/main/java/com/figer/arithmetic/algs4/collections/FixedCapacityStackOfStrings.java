@@ -5,7 +5,7 @@ import com.figer.arithmetic.algs4.utils.StdIn;
 /**
  * Created by figer on 21/03/2017.
  */
-public class FixedCapacityStackOfStrings {
+public class FixedCapacityStackOfStrings implements Stackable<String>{
   private String elements[];
   private int capacity;
   private int elementCount;//default value is zero
@@ -41,7 +41,7 @@ public class FixedCapacityStackOfStrings {
     String inputStr;
     while (!(inputStr = StdIn.readLine()).equals("end")) {
       String inputList[] = inputStr.split(" ");
-      FixedCapacityStackOfStrings stack = new FixedCapacityStackOfStrings(100);
+      Stackable<String> stack = new FixedCapacityStackOfStrings(100);
       for (int i = 0; i < inputList.length; i++) {
         if(!inputList[i].equals("-")){
           stack.push(inputList[i]);
