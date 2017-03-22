@@ -30,6 +30,10 @@ public class FixedCapacityStackOfStrings implements IStack<String> {
     return elements[--elementCount];
   }
 
+  public boolean isFull(){
+    return elementCount == capacity;
+  }
+
   public boolean isEmpty(){
     return elementCount == 0;
   }
