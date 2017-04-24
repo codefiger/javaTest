@@ -5,6 +5,6 @@ package com.figer.pattern.adapter;
  */
 public class AdapteeB {
   public void realRequestHandler(){
-    System.out.println("handle the request...");
+    System.out.println("handle the create...");
   }
 }

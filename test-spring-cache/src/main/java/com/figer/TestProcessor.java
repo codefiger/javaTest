@@ -23,15 +23,18 @@ public class TestProcessor {
   }
 
   public void testProductServiceWithCache(IProductService productService){
-    /*System.out.println();
+    System.out.println();
     System.out.println();
     System.out.println("[TestProcessor] start-------------");
     for(int i = 1; i < 6;i ++){
       System.out.println("get product times:" + i);
-      System.out.println( productService.getProduct(123L));
+      System.out.println( productService.getProduct(new Long(i)));
     }
 
-    Product product = new Product(123L, "new productName");
+    productService.updateProduct(new Product(new Long(1)));
+    cacheConfig.test();
+
+    /*Product product = new Product(123L, "new productName");
     productService.updateProduct(product);
     System.out.println("get product times:6");
     System.out.println(productService.getProduct(123L));
@@ -83,11 +86,11 @@ public class TestProcessor {
     System.out.println(productService.getProductDetail("first"));
     System.out.println(productService.getProductDetail("first"));
 
-    try {
+    /*try {
       Thread.sleep(100000L);
     } catch (InterruptedException e) {
       e.printStackTrace();
-    }
+    }*/
      /* System.out.println(productService.getProductDetail("first"));
     System.out.println(productService.getProductDetail("first"));
     System.out.println(productService.getProductDetail("first"));
@@ -114,7 +117,7 @@ public class TestProcessor {
     System.out.println(productService.resultUnless(1231L));
     System.out.println(productService.resultUnless(1232L));
     System.out.println(productService.resultUnless(1233L));
-    productService.updateProduct(new Product());
+
     System.out.println("--");
     System.out.println(productService.resultUnless(1231L));
     System.out.println(productService.resultUnless(1232L));
@@ -125,13 +128,16 @@ public class TestProcessor {
     System.out.println(productService.resultUnless(1233L));
     System.out.println("======-resultUnless=====");*/
 
-
-
+    //productService.updateProduct(new Product());
+    System.out.println("----end----");
   }
 
   public void testHighConcurrencyCache(final IProductService productService){
+    System.out.println(productService.getProductWithConditionCache(1231L));
+    System.out.println(productService.getProductWithConditionCache(1231L));
+
     //productService.getProductWithConditionCache(1231L);
-    List<Callable<Integer>> callableBucket = new ArrayList<>();
+    /*List<Callable<Integer>> callableBucket = new ArrayList<>();
     for (int i = 0; i < 34 ; i++) {
       callableBucket.add(new Callable<Integer>() {
         @Override
@@ -151,7 +157,7 @@ public class TestProcessor {
       if(!exec.isShutdown()){
         exec.shutdown();
       }
-    }
+    }*/
   }
 
 

@@ -5,11 +5,11 @@ package com.figer.pattern.facade;
  */
 public class FacadeClient {
   public static void main(String[] args) {
-    BeanA beanA = new BeanA();
-    BeanB beanB = new BeanB();
+    Hospital beanA = new Hospital();
+    PoliceStation beanB = new PoliceStation();
     BeanC beanC = new BeanC();
 
     AbstractFacade abstractFacade = new ConcreteFacade(beanA, beanB, beanC);
-    abstractFacade.synthesisApi();
+    abstractFacade.doCertification();
   }
 }

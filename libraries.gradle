@@ -63,7 +63,10 @@ ext {
 		fastjson:		'com.alibaba:fastjson:1.2.7',
 		json_lib:		'net.sf.json-lib:json-lib:2.3:jdk15',	
 		jackson:		'org.codehaus.jackson:jackson-mapper-asl:1.9.1',
-		gson:			'com.google.code.gson:gson:2.3',	
+		gson:			'com.google.code.gson:gson:2.3',
+        jackson_core:      'com.fasterxml.jackson.core:jackson-core:2.6.7',
+        jackson_core_asl: 'com.fasterxml.jackson.core:jackson-core-asl:1.9.13',
+        jackson_databind: 'com.fasterxml.jackson.core:jackson-databind:2.6.7',
 
 		//commons
 		commons_beanutils:      'commons-beanutils:commons-beanutils:1.8.3',

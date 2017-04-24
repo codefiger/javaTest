@@ -7,7 +7,7 @@ import org.springframework.cache.annotation.Cacheable;
  * Created by figer on 8/15/16.
  */
 public interface IProductService {
-  @Cacheable(value = "productCache", key = "#id", cacheManager = "guavaCacheManager")
+  @Cacheable(value = "productCache", key = "#id.toString()")
   Product getProduct(Long id);
   Product resultUnless(Long id);
   Product getProductWithConditionCache(Long id);

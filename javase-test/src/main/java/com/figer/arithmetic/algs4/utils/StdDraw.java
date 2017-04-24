@@ -318,7 +318,7 @@ import javax.swing.KeyStroke;
  *  the onscreen canvas, where it is displayed in the standard drawing window. You
  *  can think of double buffering as collecting all of the lines, points, shapes,
  *  and text that you tell it to draw, and then drawing them all
- *  <em>simultaneously</em>, upon request.
+ *  <em>simultaneously</em>, upon create.
  *  <p>
  *  The most important use of double buffering is to produce computer
  *  animations, creating the illusion of motion by rapidly

@@ -34,7 +34,11 @@ public class TestCacheMain {
     IProductService everProxyService = annotationContext.getBean("proxyProductService", IProductService.class);
     SpringCacheConfig cacheConfig = annotationContext.getBean("springCacheConfig", SpringCacheConfig.class);
     new TestProcessor(cacheConfig).testProductServiceWithCache(everProxyService);
+
+
     //new TestProcessor(cacheConfig).testHighConcurrencyCache(everProxyService);
+    System.out.println("out end");
+    annotationContext.close();
   }
 
 }

@@ -43,6 +43,7 @@ public class AnnotationCacheProductService implements IProductService {
   }
 
   @Override
+  @Cacheable(value = "productCache", key = "#name")
   public String getProductDetail(String name) {
     return aspectCacheTest(name);
   }

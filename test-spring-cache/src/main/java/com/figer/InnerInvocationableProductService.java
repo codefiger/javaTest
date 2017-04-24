@@ -34,7 +34,7 @@ public class InnerInvocationableProductService implements IProductService {
 
 
   @Override
-  @Cacheable(value = "another", condition = "#id > 1000", key = "'' + #id")
+  @Cacheable(value = "productCache",  key = "'' + #id")
   public Product getProductWithConditionCache(Long id) {
     System.out.print("【get from db】");
     return new Product(id, "productName");
@@ -71,7 +71,7 @@ public class InnerInvocationableProductService implements IProductService {
     return "test : " + name;
   }
 
-  @CacheEvict(value="productCache", allEntries = true)
+  @CacheEvict(value = "productCache" , key = "#product.id.toString()")
   public void updateProduct(Product product) {
     updateDB(product);
   }

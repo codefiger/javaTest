@@ -5,6 +5,7 @@ import com.figer.springframent.InjectBeanSelfProcessor;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.interceptor.KeyGenerator;
@@ -19,6 +20,9 @@ import org.springframework.data.redis.connection.RedisClusterConfiguration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
+import org.springframework.data.redis.serializer.GenericToStringSerializer;
+import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.instrument.classloading.LoadTimeWeaver;
 import org.springframework.instrument.classloading.ReflectiveLoadTimeWeaver;
@@ -50,8 +54,9 @@ public class SpringCacheConfig implements LoadTimeWeavingConfigurer {
    * set cache name,expire time and maxSize
    */
   public enum CacheConfig {
-    productCache(10, TimeUnit.SECONDS, 100),
-    another(40, TimeUnit.SECONDS, 100),
+    productCache(300, TimeUnit.SECONDS, 100),
+    another(100, TimeUnit.SECONDS, 100),
+
     ;
     private long expireTime = DEFAULT_EXPIRE_TIME;
     private TimeUnit timeUnit = DEFAULT_TIME_UNIT;
@@ -91,7 +96,7 @@ public class SpringCacheConfig implements LoadTimeWeavingConfigurer {
   }
 
   /*@Bean
-  public CacheManager guavaCacheManager() {
+  public CacheManager redisCacheManager() {
     SimpleCacheManager cacheManager = new SimpleCacheManager();
 
     List<Cache> caches = new ArrayList<Cache>();
@@ -109,13 +114,16 @@ public class SpringCacheConfig implements LoadTimeWeavingConfigurer {
    * ...
    */
   //@Value("redis.cluster")
-  private static final List<String> nodes = Lists.newArrayList("localhost:6379");
+  private static final List<String> nodes = Lists.newArrayList("localhost:6379", "localhost:6377", "localhost:6378", "localhost:6376");
 
   public @Bean JedisConnectionFactory redisConnectionFactory() {
-    //JedisConnectionFactory redisConnectionFactory = new JedisConnectionFactory(new RedisClusterConfiguration(nodes));
-    JedisConnectionFactory redisConnectionFactory = new JedisConnectionFactory();
+    JedisConnectionFactory redisConnectionFactory = new JedisConnectionFactory(new RedisClusterConfiguration(nodes));
+    RedisClusterConfiguration redisClusterConfiguration = new RedisClusterConfiguration(nodes);
+    redisClusterConfiguration.setMaxRedirects(1);
+
+    /*JedisConnectionFactory redisConnectionFactory = new JedisConnectionFactory();
     redisConnectionFactory.setHostName("localhost");
-    redisConnectionFactory.setPort(6379);
+    redisConnectionFactory.setPort(6379);*/
     return redisConnectionFactory;
   }
 
@@ -123,44 +131,61 @@ public class SpringCacheConfig implements LoadTimeWeavingConfigurer {
     return new StringRedisSerializer();
   }
 
-  public @Bean RedisTemplate<String, String> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
-    RedisTemplate<String, String> redisTemplate = new RedisTemplate<>();
+  public @Bean RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
+    RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
     redisTemplate.setConnectionFactory(redisConnectionFactory);
     redisTemplate.setKeySerializer(stringRedisSerializer());
-    redisTemplate.setHashKeySerializer(stringRedisSerializer());
+    //redisTemplate.setHashKeySerializer(stringRedisSerializer());
+    redisTemplate.setValueSerializer(new GenericJackson2JsonRedisSerializer());
+    //redisTemplate.setValueSerializer(genericToStringSerializer());  //distasteful
+    //redisTemplate.setValueSerializer(new Jackson2JsonRedisSerializer<>(Object.class));
+
     return redisTemplate;
   }
 
-  public @Primary@Bean CacheManager cacheManager(RedisTemplate redisTemplate) {
+
+  public @Primary@Bean CacheManager redisCacheManager(RedisTemplate redisTemplate) {
     //GuavaCacheManager --->  RedisCacheManager
     RedisCacheManager cacheManager = new RedisCacheManager(redisTemplate);
     List<String> cacheNames = new ArrayList<>();
-    Map<String, Long> expires = Maps.newConcurrentMap();
+    Map<String, Long> expires = Maps.newHashMap();
+
     for(CacheConfig cacheConfig : CacheConfig.values()){
       cacheNames.add(cacheConfig.name());
-      expires.put(cacheConfig.name(), cacheConfig.expireTime);
+      expires.put(cacheConfig.name(), cacheConfig.getExpireTime());
     }
     cacheManager.setExpires(expires);
     cacheManager.setCacheNames(cacheNames);
     cacheManager.setUsePrefix(true);
+    //cacheManager.setLoadRemoteCachesOnStartup(true);
+    //cacheManager.setTransactionAware(true);
+    //cacheManager.afterPropertiesSet();
+    //cacheManager.setDefaultExpiration(60);
     return cacheManager;
   }
 
-  @Bean
-  public KeyGenerator customKeyGenerator() {
-    return new KeyGenerator() {
-      @Override
-      public Object generate(Object target, Method method, Object... params) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(target.getClass().getName());
-        sb.append(method.getName());
-        for (Object obj : params) {
-          sb.append(obj.toString());
-        }
-        return sb.toString();
-      }
-    };
+  public void test(){
+    String name = CacheConfig.productCache.name();
+    Cache cache = redisCacheManager(redisTemplate(redisConnectionFactory())).getCache(name);
+    String key = "4";
+    cache.evict(key);
   }
+
+  /*@Bean
+  @Primary
+  public KeyGenerator customKeyGenerator() {
+    System.out.println("---------------customKeyGenerator---------");
+    return (target, method, params) -> {
+      StringBuilder sb = new StringBuilder();
+      sb.append(target.getClass().getName());
+      sb.append(method.getName());
+      for (Object obj : params) {
+        System.out.println("---------------customKeyGenerator---------" + sb.toString());
+        sb.append(obj.toString());
+      }
+      return sb.toString();
+    };
+  }*/
 
 
   //redis end

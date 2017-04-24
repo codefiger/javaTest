@@ -16,6 +16,6 @@ public class NullOrderSubmit extends OrderSubmitTemplate {
 
   @Override
   public void request() {
-    System.out.println("NullOrderSubmit.request");
+    System.out.println("NullOrderSubmit.create");
   }
 }

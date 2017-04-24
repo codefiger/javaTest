@@ -17,7 +17,10 @@ dependencies{
 
                 libraries.slf4j_api,
                 libraries.logback,
-                libraries.util_guava
+                libraries.util_guava,
+                libraries.jackson_core,
+                libraries.jackson_core_asl,
+                libraries.jackson_databind
         )
 }
 

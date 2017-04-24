@@ -108,7 +108,7 @@ private static HttpConnectionManagerParams loadConfFromFile() {
     byte[] result = null;
     boolean haveException = true;
     try {
-      logger.debug("httpUtil post request start : [ id : {}] [ url : {} ] [ requestEntity : {} ]", requestId, url, requestEntity);
+      logger.debug("httpUtil post create start : [ id : {}] [ url : {} ] [ requestEntity : {} ]", requestId, url, requestEntity);
       int statusCode = client.executeMethod(method);
       if (statusCode != HttpStatus.SC_OK) {
         logger.warn("Http response status is not OK [ statusCode : {}] [id :{} ]", statusCode, requestId);
@@ -121,7 +121,7 @@ private static HttpConnectionManagerParams loadConfFromFile() {
     } finally {
       method.releaseConnection();
       if (logger.isDebugEnabled()) {
-        logger.debug("httpUtil post request end : [ id : {}] [ url : {} ] [ result : {} ] [ withError: {} ]", requestId, url, result != null ? new String(result) : null,
+        logger.debug("httpUtil post create end : [ id : {}] [ url : {} ] [ result : {} ] [ withError: {} ]", requestId, url, result != null ? new String(result) : null,
             haveException);
       }
     }
@@ -148,7 +148,7 @@ private static HttpConnectionManagerParams loadConfFromFile() {
     byte[] result = null;
     boolean haveException = true;
     try {
-      logger.debug("httpUtil post request start : [ id : {}] [ url : {} ]", requestId, url);
+      logger.debug("httpUtil post create start : [ id : {}] [ url : {} ]", requestId, url);
       int statusCode = client.executeMethod(method);
       if (statusCode != HttpStatus.SC_OK) {
         logger.warn("Http response status is not OK [" + statusCode + "]");
@@ -163,7 +163,7 @@ private static HttpConnectionManagerParams loadConfFromFile() {
     } finally {
       method.releaseConnection();
       if (logger.isDebugEnabled()) {
-        logger.debug("httpUtil post request end : [ id : {}] [ url : {} ] [ result : {} ] [ withError: {} ]", requestId, url, result != null ? new String(result) : null,
+        logger.debug("httpUtil post create end : [ id : {}] [ url : {} ] [ result : {} ] [ withError: {} ]", requestId, url, result != null ? new String(result) : null,
             haveException);
       }
     }

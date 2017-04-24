@@ -16,6 +16,6 @@ public class MessageQueueOrderSubmit extends OrderSubmitTemplate {
 
   @Override
   public void request() {
-    System.out.println("MessageQueueOrderSubmit.request");
+    System.out.println("MessageQueueOrderSubmit.create");
   }
 }

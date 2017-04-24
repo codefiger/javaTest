@@ -46,6 +46,22 @@ public class Evaluator {
     }
   }
 
+  public double calcPostfix(String str){
+    vals = new Stack<>();
+    String values[] = str.split(" ");
+    for (int i = 0; i < values.length; i++) {
+      if(Operation.isOperation(values[i])){
+        double leftVal = vals.pop();
+        vals.push(getResult(Operation.getOperation(values[i]), leftVal));
+      }else{
+        vals.push(Double.parseDouble(values[i]));
+      }
+    }
+    double value = vals.pop();
+
+    return value;
+  }
+
   //( 1 + ( ( 2 + 3 ) * ( 4 * 5 ) ) )
   public void start(){
     String inputStr;
@@ -89,6 +105,8 @@ public class Evaluator {
 
   public static void main(String[] args) {
     Evaluator evaluator = new Evaluator();
-    evaluator.start();
+    //evaluator.start();
+    String postfixStr = "1.0 2.0 3.0 4.0 + + + 5.0 6.0 * + ";
+    System.out.println(evaluator.calcPostfix(postfixStr));
   }
 }

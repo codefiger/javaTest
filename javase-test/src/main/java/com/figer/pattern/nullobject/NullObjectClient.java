@@ -7,16 +7,16 @@ import java.math.BigDecimal;
  */
 public class NullObjectClient {
   public static void main(String[] args) {
-    OrderServiceFactory serviceFactory = new OrderServiceFactory();
+    SenderFactory serviceFactory = new SenderFactory();
 
-    IOrderService orderService = serviceFactory.getService(OrderServiceFactory.OrderType.purchase);
+    Sender orderService = serviceFactory.getSender(SenderFactory.OrderType.purchase);
     Long orderId;
     orderId = orderService.create(BigDecimal.ONE);
     System.out.println(orderId);
     System.out.println(orderService.execute(orderId));
 
     System.out.println("==============");
-    orderService = serviceFactory.getService(null);
+    orderService = serviceFactory.getSender(null);
     orderId = orderService.create(BigDecimal.ONE);
     System.out.println(orderId);
     System.out.println(orderService.execute(orderId));
