@@ -11,7 +11,10 @@ public class SimpleReflectTest {
 	private static final Logger LOGGER = LoggerFactory.getLogger(User.class);
 	
 	public static void main(String[] args) throws Exception {
-		Class<?> userClass = Class.forName("com.figer.entity.User");
+	  User loginUser = new User();
+    System.out.println(loginUser.getClass().getName());
+
+    Class<?> userClass = Class.forName("com.figer.entity.User");
 		LOGGER.info(userClass.getName());
 		
 		User user = (User)userClass.getConstructor(Integer.class, String.class).newInstance(1, "figer");
@@ -27,6 +30,9 @@ public class SimpleReflectTest {
 		
 		//如下方法，如果一些逻辑反复出现，可用反射处理
 		doThreeTimes("hello", new User(1, "Tom"), null, null);
+
+
+
 	}
 	
 	private static Object doThreeTimes(String methodName, Object target, Object[] args, Class<?>... classParams) throws Exception{
