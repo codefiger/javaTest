@@ -1,6 +1,7 @@
 package com.figer.arithmetic;
 
 import java.util.Arrays;
+import java.util.HashSet;
 
 public class SortTest {
 	
@@ -18,6 +19,9 @@ public class SortTest {
 		quickSort(arr, 0, arr.length - 1);
 		System.out.println("quickSort use time:" + (System.currentTimeMillis() - startTime) + "ms");
 		System.out.println(Arrays.toString(arr));
+
+    HashSet set = new HashSet();
+    set.add("");
 	}
 	
 	

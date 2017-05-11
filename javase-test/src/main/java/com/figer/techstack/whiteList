@@ -1,0 +1,194 @@
+								
+	org.apache.commons:commons-lang3							
+	commons-lang:commons-lang3							
+	com.google.guava:guava							
+	commons-codec:commons-codec							
+	commons-collections:commons-collections							
+	commons-fileupload:commons-fileupload							
+	commons-io:commons-io							
+	org.apache.commons:common-math3							
+	commons-net:commons-net							
+	commons-beanutils:commons-beanutils							
+	net.sf.dozer:dozer							
+	javax.inject:javax.inject							
+	org.hibernate:hibernate-validator							
+	joda-time:joda-time							
+	com.sun.mail:javax.mail							
+	io.reactivex:rxjava							
+	org.apache.commons:commons-pool2							
+								
+	org.aspectj:aspectjrt							
+	org.aspectj:aspectjtools							
+	org.aspectj:aspectjweaver							
+	cglib:cglib-nodep:3.1							
+	org.springframework:spring-aop							
+	org.springframework:spring-aspects							
+								
+	com.fasterxml.jackson.core:jackson-annotations							
+	com.fasterxml.jackson.core:jackson-core							
+	com.fasterxml.jackson.core:jackson-databind							
+	com.fasterxml.jackson.module:jackson-module-jaxb-annotations							
+								
+	io.dropwizard.metrics:metrics-annotation							
+	io.dropwizard.metrics:metrics-core							
+	io.dropwizard.metrics:metrics-servlets							
+	io.dropwizard:dropwizard-core							
+								
+	org.slf4j:jcl-over-slf4j							
+	org.slf4j:jul-to-slf4j							
+	org.slf4j:log4j-over-slf4j							
+	org.slf4j:slf4j-api							
+	org.slf4j:slf4j-simple							
+	org.apache.logging.log4j:log4j-api							
+	org.apache.logging.log4j:log4j-core							
+	org.apache.logging.log4j:log4j-slf4j-impl							
+	ch.qos.logback:logback-classic							
+								
+	org.mybatis:mybatis							
+	org.mybatis:mybatis-spring							
+	com.github.miemiedev:mybatis-paginator							
+	mysql:mysql-connector-java							
+	com.oracle:ojdbc6							
+	com.alibaba:druid							
+								
+	org.apache.httpcomponents:fluent-hc							
+	org.apache.httpcomponents:httpclient							
+	org.apache.httpcomponents:httpmime							
+	io.github.openfeign:feign-core							
+	io.github.openfeign:feign-httpclient							
+	io.github.openfeign:feign-jackson							
+	org.springframework:spring-web							
+								
+	com.baidu:jprotobuf							
+	com.baidu:jprotobuf-rpc-core							
+	com.baidu:jprotobuf-rpc-core-spring							
+	com.baidu:jprotobuf-rpc-registry-redis							
+	com.google.protobuf:protobuf-java							
+								
+	org.apache.curator:curator-client							
+	org.apache.curator:curator-framework							
+	org.apache.curator:curator-recipes							
+	org.apache.curator:curator-test							
+								
+	org.elasticsearch:elasticsearch							
+	io.searchbox:jest							
+								
+	redis.clients:jedis							
+	org.springframework.session:spring-session-data-redis							
+								
+	com.rabbitmq:amqp-client							
+	org.springframework.amqp:spring-rabbit							
+								
+	org.apache.kafka:kafka-clients							
+	org.springframework.kafka:spring-kafka							
+								
+	org.activiti:activiti-spring							
+								
+	com.aliyun.oss:aliyun-sdk-oss							
+	com.aliyun:aliyun-java-sdk-core							
+								
+	com.github.sogyf:goja-qrcode							
+	net.sf.barcode4j:barcode4j							
+	org.im4java:im4java:1.4.0							
+	net.coobird:thumbnailator:0.4.7							
+	org.imgscalr:imgscalr-lib							
+	com.google.code:kaptcha							
+								
+	com.itextpdf:itext-asian							
+	com.itextpdf:itextpdf							
+	org.freemarker:freemarker							
+	org.apache.poi:poi							
+	org.apache.poi:poi-ooxml							
+	org.apache.velocity:velocity							
+	org.jsoup:jsoup							
+								
+	org.springframework.security:spring-security-config							
+	org.springframework.security:spring-security-core							
+	org.springframework.session:spring-session							
+	org.springframework.security:spring-security-cas							
+	com.auth0:java-jwt							
+	org.jasig.cas:cas-server-webapp-support							
+	org.jasig.cas:cas-server-support-jdbc							
+	org.jasig.cas:cas-server-integration-restlet							
+								
+	de.ruedigermoeller:fst							
+	xerces:xercesImpl							
+	xalan:xalan							
+	com.fasterxml:classmate							
+	org.codehaus.woodstox:woodstox-core-asl							
+	io.springfox:springfox-swagger2							
+	io.springfox:springfox-swagger-common							
+	io.springfox:springfox-core							
+	io.springfox:springfox-spi							
+	io.springfox:springfox-schema							
+	io.springfox:springfox-swagger-ui							
+	io.springfox:springfox-spring-web							
+	io.springfox:springfox-staticdocs							
+	io.swagger:swagger-models							
+	io.swagger:swagger-annotations							
+	io.swagger:swagger-jaxrs							
+	io.swagger:swagger-codegen							
+								
+	org.springframework:spring-aop							
+	org.springframework:spring-aspects							
+	org.springframework:spring-beans							
+	org.springframework:spring-context							
+	org.springframework:spring-context-support							
+	org.springframework:spring-core							
+	org.springframework:spring-expression							
+	org.springframework:spring-jdbc							
+	org.springframework:spring-messaging							
+	org.springframework:spring-orm							
+	org.springframework:spring-oxm							
+	org.springframework:spring-tx							
+	org.springframework:spring-web							
+	org.springframework:spring-webmvc							
+	org.springframework.amqp:spring-amqp							
+	org.springframework.amqp:spring-rabbit							
+	org.springframework.batch:spring-batch-core							
+	org.springframework.boot:spring-boot							
+	org.springframework.boot:spring-boot-autoconfigure							
+	org.springframework.boot:spring-boot-autoconfigureâ€™							
+	org.springframework.boot:spring-boot-starter							
+	org.springframework.boot:spring-boot-starter-actuator							
+	org.springframework.boot:spring-boot-starter-amqp							
+	org.springframework.boot:spring-boot-starter-batch							
+	org.springframework.boot:spring-boot-starter-cache							
+	org.springframework.boot:spring-boot-starter-data-elasticsearch							
+	org.springframework.boot:spring-boot-starter-data-jpa							
+	org.springframework.boot:spring-boot-starter-data-redis							
+	org.springframework.boot:spring-boot-starter-freemarker							
+	org.springframework.boot:spring-boot-starter-jetty							
+	org.springframework.boot:spring-boot-starter-log4j2							
+	org.springframework.boot:spring-boot-starter-test							
+	org.springframework.boot:spring-boot-starter-web							
+	org.mybatis.spring.boot:mybatis-spring-boot-starter							
+								
+	org.springframework.cloud:spring-cloud-context							
+	org.springframework.cloud:spring-cloud-netflix-core							
+	org.springframework.cloud:spring-cloud-starter-archaius							
+	org.springframework.cloud:spring-cloud-starter-bus-amqp							
+	org.springframework.cloud:spring-cloud-starter-feign							
+	org.springframework.cloud:spring-cloud-starter-hystrix							
+	org.springframework.cloud:spring-cloud-starter-ribbon							
+	org.springframework.cloud:spring-cloud-starter-sleuth							
+	org.springframework.cloud:spring-cloud-starter-zookeeper							
+	org.springframework.cloud:spring-cloud-starter-zookeeper-config							
+	org.springframework.cloud:spring-cloud-starter-zookeeper-discovery							
+	org.springframework.cloud:spring-cloud-starter-zuul							
+	org.springframework.cloud:spring-cloud-zookeeper-config							
+	com.netflix.hystrix:hystrix-core							
+								
+	org.easymock:easymock							
+	org.mockito:mockito-all							
+	org.mockito:mockito-core							
+	junit:junit							
+	org.testng:testng							
+	org.powermock:powermock-core							
+	org.powermock:powermock-api-mockito							
+	org.powermock:powermock-module-junit4							
+	org.powermock:powermock-module-junit4-common							
+	org.powermock:powermock-reflect							
+	org.hamcrest:hamcrest-library							
+	org.quartz-scheduler:quartz							
+	compile 'org.quartz-scheduler:quartz-jobs							

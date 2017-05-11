@@ -2,9 +2,9 @@ package com.figer;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.util.HashMap;
+import java.time.LocalTime;
+import java.util.Date;
 import java.util.Properties;
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -19,7 +19,6 @@ import org.apache.commons.httpclient.methods.ByteArrayRequestEntity;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.methods.RequestEntity;
-import org.apache.commons.httpclient.methods.StringRequestEntity;
 import org.apache.commons.httpclient.params.HttpConnectionManagerParams;
 import org.apache.commons.httpclient.params.HttpMethodParams;
 import org.slf4j.Logger;
@@ -175,6 +174,7 @@ private static HttpConnectionManagerParams loadConfFromFile() {
   }
   
   public static void main(String[] args) {
+    System.out.println(System.getProperty("java.class.path"));
     //System.out.println(getAsString("http://www.dianrong.com/api/v2/payment/fastpay/getBankNameByCard?cardBin=6259980005238181"));
 
 
@@ -184,7 +184,7 @@ private static HttpConnectionManagerParams loadConfFromFile() {
     executorService.execute(() -> {
       while (true) {
         try {
-          Thread.sleep(100);
+          Thread.sleep(1000);
         } catch (InterruptedException e) {
           e.printStackTrace();
         }
@@ -195,7 +195,7 @@ private static HttpConnectionManagerParams loadConfFromFile() {
         String contentType = "application/json";
         String result = post(url, DEFAULT_ENCODE, content, contentType);
         long second = System.currentTimeMillis();
-        System.out.println("query total use:" + (second - startime) + " at " + second);
+        System.out.println(LocalTime.now()  + "query total use:" + (second - startime) + " at " + second);
         //System.out.println(result);
         //System.out.println("total use:" + (System.currentTimeMillis() - startime));
       }
@@ -209,10 +209,10 @@ private static HttpConnectionManagerParams loadConfFromFile() {
           e.printStackTrace();
         }
         long startime = System.currentTimeMillis();
-        String url = "http://10.18.19.126:18000/health";
+        String url = "http://10.18.19.128:18000/health";
         String result = getAsString(url);
         long second = System.currentTimeMillis();
-        System.out.println("========health total use:" + (second - startime) + " at " + second);
+        System.out.println(LocalTime.now() + "========health total use:" + (second - startime) + " at " + second);
         //System.out.println(result);
         //System.out.println("total use:" + (System.currentTimeMillis() - startime));
       }

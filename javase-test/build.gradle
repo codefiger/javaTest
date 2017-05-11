@@ -30,8 +30,12 @@ dependencies{
                 libraries.util_guava,
                 libraries.httpclient,
                 libraries.crawler4j,
-                libraries.fastjson
+                libraries.fastjson,
         )
     compile 'com.starwin:common:1.0.0-Snapshot'
+    compile "org.codehaus.groovy:groovy-all:2.4.11"
+    compile "com.fasterxml.jackson.core:jackson-core:2.9.0.pr3"
+    compile "com.fasterxml.jackson.core:jackson-databind:2.9.0.pr3"
+    compile "com.fasterxml.jackson.core:jackson-annotations:2.9.0.pr3"
 }
 

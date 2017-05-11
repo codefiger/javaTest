@@ -19,7 +19,6 @@ dependencies{
                 libraries.logback,
                 libraries.util_guava,
                 libraries.jackson_core,
-                libraries.jackson_core_asl,
                 libraries.jackson_databind
         )
 }
