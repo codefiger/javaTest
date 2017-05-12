@@ -11,9 +11,6 @@ subprojects {
 	
 
     repositories {
-        // maven { url 'http://192.168.160.187:8081/nexus/content/groups/public' }
-        // maven { url 'https://maven.alfresco.com/nexus/content/groups/public' }
-        //maven { url 'http://archiva.dianrong.com/repository/mirror'}
         maven { url 'http://nexus.dianrong.com/nexus/content/groups/public/' }
 	maven { url 'http://maven.aliyun.com/nexus/content/groups/public'}
 	mavenCentral()
