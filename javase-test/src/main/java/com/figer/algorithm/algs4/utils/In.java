@@ -12,7 +12,7 @@ import java.io.IOException;
  * Created by figer on 08/03/2017.
  */
 public class In {
-  private static final String line_separator = "/";
+  private static final String line_separator = " ";
 
   private String filename;
 

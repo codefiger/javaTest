@@ -11,7 +11,7 @@ package com.figer.algorithm.algs4.unionfind;
  */
 public interface IUnionFind {
   /**
-   * 返回触点的分量标识符，在quick-union中返回root的标识符
+   * 返回节点所属的组
    */
   int find(int component);
 
@@ -29,4 +29,12 @@ public interface IUnionFind {
    * return number of components
    */
   int count();
+
+  default void resetCost(){
+
+  }
+
+  default int getCount(){
+    return 0;
+  }
 }

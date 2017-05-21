@@ -6,6 +6,15 @@ package com.figer.algorithm.algs4.unionfind;
 public class UnionQuickFind implements IUnionFind{
   private int ids[];// index -> 触点 , value ->  分量的标识符 （标识符即数组索引,如果分量标识符相同，说明触点们在同一个分量中）
   private int count;// 连通分量的数量
+  private int cost = 0;
+
+  public void resetCost(){
+    cost = 0;
+  }
+
+  public int getCount(){
+    return cost;
+  }
 
   public UnionQuickFind(int componentsNum) {
     ids = new int[componentsNum];
@@ -16,6 +25,7 @@ public class UnionQuickFind implements IUnionFind{
   }
 
   public int find(int component){
+    cost = cost + 1;
     return ids[component];
   }
 
@@ -24,20 +34,23 @@ public class UnionQuickFind implements IUnionFind{
   }
 
   public void union(int componentP, int componentQ){
-    if(connected(componentP, componentQ)){
+    /*if(connected(componentP, componentQ)){
       throw new UnsupportedOperationException(String.format("%d and %d have connected", componentP, componentQ));
-    }else{
+    }else{*/
       int pID = find(componentP);
       int qID = find(componentQ);
 
+      cost = cost + 1;
       for (int i = 0; i < ids.length; i++) {
         if(pID == find(i)){
           ids[i] = qID;
+          cost = cost + 2;
         }
       }
       
       count --;
-    }
+
+   /* }*/
   }
 
   public int count(){

@@ -2,6 +2,7 @@ import com.dr.coffee.common.util.JsonUtil;
 import com.figer.tools.counter.PdfReader;
 import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 import com.sun.syndication.feed.atom.Person;
+import sun.reflect.misc.ReflectUtil;
 
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
@@ -23,21 +24,21 @@ public class Foo {
 		return count;
 	}
 
-  public static void main(String[] args) {
+  public static void main(String[] args){
 
     /*PdfReader pdfReader = new PdfReader("");
     while (pdfReader.hasNext()){
       System.out.print(pdfReader.next());
     }*/
 
-    long startTime = System.nanoTime();
+    /*long startTime = System.nanoTime();
     printMatrix("# ");
     long firstEndTime = System.nanoTime();
     printMatrix("# ");
     long secondEndTime = System.nanoTime();
 
     System.out.println("# executed time : " + (firstEndTime - startTime));
-    System.out.println("B executed time : " + (secondEndTime - firstEndTime));
+    System.out.println("B executed time : " + (secondEndTime - firstEndTime));*/
   }
 
   private static void printMatrix(String input){

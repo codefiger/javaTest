@@ -5,16 +5,16 @@ package com.figer.algorithm.algs4.unionfind;
  */
 public class WeightedQuickUnionFind implements IUnionFind{
   private int ids[];// index -> 触点 , value ->  同一分量中根触点标识符 （如果分量只有自己，那值为自己的触点标识符）
-  private int count;// 连通分量的数量
-  private int weights[];//各个节点对应分量的大小（以触点为索引）
+  private int count;// 集合的数量
+  private int weights[];//各个节点对应树的深度（以节点为索引）
 
   public WeightedQuickUnionFind(int componentsNum) {
     ids = new int[componentsNum];
     weights = new int[componentsNum];
-    count = componentsNum;//初始化时，所有的触点都是单个连接
+    count = componentsNum;//初始化时，所有的节点都是单个连接
     for (int i = 0; i < componentsNum; i++) {
       ids[i] = i;
-      weights[i] = 1;//初始所有的分量大小均为1
+      weights[i] = 1;//初始所有树的高度均为1
     }
   }
 
@@ -30,19 +30,17 @@ public class WeightedQuickUnionFind implements IUnionFind{
   }
 
   public void union(int componentP, int componentQ){
-    if(connected(componentP, componentQ)){
-      throw new UnsupportedOperationException(String.format("%d and %d have connected", componentP, componentQ));
-    }else{
-      int pRootID = find(componentP);
-      int qRootID = find(componentQ);
+    int pRootID = find(componentP);
+    int qRootID = find(componentQ);
 
-      if(weights[pRootID] > weights[qRootID]){
-        ids[qRootID] = pRootID;
-      }else{
-        ids[pRootID] = qRootID;
-      }
-      count --;
+    if(weights[pRootID] > weights[qRootID]){
+      ids[qRootID] = pRootID;
+      weights[pRootID] += 1;
+    }else{
+      ids[pRootID] = qRootID;
+      weights[qRootID] += 1;
     }
+    count --;
   }
 
   public int count(){
