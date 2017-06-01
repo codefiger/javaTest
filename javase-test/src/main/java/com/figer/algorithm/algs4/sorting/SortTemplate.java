@@ -1,5 +1,9 @@
 package com.figer.algorithm.algs4.sorting;
 
+import com.figer.algorithm.algs4.utils.StdDraw;
+
+import java.awt.*;
+
 /**
  * Created by figer on 21/05/2017.
  */
@@ -16,11 +20,31 @@ public abstract class SortTemplate {
     array[j] = temp;
   }
 
+  private static final double X_BASE = 10;
+  private static final double Y_BASE = 10;
+  private static final double X_BASE_END = 90;
+  private static final double Y_BASE_END = 90;
   public void show(Comparable array[]){
-    for (int i = 0; i < array.length; i++) {
+    /*for (int i = 0; i < array.length; i++) {
       System.out.print(array[i] + " ");
     }
-    System.out.println();
+    System.out.println();*/
+
+    StdDraw.setYscale(0, 100);
+    StdDraw.setXscale(0, 100);
+    StdDraw.line(X_BASE, X_BASE,X_BASE_END,X_BASE);//x轴
+    StdDraw.text(X_BASE_END, Y_BASE, X_BASE_END+"");
+    StdDraw.line(X_BASE, X_BASE,X_BASE,Y_BASE_END);//y轴
+    StdDraw.text(X_BASE, Y_BASE_END, Y_BASE_END + "");
+    StdDraw.setPenColor(Color.red);
+
+    for (int i = 0; i < array.length; i++) {
+      double halfWidth = i/2;
+      double halfHeight = i/2;
+      StdDraw.rectangle(X_BASE + 4*i + halfWidth, Y_BASE + halfHeight, halfWidth, halfHeight);
+      StdDraw.text(X_BASE + 4*i + halfWidth , Y_BASE, i + "");
+      System.out.print(array[i] + " ");
+    }
   }
   
   public boolean isSorted(Comparable array[]){

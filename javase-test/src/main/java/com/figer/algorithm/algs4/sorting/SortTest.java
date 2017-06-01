@@ -5,14 +5,16 @@ package com.figer.algorithm.algs4.sorting;
  */
 public class SortTest {
   public static void main(String[] args) {
-    SortTemplate sortTemplate = new SelectSort();
+    SortTemplate sortTemplate = new Insertion();
     String inputArray[] = {"z", "c", "h", "e", "b", "a"};
-    System.out.println(sortTemplate.isSorted(inputArray));
-
-    sortTemplate.sort(inputArray);
-
-    System.out.println(sortTemplate.isSorted(inputArray));
-
+    System.out.println("before sorted:");
     sortTemplate.show(inputArray);
+
+    /*sortTemplate.sort(inputArray);
+
+    Preconditions.checkArgument(sortTemplate.isSorted(inputArray));
+
+    System.out.println("after sorted:");
+    sortTemplate.show(inputArray);*/
   }
 }
