@@ -35,9 +35,9 @@ public class SortCompare {
     long startTime = System.nanoTime();
     if (alg.equals("Insertion")) new Insertion().sort(a);
     if (alg.equals("Selection")) new Selection().sort(a);
-    /*if (alg.equals("Shell"))Shell.sort(a);
-    if (alg.equals("Merge"))Merge.sort(a);
-    if (alg.equals("Quick"))Quick.sort(a);
+    if (alg.equals("Shell")) new Shell().sort(a);
+    if (alg.equals("Merge")) new Merge().sort(a);
+    /*if (alg.equals("Quick"))Quick.sort(a);
     if (alg.equals("Heap"))Heap.sort(a);*/
     return System.nanoTime() - startTime;
   }

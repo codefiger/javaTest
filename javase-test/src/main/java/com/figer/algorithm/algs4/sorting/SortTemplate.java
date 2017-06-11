@@ -3,11 +3,17 @@ package com.figer.algorithm.algs4.sorting;
 import com.figer.algorithm.algs4.utils.StdDraw;
 
 import java.awt.*;
+import java.util.Arrays;
 
 /**
  * Created by figer on 21/05/2017.
  */
 public abstract class SortTemplate {
+  protected int arraySize = 0;
+  protected Comparable copy[];
+
+  public SortTemplate() {}
+
   public abstract void sort(Comparable array[]);
 
   public boolean less(Comparable a, Comparable b){
@@ -25,12 +31,12 @@ public abstract class SortTemplate {
   private static final double X_BASE_END = 90;
   private static final double Y_BASE_END = 90;
   public void show(Comparable array[]){
-    /*for (int i = 0; i < array.length; i++) {
+    for (int i = 0; i < array.length; i++) {
       System.out.print(array[i] + " ");
     }
-    System.out.println();*/
+    System.out.println();
 
-    StdDraw.setYscale(0, 100);
+    /*StdDraw.setYscale(0, 100);
     StdDraw.setXscale(0, 100);
     StdDraw.line(X_BASE, X_BASE,X_BASE_END,X_BASE);//x轴
     StdDraw.text(X_BASE_END, Y_BASE, X_BASE_END+"");
@@ -44,7 +50,7 @@ public abstract class SortTemplate {
       StdDraw.rectangle(X_BASE + 4*i + halfWidth, Y_BASE + halfHeight, halfWidth, halfHeight);
       StdDraw.text(X_BASE + 4*i + halfWidth , Y_BASE, i + "");
       System.out.print(array[i] + " ");
-    }
+    }*/
   }
   
   public boolean isSorted(Comparable array[]){
@@ -54,5 +60,30 @@ public abstract class SortTemplate {
       }
     }
     return true;
+  }
+
+  public void merge(int low, int mid, int high, Comparable array[]){
+    int leftIndex = low;
+    int rightIndex = mid + 1;
+
+    if(array[mid].compareTo(array[mid + 1]) <= 0){//右半边都小于左半边就不用merge了
+      return;
+    }
+
+    for (int i = low; i <= high; i++) {
+      copy[i] = array[i];
+    }
+
+    for (int i = low; i <= high; i++) {
+      if(leftIndex > mid){
+        array[i] = copy[rightIndex++];
+      }else if(rightIndex > high){
+        array[i] = copy[leftIndex++];
+      }else if(less(copy[rightIndex], copy[leftIndex])){
+        array[i] = copy[rightIndex++];
+      }else{
+        array[i] = copy[leftIndex++];
+      }
+    }
   }
 }
