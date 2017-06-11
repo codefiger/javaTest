@@ -8,16 +8,16 @@ public class Merge extends SortTemplate {
   public void sort(Comparable[] array) {
     arraySize = array.length;
     copy = new Comparable[arraySize];
-    sortInner(0, array.length, array);
+    sortInner(0, array.length-1, array);
   }
 
   private void sortInner(int low, int high, Comparable array[]){
-    if(low <= high){
+    if(high <= low){
       return;
     }else{
       int mid = low + (high - low)/2;
       sortInner(low, mid, array);
-      sortInner(mid, high, array);
+      sortInner(mid+1, high, array);
       merge(low, mid, high, array);
     }
   }

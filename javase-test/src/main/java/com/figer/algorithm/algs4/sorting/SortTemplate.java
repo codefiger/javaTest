@@ -14,6 +14,7 @@ public abstract class SortTemplate {
 
   public SortTemplate() {}
 
+  //TODO refactor
   public abstract void sort(Comparable array[]);
 
   public boolean less(Comparable a, Comparable b){
@@ -85,5 +86,30 @@ public abstract class SortTemplate {
         array[i] = copy[leftIndex++];
       }
     }
+  }
+
+  /**
+   *
+   * @param low
+   * @param high
+   * @param array
+   * @return the partition index
+   */
+  public int partition(int low, int high, Comparable array[]){
+    int left = low;
+    int right = high + 1;
+    Comparable partition = array[low];
+    while (true){
+      while (left < right - 1 && less(array[++left], partition));
+      while (right > left - 1 && less(partition, array[--right]));
+
+      if(left >= right){
+        exch(array, low, right);
+        break;
+      }else{
+        exch(array, left, right);
+      }
+    }
+    return right;
   }
 }

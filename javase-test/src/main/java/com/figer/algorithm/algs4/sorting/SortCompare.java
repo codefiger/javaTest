@@ -15,7 +15,7 @@ public class SortCompare {
 
     long t0 = multiTestTime(alg0, arrayLength, times);
     long t1 = multiTestTime(alg1, arrayLength, times);
-    System.out.println(String.format("For %d random Doubles %s is %.3f times faster than %s", arrayLength, alg0, t1*1.0/t0, alg1));
+    System.out.println(String.format("For %d random Doubles %s : %d ms is %.3f times faster than %s : %d ms ", arrayLength, alg0, t0, t1*1.0/t0, alg1, t1));
   }
 
   private static long multiTestTime(String algName, int arrayLength, int times) {
@@ -32,14 +32,14 @@ public class SortCompare {
   }
 
   private static long time(String alg, Double[] a) {
-    long startTime = System.nanoTime();
+    long startTime = System.currentTimeMillis();
     if (alg.equals("Insertion")) new Insertion().sort(a);
     if (alg.equals("Selection")) new Selection().sort(a);
     if (alg.equals("Shell")) new Shell().sort(a);
     if (alg.equals("Merge")) new Merge().sort(a);
-    /*if (alg.equals("Quick"))Quick.sort(a);
-    if (alg.equals("Heap"))Heap.sort(a);*/
-    return System.nanoTime() - startTime;
+    if (alg.equals("Quick")) new Quick().sort(a);
+    /*if (alg.equals("Heap"))Heap.sort(a);*/
+    return System.currentTimeMillis() - startTime;
   }
 
 
