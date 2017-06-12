@@ -1,21 +1,18 @@
 package com.figer.algorithm.algs4.sorting;
 
-import com.figer.algorithm.algs4.utils.StdDraw;
-
-import java.awt.*;
-import java.util.Arrays;
-
 /**
  * Created by figer on 21/05/2017.
  */
 public abstract class SortTemplate {
-  protected int arraySize = 0;
   protected Comparable copy[];
 
   public SortTemplate() {}
 
-  //TODO refactor
-  public abstract void sort(Comparable array[]);
+  public void sort(Comparable array[]){
+    sort(array, 0, array.length - 1);
+  }
+
+  public abstract void sort(Comparable array[], int low, int high);
 
   public boolean less(Comparable a, Comparable b){
     return a.compareTo(b) < 0;

@@ -4,11 +4,15 @@ package com.figer.algorithm.algs4.sorting;
  * Created by figer on 11/06/2017.
  */
 public class Merge extends SortTemplate {
+  public Merge() {
+  }
+
   @Override
-  public void sort(Comparable[] array) {
-    arraySize = array.length;
-    copy = new Comparable[arraySize];
-    sortInner(0, array.length-1, array);
+  public void sort(Comparable[] array, int low, int high) {
+    if(copy == null){
+      copy = new Comparable[array.length];
+    }
+    sortInner(low, high, array);
   }
 
   private void sortInner(int low, int high, Comparable array[]){

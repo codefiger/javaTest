@@ -5,10 +5,10 @@ package com.figer.algorithm.algs4.sorting;
  */
 public class Selection extends SortTemplate {
   @Override
-  public void sort(Comparable[] array) {
-    for (int i = 0; i < array.length - 1; i++) {
+  public void sort(Comparable[] array, int low, int high) {
+    for (int i = low; i <= high; i++) {
       int min = i;
-      for (int j = i + 1; j < array.length; j++) {
+      for (int j = i + 1; j <= high; j++) {
         if(less(array[j], array[min])){
           min = j;
         }
