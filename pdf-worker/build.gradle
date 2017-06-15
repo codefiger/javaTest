@@ -1,5 +1,10 @@
 dependencies{
 	compile 'com.itextpdf:itextpdf:5.5.10'
+    compile 'org.freemarker:freemarker:2.3.23'
+    compile 'org.apache.poi:poi:3.16'
+    compile 'org.apache.poi:poi-ooxml:3.16'
+    compile 'fr.opensagres.xdocreport:org.apache.poi.xwpf.converter.pdf:1.0.4'
+    compile 'com.lowagie:itext:2.1.7'
 }
 
 
