@@ -10,7 +10,7 @@ import java.util.Stack;
 public class TopM {
   public static void main(String[] args) {
     int max = 5;
-    MaxPQ<Transaction> maxPQ = new ArrayMaxPQ<>(max);
+    MaxPQ<Transaction> maxPQ = new SortedArrayMaxPQ<>(max);
     int amount;
     while((amount = StdIn.readInt()) != -1){
       maxPQ.insert(new Transaction(amount));
