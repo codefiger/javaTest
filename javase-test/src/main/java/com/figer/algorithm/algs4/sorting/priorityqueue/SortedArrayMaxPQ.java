@@ -37,6 +37,7 @@ public class SortedArrayMaxPQ<Key extends Comparable> extends MaxPQ<Key> {
     for (int i = 1; i < size; i++) {
       container.set(i - 1, container.get(i));
     }
+    size --;
     return max;
   }
 

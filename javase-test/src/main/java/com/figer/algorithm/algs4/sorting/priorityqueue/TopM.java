@@ -1,7 +1,5 @@
 package com.figer.algorithm.algs4.sorting.priorityqueue;
 
-import com.figer.algorithm.algs4.utils.StdIn;
-
 import java.util.Stack;
 
 /**
@@ -11,9 +9,9 @@ public class TopM {
   public static void main(String[] args) {
     int max = 5;
     MaxPQ<Transaction> maxPQ = new SortedArrayMaxPQ<>(max);
-    int amount;
-    while((amount = StdIn.readInt()) != -1){
-      maxPQ.insert(new Transaction(amount));
+
+    for (Transaction transaction : getRandomTransArray()) {
+      maxPQ.insert(transaction);
       if(maxPQ.size() > max){
         maxPQ.delMax();
       }
@@ -25,6 +23,20 @@ public class TopM {
     }
 
     stack.forEach(transaction -> System.out.println(transaction));
+  }
+
+  private static Transaction[] getRandomTransArray(){
+    Transaction transactions[] = new Transaction[]{
+        new Transaction(0),
+        new Transaction(5),
+        new Transaction(8),
+        new Transaction(1),
+        new Transaction(11),
+        new Transaction(3),
+        new Transaction(1000),
+        new Transaction(2)};
+
+    return transactions;
   }
 
   public static class Transaction implements Comparable {

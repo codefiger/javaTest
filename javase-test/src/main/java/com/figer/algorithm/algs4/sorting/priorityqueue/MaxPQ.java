@@ -23,7 +23,6 @@ public abstract class MaxPQ <Key extends Comparable>{
 
   public Key delMax(){
     Key delKey = pureDelMax();
-    size --;
     return delKey;
   }
 

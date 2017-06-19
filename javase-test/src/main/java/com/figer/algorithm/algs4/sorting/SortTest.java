@@ -7,7 +7,7 @@ import com.google.common.base.Preconditions;
  */
 public class SortTest {
   public static void main(String[] args) {
-    SortTemplate sortTemplate = new Selection();
+    SortTemplate sortTemplate = new Heap();
     String inputArray[] = {"z", "c", "h", "e", "b", "a", "a", "z", "c"};
     System.out.println("before sorted:");
     sortTemplate.show(inputArray);

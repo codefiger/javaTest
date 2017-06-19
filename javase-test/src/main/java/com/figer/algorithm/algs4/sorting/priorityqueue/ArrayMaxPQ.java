@@ -30,7 +30,7 @@ public class ArrayMaxPQ<Key extends Comparable> extends MaxPQ<Key> {
     if(maxIndex != size - 1){
       container[maxIndex] = container[size - 1];
     }
-    container[size - 1] = null;
+    container[--size] = null;
     return max;
   }
 
