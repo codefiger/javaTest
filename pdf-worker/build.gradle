@@ -12,6 +12,8 @@ dependencies{
     compile 'com.documents4j:documents4j-transformer:1.0.3'
     compile 'com.documents4j:documents4j-util-all:1.0.3'
     compile 'com.documents4j:documents4j-transformer-msoffice-word:1.0.3'
+
+    compile 'org.docx4j:docx4j:3.3.3'
 }
 
 
