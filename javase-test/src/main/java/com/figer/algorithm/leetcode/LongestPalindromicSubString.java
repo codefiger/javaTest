@@ -28,10 +28,6 @@ public class LongestPalindromicSubString {
       return true;
     }
     if(m % 2 == 0){
-      for (int i = 0; i < m/2; i++) {
-
-      }
-
       return isPalindromicChars(string.substring(0, m/2).toCharArray(), string.substring(m/2, m).toCharArray());
     }else{
       return isPalindromicChars(string.substring(0, m/2 + 1).toCharArray(), string.substring(m/2, m).toCharArray());
