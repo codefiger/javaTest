@@ -9,6 +9,10 @@ import java.util.Stack;
  */
 public class ReverseInteger {
   public static void main(String[] args) {
+    int num = 12;
+    System.out.println();
+    System.out.println((num * 52429) >>> 19);
+
     int num1 = 1234, num1Reversed = 4321;
     int num2 = -1234, num2Reversed = -4321;
     int num3 = 0, num3Reversed = 0;
@@ -83,8 +87,25 @@ public class ReverseInteger {
     return (int)(isNegative ? -reversedNum : reversedNum);
   }
 
-  public int revese2(int num){
-    //TODO 位操作
-    return 0;
+  public int reverse2(int i){//位操作
+    boolean isNegative = false;
+    if (i < 0) {
+      isNegative = true;
+      i = -i;
+    }
+    int r;
+    int q;
+    int result = 0;
+    while (true) {
+      q = (i * 52429) >>> 19;//去尾1位，2<<(16+3)＝524288 52429/524288约为0.1
+      r = i - ((q << 3) + (q << 1));//r=i-q*10,截出最后一位
+      result = (result<<3)+(result<<1)+r;
+      i=q;
+      if(q==0)break;
+    }
+    if(isNegative) result = -result;
+
+    System.out.println("result:" + result);
+    return result;
   }
 }
