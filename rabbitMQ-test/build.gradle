@@ -1,6 +1,12 @@
 dependencies{
         compile(
-		        libraries.rabbit_mq
+		        libraries.rabbit_mq,
+                libraries.spring_core,
+                libraries.spring_context,
+                libraries.spring_beans,
+                'org.springframework.amqp:spring-rabbit:1.6.2.RELEASE',
+                'org.springframework.amqp:spring-amqp:1.6.2.RELEASE',
+                'com.rabbitmq:amqp-client:3.4.4'
         )
 }
 

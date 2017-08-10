@@ -1,5 +1,19 @@
 dependencies{
 	compile 'com.itextpdf:itextpdf:5.5.10'
+    compile 'org.freemarker:freemarker:2.3.23'
+    compile 'org.apache.poi:poi:3.16'
+    compile 'org.apache.poi:poi-ooxml:3.16'
+    compile 'fr.opensagres.xdocreport:org.apache.poi.xwpf.converter.pdf:1.0.4'
+    compile 'com.lowagie:itext:2.1.7'
+
+    compile 'com.documents4j:documents4j-api:1.0.3'
+    compile 'com.documents4j:documents4j-local:1.0.3'
+    compile 'com.documents4j:documents4j-util-conversion:1.0.3'
+    compile 'com.documents4j:documents4j-transformer:1.0.3'
+    compile 'com.documents4j:documents4j-util-all:1.0.3'
+    compile 'com.documents4j:documents4j-transformer-msoffice-word:1.0.3'
+
+    compile 'org.docx4j:docx4j:3.3.3'
 }
 
 
